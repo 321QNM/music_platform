@@ -3,9 +3,9 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
   /*background: url(test.jpg) no-repeat;*/
-  -moz-background-size:100% 100% ;
-  -webkit-background-size:100% 100% ;
-
+  /*background-size:100% 100% ;*/
+  background-size: cover;
+  background-attachment:fixed;
 }
 
 .form-signup {
@@ -44,7 +44,7 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-#msg{
+.msg{
   color: red;
   visibility: hidden;
 }
