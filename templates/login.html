@@ -10,24 +10,32 @@
         <meta content="" name="author"></meta>
         <link href="../../assets/ico/favicon.ico" rel="shortcut icon"></link>
         <title>
-
             Sign In
-
         </title>
 
         <link rel="stylesheet" href="{{ static_url("css/bootstrap.min.css") }}"></link>
 
         <link rel="stylesheet" href="{{ static_url("css/login.css") }}"></link>
 
+        <script type="text/javascript">
+                //刷新切换背景
+                bg = new Array(3);
+                bg[0] = '{{ static_url("images/pink.jpg") }}'
+                bg[1] = '{{ static_url("images/blue.jpg") }}'
+                bg[2] = '{{ static_url("images/sky.jpg") }}'
+                index = Math.floor(Math.random() * bg.length);
+                document.write("<BODY BACKGROUND="+bg[index]+">");
+        </script>
+
     </head>
+
+
     <body>
         <div class="container">
             <form class="form-signin" role="form"  action="/login" method="POST">
             {% raw xsrf_form_html() %}
                 <h2 class="form-signin-heading">
-
                     Please Sign In
-
                 </h2>
                 <br>
                 <input class="form-control" type="text" name="username" value="" autofocus="" required="" placeholder="Username"   onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
@@ -45,7 +53,5 @@
                 </button>
             </form>
         </div>
-
     </body>
-
 </html>
