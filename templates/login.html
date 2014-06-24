@@ -1,14 +1,51 @@
-<html>
-    <head>
-        <title>Please Sign up</title>
-    </head>
+<!DOCTYPE html>
 
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8"></meta>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"></meta>
+        <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+        <meta content="" name="description"></meta>
+        <meta content="" name="author"></meta>
+        <link href="../../assets/ico/favicon.ico" rel="shortcut icon"></link>
+        <title>
+
+            Sign In
+
+        </title>
+
+        <link rel="stylesheet" href="{{ static_url("css/bootstrap.min.css") }}"></link>
+
+        <link rel="stylesheet" href="{{ static_url("css/login.css") }}"></link>
+
+    </head>
     <body>
-        <form action="/login" method="POST">
+        <div class="container">
+            <form class="form-signin" role="form"  action="/login" method="POST">
             {% raw xsrf_form_html() %}
-            Username: <input type="text" name="username" />
-            Password: <input type="text" name="password">
-            <input type="submit" value="Log in" />
-        </form>
+                <h2 class="form-signin-heading">
+
+                    Please Sign In
+
+                </h2>
+                <br>
+                <input class="form-control" type="text" name="username" value="" autofocus="" required="" placeholder="Username"   onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+
+                <br>
+                <input class="form-control" type="password" required="" placeholder="Password"    onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <br>
+                <label class="checkbox">
+                    <input type="checkbox" value="remember-me"></input>
+                     Remember me
+                </label>
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Log in
+                </button>
+            </form>
+        </div>
+
     </body>
+
 </html>
