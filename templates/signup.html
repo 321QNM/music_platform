@@ -17,23 +17,26 @@
 
         <link rel="stylesheet" href="{{ static_url("css/signup.css") }}"></link>
 
+        <script type="text/javascript"  src="js/jquery.js"></script>
+
         <script type="text/javascript">
-            function isSame(){//检查两次输入密码是否一致
-                if(document.form.password1.value!=document.form.password2.value){//form表单的name属性为password1和password2的值是否一致
-                document.form.password2.focus();
-                 msg.style.visibility="visible";
-                 return false;
-                }
-                 msg.style.visibility="hidden";
-                 return true;
-            }
-                //刷新切换背景
-                bg = new Array(3);
-                bg[0] = '{{ static_url("images/pink.jpg") }}'
-                bg[1] = '{{ static_url("images/blue.jpg") }}'
-                bg[2] = '{{ static_url("images/sky.jpg") }}'
-                index = Math.floor(Math.random() * bg.length);
-                document.write("<BODY BACKGROUND="+bg[index]+">");
+        $(document).ready(function(){// DOM的onload事件处理函数
+            $("#pass2").blur(function(){// 当按钮submit被点击时的处理函数
+                warning();// submit别点击时执行postdata函数
+            });
+        });
+
+        function warning(){// 提交数据函数
+            $("#msg2").text("Password don't match");
+        }
+
+        //刷新切换背景
+        bg = new Array(3);
+        bg[0] = '{{ static_url("images/pink.jpg") }}'
+        bg[1] = '{{ static_url("images/blue.jpg") }}'
+        bg[2] = '{{ static_url("images/sky.jpg") }}'
+        index = Math.floor(Math.random() * bg.length);
+        document.write("<BODY BACKGROUND="+bg[index]+">");
 
         </script>
     </head>
@@ -56,8 +59,8 @@
                 <h5>输入密码：</h5>
                 <input class="form-control"  name="password1" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
-                <h5>再次输入密码：<span id="msg" class="msg">(Passwords don't match)</span></h5>
-                <input class="form-control" name="password2" type="password" required="" placeholder="Password"  onblur="isSame()"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <h5>再次输入密码：<span id="msg2" class="msg"></span></h5>
+                <input class="form-control" id="pass2" name="password2" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                 Sign Up
