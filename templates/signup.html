@@ -17,15 +17,22 @@
 
         <link rel="stylesheet" href="{{ static_url("css/signup.css") }}"></link>
 
-        <script type="text/javascript"  src="js/jquery.js"></script>
-
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function(){// DOM的onload事件处理函数
+            // $("#submit").attr("disabled","true");
             $("#username").blur(function(){
                 u_warning();
             });
             $("#pass2").blur(function(){// 当按钮submit被点击时的处理函数
-                warning();// submit别点击时执行postdata函数
+                if (document.form.password1.value!=document.form.password2.value) {
+                    p_warning("（密码不一致！）");// submit别点击时执行postdata函数
+                    $("#submit").attr("disabled","true");
+                }
+                else{
+                    p_warning("");
+                    $("#submit").removeAttr('disabled');
+                }
             });
             $("#submit").click(function(){
                 if (document.form.password1.value==document.form.password2.value) {
@@ -45,8 +52,8 @@
                 }
             });
         }
-        function p_warning(){// 提交数据函数
-            $("#msg2").text("（密码不一致！）");
+        function p_warning(msg){// 提交数据函数
+            $("#msg2").text(msg);
         }
         function postdata(){// 提交数据函数
             $.ajax({// 调用jquery的ajax方法
@@ -72,7 +79,7 @@
 
     <body>
         <div class="container">
-            <form class="form-signup"  name="form" role="form" method="POST" action="/signup">
+            <form class="form-signup"  name="form" role="form">
             {% raw xsrf_form_html() %}
                 <h2 class="form-signup-heading">
                 Please Sign Up
