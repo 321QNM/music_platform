@@ -18,6 +18,13 @@ body {
 .form-signin .checkbox {
   margin-bottom: 10px;
 }
+.form-signup .form-signup-heading{
+  font-family: Molesk;/*字体（需要安装该字体，否则 默认字体）*/
+  font-size: 30pt;
+  font-weight: 900;/*最粗*/
+  font-style: oblique;/*斜体*/
+  text-align: center;/*居中*/
+}
 .form-signin .checkbox {
   font-weight: normal;
 }
@@ -43,4 +50,11 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.msg{
+  color: red;
+}
+a{
+  text-align: center;
+  text-decoration: none;
 }

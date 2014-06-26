@@ -84,7 +84,7 @@
             <form class="form-signin" role="form"  action="/login" method="POST">
             {% raw xsrf_form_html() %}
                 <h2 class="form-signin-heading">
-                    Please Log in
+                    Admin Log in
                 </h2>
                 <h5>用户名：<span id="msg1" class="msg"></span></h5>
                 <input class="form-control" type="text" name="username" value="" autofocus="" required="" placeholder="Username"   onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
@@ -100,7 +100,6 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Log in
                 </button>
-                <a href="signup.html">没有账号，马上注册！</a>
             </form>
         </div>
     </body>

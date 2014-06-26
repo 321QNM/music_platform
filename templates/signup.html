@@ -19,51 +19,78 @@
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script type="text/javascript">
-        $(document).ready(function(){// DOM的onload事件处理函数
-            // $("#submit").attr("disabled","true");
-            $("#username").blur(function(){
+        $(document).ready(function(){// 加载完毕
+
+            $("#username").blur(function(){//用户名填写完毕
                 u_warning();
             });
-            $("#pass2").blur(function(){// 当按钮submit被点击时的处理函数
+            $("#pass2").blur(function(){// 第二次密码填写完毕
                 if (document.form.password1.value!=document.form.password2.value) {
-                    p_warning("（密码不一致！）");// submit别点击时执行postdata函数
-                    $("#submit").attr("disabled","true");
+                    p_warning("（密码不一致！）");
+                    $("#submit").attr("disabled","true");//密码不一致则不能提交
                 }
                 else{
                     p_warning("");
-                    $("#submit").removeAttr('disabled');
+                    $("#submit").removeAttr('disabled');//密码一致，可以提交
                 }
             });
-            $("#submit").click(function(){
+
+            $("#invitationcode").blur(function(){//邀请码输入完毕
+                i_warning();
+            });
+
+            $("#submit").click(function(){//点击提交按钮
                 if (document.form.password1.value==document.form.password2.value) {
                     postdata();
                 }
             });
         });
+
         function u_warning(){
             $.ajax({// 调用jquery的ajax方法
                 type:"POST",// 设置ajax方法提交数据的形式
                 url:"/signup",// 把数据提交到/signup"
                 data: "username="+$("#username").val(),
-                success:function(msg){// 提交成功后的回调，msg变量是ok.php输出的内容
-                    if (msg=="existing") {
+                success:function(msg1){// 提交成功后的回调
+                    if (msg1=="existing") {
                         $("#msg1").text("（该用户已存在！）");
+                        ("#submit").attr("disabled","true");//用户名已存在则不能提交
+                    }else{
+                        $("#msg1").text("");
+                        $("#submit").removeAttr('disabled');//用户名可以注册则可以提交
                     };
                 }
             });
         }
-        function p_warning(msg){// 提交数据函数
-            $("#msg2").text(msg);
+        function p_warning(msg2){// 打印密码不匹配消息
+            $("#msg2").text(msg2);
+        }
+        function i_warning(){
+            $.ajax({// 调用jquery的ajax方法
+                type:"POST",// 设置ajax方法提交数据的形式
+                url:"/signup",// 把数据提交到/signup"
+                data: "invitationcode="+$("#invitationcode").val(),
+                success:function(msg3){// 提交成功后的回调
+                    if (msg3=="existing") {
+                        $("#msg3").text("");
+                        $("#submit").removeAttr('disabled');
+                    }else{
+                        $("#msg3").text("（邀请码无效！）");
+                        ("#submit").attr("disabled","true");
+                    };
+                }
+            });
         }
         function postdata(){// 提交数据函数
             $.ajax({// 调用jquery的ajax方法
             type:"POST",// 设置ajax方法提交数据的形式
             url:"/signup",// 把数据提交到/signup
-            data: "username="+$("#username").val()+"&password="+$("#password2").val()+"&email="+$("#email"),
+            data: "username="+$("#username").val()+"&password="+$("#password2").val()+"&email="+$("#email")+"&invitationcode"+$("#invitationcode"),
             success:function(msg){// 提交成功后的回调
                 }
-    });
-}
+            });
+        }
+
 
         //刷新切换背景
         bg = new Array(3);
@@ -97,9 +124,13 @@
                 <h5>再次输入密码：<span id="msg2" class="msg"></span></h5>
                 <input class="form-control" id="pass2" name="password2" id="password2" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
+                <h5>输入邀请码：<span id="msg3" class="msg"></span></h5>
+                <input class="form-control" id="invitationcode" name="invitationcode" type="text" autofocus="" required="" placeholder="Invitation code"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+
                 <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">
                 Sign Up
                 </button>
+                <a href="signup.html">已有账号，马上登录！</a>
             </form>
         </div>
     </body>
