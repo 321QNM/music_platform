@@ -24,3 +24,5 @@ def is_login_successful(username, password):
 def insert_new_user(username, password):
     result = collection.insert( {"username": username, "password": password} )
     return result
+
+#modify
