@@ -83,15 +83,14 @@
                 url:"/signup",// 把数据提交到/signup"
                 data: "invitecode="+$("#invitecode").val(),
                 success:function(msg3){// 提交成功后的回调
-                    alert(msg3);
-                    if (msg3=="is_valid_invite_code") {
-                        alert("ok");
-                        $("#msg3").text("");
-                        $("#submit").removeAttr('disabled');
-                    }
-                    else{
+                    // alert(msg3);
+                    if (msg3=="is_not_valid_invite_code") {
                         $("#msg3").text("（邀请码无效！）");
                         $("#submit").attr("disabled","true");
+                    }
+                    else{
+                        $("#msg3").text("");
+                        $("#submit").removeAttr('disabled');
                     }
                 }
             });
@@ -100,8 +99,9 @@
             $.ajax({// 调用jquery的ajax方法
             type:"POST",// 设置ajax方法提交数据的形式
             url:"/signup",// 把数据提交到/signup
-            data: "username="+$("#username").val()+"&password="+$("#password2").val()+"&email="+$("#email")+"&invitationcode"+$("#invitationcode"),
-            success:function(msg){// 提交成功后的回调
+            data: "username="+$("#username").val()+"&password="+$("#password1").val()+"&email="+$("#email").val()+"&invitecode="+$("#invitecode").val(),
+            success:function(msg4){// 提交成功后的回调
+                    // alert(msg4);
                 }
             });
         }
