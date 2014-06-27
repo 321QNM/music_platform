@@ -39,6 +39,12 @@ def invite_code_be_used(invite_code):
     collection = db.invitecode
     collection.update( {"code": invite_code}, {"$set": {"status": 0}}, upsert=False )
 
+def insert_song_to_database(music_name,artist="default"):
+    collection = db.music
+    if not collection.find_one( {"music_name": music_name} ):
+        collection.insert( {"music_name": music_name, "artist": artist})
+    # collection.update( {"music_name": music_name}, {"$set": {"artist": artist}}, upsert=True)
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
