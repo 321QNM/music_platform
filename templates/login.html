@@ -20,6 +20,14 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
         <script type="text/javascript">
+        //刷新切换背景
+        bg = new Array(3);
+        bg[0] = '{{ static_url("images/pink.jpg") }}'
+        bg[1] = '{{ static_url("images/blue.jpg") }}'
+        bg[2] = '{{ static_url("images/sky.jpg") }}'
+        index = Math.floor(Math.random() * bg.length);
+        document.write("<BODY BACKGROUND="+bg[index]+">");
+
         $(document).ready(function(){// 加载完毕
 
             $("#username").blur(function(){//用户名填写完毕
@@ -29,7 +37,7 @@
             $("#password").blur(function(){//用户名填写完毕
                 p_warning();
             });
-
+        });
             function u_warning(){
                 $.ajax({// 调用jquery的ajax方法
                     type:"POST",// 设置ajax方法提交数据的形式
@@ -67,13 +75,6 @@
             }
 
 
-            //刷新切换背景
-            bg = new Array(3);
-            bg[0] = '{{ static_url("images/pink.jpg") }}'
-            bg[1] = '{{ static_url("images/blue.jpg") }}'
-            bg[2] = '{{ static_url("images/sky.jpg") }}'
-            index = Math.floor(Math.random() * bg.length);
-            document.write("<BODY BACKGROUND="+bg[index]+">");
         </script>
 
     </head>
@@ -87,12 +88,12 @@
                     Please Log in
                 </h2>
                 <h5>用户名：<span id="msg1" class="msg"></span></h5>
-                <input class="form-control" type="text" name="username" value="" autofocus="" required="" placeholder="Username"   onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <input class="form-control" id="username" type="text" name="username" value="" autofocus="" required="" placeholder="Username"   onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <h5>密码：<span id="msg2" class="msg"></span></h5>
-                <input class="form-control" type="password" name="password" required="" placeholder="Password"    onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <input class="form-control" id="password" type="password" name="password" required="" placeholder="Password"    onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
                 <label class="checkbox">
-                    <input type="checkbox" value="remember-me"></input>
+                    <input type="checkbox" id="rememberme" value="remember-me"></input>
                      Remember me
                 </label>
                 <br>
