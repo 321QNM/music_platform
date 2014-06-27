@@ -12,14 +12,16 @@ class SignupHandler(BaseHandler):
         self.render('signup.html')
 
     def post(self):
+        email = self.get_argument("email")
         username = self.get_argument("username")
         password = self.get_argument("password1")
+        invite_code = self.get_argument("invitecode")
 
-        result = is_username_existed(username)
-
-        if result:
-            self.redirect('/signup')
-        else:
+        if is_username_existed(username):
+            self.write("existed")
+        if is_valid_invite_code(invite_code):
+            self.write("is_valid_invite_code")
+        if not is_username_existed(username) and is_valid_invite_code(invite_code):
             insert_new_user(username, password)
             self.set_secure_cookie('username', username)
             self.redirect(self.get_argument('next', '/'))
