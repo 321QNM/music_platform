@@ -14,6 +14,7 @@ def main():
     for i in range(1,101):
         code = "welcome" + str(i)
         insert_invite_code(code)
+    print('ok')
 
 if __name__ == "__main__":
     main()

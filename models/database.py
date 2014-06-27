@@ -29,8 +29,24 @@ def insert_new_user(username, password):
 
 def is_valid_invite_code(invite_code):
     collection = db.invitecode
-    result = collection.find_one( {"code": invite_code} )
+    result = collection.find_one( {"code": invite_code, "status": 1} )
     if result:
         return True
     else:
         return False
+
+def invite_code_be_used(invite_code):
+    collection = db.invitecode
+    collection.update( {"code": invite_code}, {"$set": {"status": 0}}, upsert=False )
+
+
+def main():
+    #如果单独执行此文件,会复原邀请码collection
+    collection = db.invitecode
+    for i in range(1, 101):
+        invite_code = "welcome" + str(i)
+        collection.update( {"code": invite_code}, {"$set": {"status": 1}}, upsert=True)
+    print('ok')
+
+if __name__ == '__main__':
+    main()
