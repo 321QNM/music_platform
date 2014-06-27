@@ -5,6 +5,7 @@ body {
   background-repeat: no-repeat;
   /*background: url(test.jpg) no-repeat;*/
   /*background-size:100% 100% ;*/
+  opacity: 0.60;
   background-size: cover;
   background-attachment:fixed;
 }
@@ -52,3 +53,4 @@ a{
   text-align: center;
   text-decoration: none;
 }
+#switch{text-align: center;}
