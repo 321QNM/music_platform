@@ -35,7 +35,7 @@
     #n a{ padding:0 4px; color:#333}
     #filter{
         width:1440px;
-        height:90px;
+        height:50px;
         background:#000;
         filter: Alpha(opacity=50);
         opacity:0.5;
@@ -46,16 +46,16 @@
     #loginBt{
         position: absolute;
         left: 300px;
-        top: 20px;
+        top: 5px;
     }
     #signupBt{
         position: absolute;
-        top: 20px;
+        top: 5px;
         right: 300px;
     }
 </style>
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript">
     $(function() {
 	var sWidth = $("#focus").width();
@@ -127,11 +127,11 @@
 <div class="wrapper">
 	<div id="focus">
 		<ul>
-			<li><img src="img/01.jpg"/></li>
-			<li><img src="img/02.png"/></li>
-			<li><img src="img/03.jpg"/></li>
-			<li><img src="img/04.jpg"/></li>
-			<li><img src="img/05.jpg"/></li>
+			<li><img src="{{ static_url("images/01.jpg") }}"></li>
+			<li><img src="{{ static_url("images/02.png") }}"></li>
+			<li><img src="{{ static_url("images/03.jpg") }}"></li>
+			<li><img src="{{ static_url("images/04.jpg") }}"></li>
+			<li><img src="{{ static_url("images/05.jpg") }}"></li>
 		</ul>
 	</div>
     <div id="filter">

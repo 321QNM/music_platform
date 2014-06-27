@@ -7,7 +7,7 @@ from handlers.logout import LogoutHandler
 from handlers.test import TestHandler
 
 urls = [
-    (r'/', WelcomeHandler),
+    (r'/index', WelcomeHandler),
     (r'/signup', SignupHandler),
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
