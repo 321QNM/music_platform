@@ -26,6 +26,8 @@ class SignupHandler(BaseHandler):
         # self.write(email+username+password+invite_code)
         if username != "default" and email != "default" and password != "default" and invite_code != "default":
             if not is_username_existed(username) and is_valid_invite_code(invite_code):
+                # self.write(email+username+password+invite_code)
                 insert_new_user(username, password)
+                invite_code_be_used(invite_code)
                 self.set_secure_cookie('username', username)
                 self.redirect('/')
