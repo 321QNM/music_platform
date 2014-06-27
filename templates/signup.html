@@ -24,7 +24,17 @@
             $("#username").blur(function(){//用户名填写完毕
                 u_warning();
             });
-            $("#pass2").blur(function(){// 第二次密码填写完毕
+            $("#password1").blur(function(){
+                if(document.form.password1.value!=document.form.password2.value){
+                    // p_warning("（密码不一致！）");
+                    $("#submit").attr("disabled", "true");
+                }
+                else{
+                    p_warning("");
+                    $("#submit").removeAttr('disabled');
+                }
+            })
+            $("#password2").blur(function(){// 第二次密码填写完毕
                 if (document.form.password1.value!=document.form.password2.value) {
                     p_warning("（密码不一致！）");
                     $("#submit").attr("disabled","true");//密码不一致则不能提交
@@ -122,15 +132,16 @@
                 <input class="form-control"  name="password1" id="password1" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <h5>再次输入密码：<span id="msg2" class="msg"></span></h5>
-                <input class="form-control" id="pass2" name="password2" id="password2" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <input class="form-control" id="password2" name="password2" id="password2" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <h5>输入邀请码：<span id="msg3" class="msg"></span></h5>
                 <input class="form-control" id="invitationcode" name="invitationcode" type="text" autofocus="" required="" placeholder="Invitation code"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                </br>
 
                 <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">
                 Sign Up
                 </button>
-                <a href="signup.html">已有账号，马上登录！</a>
+                <a href="/login">已有账号，马上登录！</a>
             </form>
         </div>
     </body>
