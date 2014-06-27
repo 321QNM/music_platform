@@ -5,6 +5,7 @@ from handlers.signup import SignupHandler
 from handlers.login import LoginHandler
 from handlers.logout import LogoutHandler
 from handlers.test import TestHandler
+from handlers.playmusic import PlayMusicHandler
 
 urls = [
     (r'/index', WelcomeHandler),
@@ -12,4 +13,5 @@ urls = [
     (r'/login', LoginHandler),
     (r'/logout', LogoutHandler),
     (r'/test', TestHandler),
+    (r'/', PlayMusicHandler),
 ]
