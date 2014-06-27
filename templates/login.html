@@ -35,7 +35,7 @@
             });
 
             $("#password").blur(function(){//用户名填写完毕
-                p_warning();
+                // p_warning();
             });
         });
             function u_warning(){
@@ -44,13 +44,14 @@
                     url:"/login",// 把数据提交到/login
                     data: "username="+$("#username").val(),
                     success:function(msg1){// 提交成功后的回调
-                        if (msg1=="existing") {
-                            $("#msg1").text("");
-                            $("#submit").removeAttr('disabled');
-                            //用户名已存在则能登录
-                        }else{
+                        if (msg1=="not_existed") {
                             $("#msg1").text("（该用户不存在！）");
-                            ("#submit").attr("disabled","true");//用户名不存在则不能登录
+                            $("#submit").attr("disabled","true");
+                            //用户名不存在则不能登录
+                        }else{
+                            $("#msg1").text("");
+                            ("#submit").removeAttr('disabled');
+                            //用户名已存在则能登录
                         };
                     }
                 });
