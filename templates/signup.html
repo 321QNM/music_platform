@@ -45,7 +45,7 @@
                 }
             });
 
-            $("#invitationcode").blur(function(){//邀请码输入完毕
+            $("#invitecode").blur(function(){//邀请码输入完毕
                 i_warning();
             });
 
@@ -61,10 +61,12 @@
                 type:"POST",// 设置ajax方法提交数据的形式
                 url:"/signup",// 把数据提交到/signup"
                 data: "username="+$("#username").val(),
+                // alert("already post");#post表单要全是键值対,不能有其它语句
                 success:function(msg1){// 提交成功后的回调
                     if (msg1=="existed") {
+                        // alert("recieve");
                         $("#msg1").text("（该用户已存在！）");
-                        ("#submit").attr("disabled","true");//用户名已存在则不能提交
+                        $("#submit").attr("disabled","true");//用户名已存在则不能提交
                     }else{
                         $("#msg1").text("");
                         $("#submit").removeAttr('disabled');//用户名可以注册则可以提交
@@ -79,15 +81,18 @@
             $.ajax({// 调用jquery的ajax方法
                 type:"POST",// 设置ajax方法提交数据的形式
                 url:"/signup",// 把数据提交到/signup"
-                data: "invitationcode="+$("#invitationcode").val(),
+                data: "invitecode="+$("#invitecode").val(),
                 success:function(msg3){// 提交成功后的回调
+                    alert(msg3);
                     if (msg3=="is_valid_invite_code") {
+                        alert("ok");
                         $("#msg3").text("");
                         $("#submit").removeAttr('disabled');
-                    }else{
+                    }
+                    else{
                         $("#msg3").text("（邀请码无效！）");
-                        ("#submit").attr("disabled","true");
-                    };
+                        $("#submit").attr("disabled","true");
+                    }
                 }
             });
         }
@@ -135,7 +140,7 @@
                 <input class="form-control" id="password2" name="password2" id="password2" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <h5>输入邀请码：<span id="msg3" class="msg"></span></h5>
-                <input class="form-control" id="invitationcode" name="invitationcode" type="text" autofocus="" required="" placeholder="Invitation code"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <input class="form-control" id="invitecode" name="invitecode" type="text" autofocus="" required="" placeholder="Invitation code"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
                 </br>
 
                 <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">

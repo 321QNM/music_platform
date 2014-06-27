@@ -12,10 +12,10 @@ class SignupHandler(BaseHandler):
         self.render('signup.html')
 
     def post(self):
-        email = self.get_argument("email")
-        username = self.get_argument("username")
-        password = self.get_argument("password1")
-        invite_code = self.get_argument("invitecode")
+        email = self.get_argument("email", "default_email")
+        username = self.get_argument("username", "default_username")
+        password = self.get_argument("password1", "default_password")
+        invite_code = self.get_argument("invitecode", "default_invitecode")
 
         if is_username_existed(username):
             self.write("existed")
