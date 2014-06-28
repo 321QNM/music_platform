@@ -1,13 +1,13 @@
 #coding=utf-8
 
 import tornado.web
-from handlers.base import BaseHandler
+from handlers.adminbase import AdminBaseHandler
 from models.database import *
 
-class AdminLoginHandler(BaseHandler):
+class AdminLoginHandler(AdminBaseHandler):
     def get(self):
         if self.get_current_user():
-            self.redirect(self.get_argument('next', '/'))
+            self.redirect(self.get_argument('next', '/adminindex'))
             return
         self.render('adminlogin.html')
 
@@ -23,6 +23,6 @@ class AdminLoginHandler(BaseHandler):
             result = is_admin_login_successful(admin_username, admin_password)
             if result:
                 self.set_secure_cookie("admin_username", admin_username)
-                self.redirect(self.get_argument('next', '/test'))
+                self.redirect(self.get_argument('next', '/adminindex'))
             else:
                 self.render('error.html', error_msg="/adminlogin")

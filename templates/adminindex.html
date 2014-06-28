@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Welcome Back!</title>
+    </head>
+
+    <body>
+        <h1>Welcome back, admin {{ admin_user }}</h1>
+        <form action="/adminlogout" method="GET">
+            {% raw xsrf_form_html() %}
+            <input type="submit" value="Logout" />
+        </form>
+    </body>
+</html>
