@@ -5,6 +5,9 @@
 
     <body>
         <h1>Welcome back, {{ user }}</h1>
+        <audio src="{{ music_source }}" controls="controls">
+        Browser not supported.
+        </audio>
         <form action="/logout" method="GET">
             {% raw xsrf_form_html() %}
             <input type="submit" value="Logout" />

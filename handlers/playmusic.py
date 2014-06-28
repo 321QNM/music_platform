@@ -6,5 +6,5 @@ from handlers.base import BaseHandler
 class PlayMusicHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        self.render('playmusic.html', user=self.current_user)
+        self.render('playmusic.html', user=self.current_user, music_source="../static/music/1.mp3")
 
