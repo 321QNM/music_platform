@@ -10,6 +10,7 @@ from handlers.error import ErrorHandler
 from handlers.pagenotfound import PageNotFoundHandler
 from handlers.adminlogin import AdminLoginHandler
 from handlers.adminindex import AdminIndexHandler
+from handlers.adminlogout import AdminLogoutHandler
 
 urls = [
     (r'/index', WelcomeHandler),
@@ -21,5 +22,6 @@ urls = [
     (r'/', PlayMusicHandler),
     (r'/adminlogin', AdminLoginHandler),
     (r'/adminindex', AdminIndexHandler),
+    (r'/adminlogout', AdminLogoutHandler),
     (r'.*',PageNotFoundHandler),
 ]
