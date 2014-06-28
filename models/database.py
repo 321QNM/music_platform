@@ -45,6 +45,18 @@ def insert_song_to_database(music_name,artist="default"):
         collection.insert( {"music_name": music_name, "artist": artist})
     # collection.update( {"music_name": music_name}, {"$set": {"artist": artist}}, upsert=True)
 
+def is_admin_username_existed(admin_username):
+    collection = db.admincoll
+    result = collection.find_one( {"username": username} )
+    if result:
+        return True
+    else:
+        return False
+
+def insert_music_to_database(music):
+    collection = db.music
+    collection.insert(music)
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
