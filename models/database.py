@@ -46,8 +46,8 @@ def insert_song_to_database(music_name,artist="default"):
     # collection.update( {"music_name": music_name}, {"$set": {"artist": artist}}, upsert=True)
 
 def is_admin_username_existed(admin_username):
-    collection = db.admincoll
-    result = collection.find_one( {"username": username} )
+    collection = db.music_admin
+    result = collection.find_one( {"admin_username": admin_username} )
     if result:
         return True
     else:
@@ -56,6 +56,14 @@ def is_admin_username_existed(admin_username):
 def insert_music_to_database(music):
     collection = db.music
     collection.insert(music)
+
+def is_admin_login_successful(admin_username, admin_password):
+    collection = db.music_admin
+    result = collection.find_one( {"admin_username": admin_username, "admin_password": admin_password} )
+    if result:
+        return True
+    else:
+        return False
 
 
 def main():

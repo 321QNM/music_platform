@@ -41,11 +41,11 @@
             function u_warning(){
                 $.ajax({// 调用jquery的ajax方法
                     type:"POST",// 设置ajax方法提交数据的形式
-                    url:"/login",// 把数据提交到/login
+                    url:"/adminlogin",// 把数据提交到/login
                     data: "username="+$("#username").val(),
                     success:function(msg1){// 提交成功后的回调
-                        if (msg1=="not_existed") {
-                            $("#msg1").text("（该用户不存在！）");
+                        if (msg1=="admin_not_existed") {
+                            $("#msg1").text("（该管理员用户不存在！）");
                             $("#submit").attr("disabled","true");
                             //用户名不存在则不能登录
                         }else{
@@ -60,7 +60,7 @@
             function p_warning(){
                 $.ajax({// 调用jquery的ajax方法
                     type:"POST",// 设置ajax方法提交数据的形式
-                    url:"/login",// 把数据提交到/login
+                    url:"/adminlogin",// 把数据提交到/login
                     data: "password"+$("#password").val(),
                     success:function(msg2){// 提交成功后的回调
                         if (msg2=="true") {
@@ -83,10 +83,10 @@
 
     <body>
         <div class="container">
-            <form class="form-signin" role="form"  action="/login" method="POST">
+            <form class="form-signin" role="form"  action="/adminlogin" method="POST">
             {% raw xsrf_form_html() %}
                 <h2 class="form-signin-heading">
-                    Please Log in
+                    Admin Log in
                 </h2>
                 <h5>用户名：<span id="msg1" class="msg"></span></h5>
                 <input class="form-control" id="username" type="text" name="username" value="" autofocus="" required="" placeholder="Username"   onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>

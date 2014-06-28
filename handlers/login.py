@@ -25,4 +25,4 @@ class LoginHandler(BaseHandler):
                 self.set_secure_cookie("username", username)
                 self.redirect(self.get_argument('next', '/'))
             else:
-                self.redirect('/error')
+                self.render('error.html', error_msg="/login")
