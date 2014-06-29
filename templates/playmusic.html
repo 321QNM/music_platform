@@ -7,6 +7,61 @@
         <link rel="stylesheet" href="{{ static_url("css/music.css") }}"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <!-- <script src="{{ static_url("js/music.js") }}"></script> -->
+
+    </head>
+
+    <body>
+        <!--  测试用的demo  可删除
+        <h1>Welcome back, {{ user }}</h1>
+        <audio src="{{ music_source }}" controls="controls">
+        Browser not supported.
+        </audio>
+        <form action="/logout" method="GET">
+            {% raw xsrf_form_html() %}
+            <input type="submit" value="Logout" />
+        </form> -->
+
+        <div id="player">
+            <div class="cover"></div>
+            <div class="ctrl">
+
+                <!-- 歌曲名，歌手，专辑 -->
+                <div class="tag">
+                    <strong>Title</strong>
+                    <span class="artist">Artist</span>
+                    <span class="album">Album</span>
+                </div>
+
+                <div class="control">
+                    <!-- 上一曲、暂停、下一曲 -->
+                    <div class="left">
+                        <div class="rewind icon"></div>
+                        <div class="playback icon"></div>
+                        <div class="fastforward icon"></div>
+                    </div>
+
+                    <div class="volume right">
+                        <!-- 音量图标 -->
+                        <div class="mute icon left"></div>
+                        <!-- 音量拉条框 -->
+                        <div class="slider left">
+                            <!-- 音量大小 -->
+                            <div class="pace"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 进度条 -->
+                <div class="progress">
+                    <div class="slider">
+                        <div class="loaded"></div>
+                        <div class="pace"></div>
+                    </div>
+                    <!-- 剩余时间 -->
+                    <div class="timer left">0:00</div>
+                </div>
+            </div>
+        </div>
+        <script src="{{ static_url("js/jquery-ui-1.8.17.custom.min.js") }}"></script>
         <script type="text/javascript">
             (function($){
     // Settings
@@ -21,7 +76,8 @@
             artist: '金志文',
             album: '肩上蝶',
             cover:'http://attach.hunantv.com/uploads/images/cms_img/201212/02/18/10504925422628832430.jpg',
-            mp3: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/jianshangdie.mp3',
+            // mp3: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/jianshangdie.mp3',
+            mp3: '{{ music_source }}',
             ogg: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/jianshangdie.ogg'
             },
             {
@@ -39,7 +95,7 @@
             cover: 'http://ent.vdolady.com/uploads/allimg/130325/20130325084808733.jpg',
             mp3: 'http://www.nullblogs.com/bowen/HTML5player/music/yiwangeshebude.mp3',
             ogg: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/yiwangeshebude.ogg'
-            },];
+            }];
 //初始化
     var time = new Date(),//返回当日的日期和时间   getTime返回 1970 年 1 月 1 日至今的毫秒数
         currentTrack = /*shuffle === 'true' ? time.getTime() % playlist.length : */0,//当前播放，如果不是随机播放，则归零
@@ -171,7 +227,7 @@
             setVolume(0);
         }
     });
-
+    alert("ok");
     loadMusic(currentTrack);
 //播放暂停
     $('.playback').on('click', function(){
@@ -194,60 +250,5 @@
 })(jQuery);
 
         </script>
-    </head>
-
-    <body>
-        <!--  测试用的demo  可删除
-        <h1>Welcome back, {{ user }}</h1>
-        <audio src="{{ music_source }}" controls="controls">
-        Browser not supported.
-        </audio>
-        <form action="/logout" method="GET">
-            {% raw xsrf_form_html() %}
-            <input type="submit" value="Logout" />
-        </form> -->
-
-        <div id="player">
-            <div class="cover"></div>
-            <div class="ctrl">
-
-                <!-- 歌曲名，歌手，专辑 -->
-                <div class="tag">
-                    <strong>Title</strong>
-                    <span class="artist">Artist</span>
-                    <span class="album">Album</span>
-                </div>
-
-                <div class="control">
-                    <!-- 上一曲、暂停、下一曲 -->
-                    <div class="left">
-                        <div class="rewind icon"></div>
-                        <div class="playback icon"></div>
-                        <div class="fastforward icon"></div>
-                    </div>
-
-                    <div class="volume right">
-                        <!-- 音量图标 -->
-                        <div class="mute icon left"></div>
-                        <!-- 音量拉条框 -->
-                        <div class="slider left">
-                            <!-- 音量大小 -->
-                            <div class="pace"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 进度条 -->
-                <div class="progress">
-                    <div class="slider">
-                        <div class="loaded"></div>
-                        <div class="pace"></div>
-                    </div>
-                    <!-- 剩余时间 -->
-                    <div class="timer left">0:00</div>
-                </div>
-            </div>
-        </div>
-        <script src="{{ static_url("js/jquery-ui-1.8.17.custom.min.js") }}"></script>
-        <script type="text/javascript">alert("OK")</script>
     </body>
 </html>
