@@ -1,11 +1,15 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome Back!</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Music</title>
         <link rel="shortcut icon" href="http://imgsize.ph.126.net/?imgurl=http://img2.ph.126.net/5QmK9DIz-daSHW88i4cTvw==/3170534137768919861.jpg_16x16x0x90.jpg">
-
+        <link rel="stylesheet" href="{{ static_url("css/music.css") }}"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     </head>
 
     <body>
+        <!--  测试用的demo  可删除
         <h1>Welcome back, {{ user }}</h1>
         <audio src="{{ music_source }}" controls="controls">
         Browser not supported.
@@ -13,6 +17,49 @@
         <form action="/logout" method="GET">
             {% raw xsrf_form_html() %}
             <input type="submit" value="Logout" />
-        </form>
+        </form> -->
+
+        <div id="player">
+            <div class="cover"></div>
+            <div class="ctrl">
+
+                <!-- 歌曲名，歌手，专辑 -->
+                <div class="tag">
+                    <strong>Title</strong>
+                    <span class="artist">Artist</span>
+                    <span class="album">Album</span>
+                </div>
+
+                <div class="control">
+                    <!-- 上一曲、暂停、下一曲 -->
+                    <div class="left">
+                        <div class="rewind icon"></div>
+                        <div class="playback icon"></div>
+                        <div class="fastforward icon"></div>
+                    </div>
+
+                    <div class="volume right">
+                        <!-- 音量图标 -->
+                        <div class="mute icon left"></div>
+                        <!-- 音量拉条框 -->
+                        <div class="slider left">
+                            <!-- 音量大小 -->
+                            <div class="pace"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 进度条 -->
+                <div class="progress">
+                    <div class="slider">
+                        <div class="loaded"></div>
+                        <div class="pace"></div>
+                    </div>
+                    <!-- 剩余时间 -->
+                    <div class="timer left">0:00</div>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script src="{{ static_url("js/music.js") }}"></script>
     </body>
 </html>
