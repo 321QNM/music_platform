@@ -1,17 +1,18 @@
 $(document).ready(function(){
     var my_msg;
 
-    function ajax_post(){
+    function ajax_post(action){
        $.ajax({
            type:"POST",
            url:"/",
+           data: "action="+ action,
            success:function(msg){
                my_obj = JSON.parse(msg);
                loadmusic(my_obj.music_url,my_obj.music_name,my_obj.music_artist,my_obj.music_picture_url);
            }
        })
     }
-    ajax_post();
+    ajax_post(refresh);
     var time = new Date();
     var trigger = false;
     // var continous = true;
@@ -67,7 +68,7 @@ $(document).ready(function(){
         pause();
         audio.currentTime = 0;
         $('audio').remove();
-        ajax_post();
+        ajax_post(end);
         // if (isPlaying == true) play();
     }
 
@@ -111,7 +112,21 @@ $(document).ready(function(){
     $('.fastforward').on('click', function(){
         pause();
         $('audio').remove();
-        ajax_post();
+        ajax_post(next);
+        // if (isPlaying == true) play();
+    });
+    // 喜欢
+    $('.likeBt').on('click', function(){
+        pause();
+        $('audio').remove();
+        ajax_post(like);
+        // if (isPlaying == true) play();
+    });
+    // 讨厌
+    $('.hateBt').on('click', function(){
+        pause();
+        $('audio').remove();
+        ajax_post(hate);
         // if (isPlaying == true) play();
     });
 });
