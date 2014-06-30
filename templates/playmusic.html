@@ -51,20 +51,26 @@
         <script src="{{ static_url("js/jquery-ui-1.8.17.custom.min.js") }}"></script>
         <script type="text/javascript">
             // var continous = true,
+        (function($){
             var autoplay = true,
+            alert("1");
             loadMusic();
             var loadMusic = function(){
+                alert(2);
                 var newaudio = $('<audio>').html('<source src="'+'{{ music_url }}'+'">').appendTo('#player');
                 audio = newaudio[0];
                 audio.addEventListener('canplay', afterLoad, false);
             }
             var afterLoad = function(){
+                alert(3);
                 if (autoplay == true) play();
             }
             var play = function(){
+                alert(4);
                 audio.play();
             }
+        });
 
-
+        </script>
     </body>
 </html>
