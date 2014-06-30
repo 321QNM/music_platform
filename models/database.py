@@ -65,14 +65,23 @@ def is_admin_login_successful(admin_username, admin_password):
     else:
         return False
 
+def personal_recommend():
+    collection = db.music
+    data = list(collection.find())
+    return data
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
-    collection = db.invitecode
-    for i in range(1, 101):
-        invite_code = "welcome" + str(i)
-        collection.update( {"code": invite_code}, {"$set": {"status": 1}}, upsert=True)
-    print('ok')
+    # collection = db.invitecode
+    # for i in range(1, 101):
+    #     invite_code = "welcome" + str(i)
+    #     collection.update( {"code": invite_code}, {"$set": {"status": 1}}, upsert=True)
+    # print('ok')
+    # collection = db.music
+    # data = list(collection.find())
+    # print(data)
+    # print data[0]['music_name']
 
 if __name__ == '__main__':
     main()
