@@ -82,6 +82,7 @@ def main():
     # data = list(collection.find())
     # print(data)
     # print data[0]['music_name']
+    pass
 
 if __name__ == '__main__':
     main()
