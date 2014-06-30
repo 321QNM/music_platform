@@ -25,5 +25,7 @@ class PlayMusicHandler(BaseHandler):
     def post(self):
         obj = {
             'music_url': "../static/music/1.mp3",
+            'music_name': "God is a girl",
+            'music_artist': "Taylor swift"
         }
         self.write(json_encode(obj))

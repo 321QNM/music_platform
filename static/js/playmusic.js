@@ -59,7 +59,7 @@ $(document).ready(function(){
         $('.progress .slider a').css('left', ratio + '%');
     }
     //在加载之前seekable.end(index) 获得可寻址范围的结束位置  确定进度条长度  在css中修改
-    function beforLode(){
+    function beforeLoad(){
         var endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
         $('.progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
     }
@@ -71,7 +71,7 @@ $(document).ready(function(){
         // if (isPlaying == true) play();
     }
 
-    function setVolume(){
+    function setVolume(value){
         audio.volume = localStorage.volume = value;
         $('.volume .pace').css('width', value * 100 + '%');
         $('.volume .slider a').css('left', value * 100 + '%');
