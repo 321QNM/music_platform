@@ -10,12 +10,30 @@
         <script type="text/javascript">
         // (function($){
         $(document).ready(function(){
+            var my_msg;
+
+            function ajax_post_test(){
+               $.ajax({
+                   type:"POST",
+                   url:"/",
+                   success:function(msg){
+                       alert(msg);
+                       my_obj = JSON.parse(msg);
+                       alert(my_obj.music_url);
+                       loadmusic(my_obj.music_url);
+                       //$('#myaudio').html('<source src="' + my_obj.music_url + '"/>')
+                   }
+               })
+            }
+            ajax_post_test();
+
             var autoplay = true;
             alert("1");
-            loadmusic();
-            function loadmusic(){
+            // loadmusic();
+            function loadmusic(my_msg){
                 alert("2");
-                var newaudio = $('<audio>').html('<source src="http://dxsn.gongzuo.in/bowen/HTML5player/music/jianshangdie.mp3">').appendTo('#player');
+                alert(my_msg);
+                var newaudio = $('<audio>').html('<source src="'+my_msg+'">').appendTo('#player');
                 audio = newaudio[0];
                 audio.addEventListener('canplay', afterLoad, false);
             };
