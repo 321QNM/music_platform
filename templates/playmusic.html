@@ -7,38 +7,7 @@
         <link rel="stylesheet" href="{{ static_url("css/music.css") }}"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="{{ static_url("js/jquery-ui-1.8.17.custom.min.js") }}"></script>
-        <script type="text/javascript">
-        // (function($){
-        $(document).ready(function(){
-            var my_msg;
-
-            function ajax_post_test(){
-               $.ajax({
-                   type:"POST",
-                   url:"/",
-                   success:function(msg){
-                       my_obj = JSON.parse(msg);
-                       loadmusic(my_obj.music_url);
-                   }
-               })
-            }
-            ajax_post_test();
-
-            var autoplay = true;
-            function loadmusic(my_msg){
-                alert(my_msg);
-                var newaudio = $('<audio>').html('<source src="'+my_msg+'">').appendTo('#player');
-                audio = newaudio[0];
-                audio.addEventListener('canplay', afterLoad, false);
-            };
-            function afterLoad(){
-                if (autoplay == true) play();
-            };
-            function play(){
-                audio.play();
-            };
-        });
-        </script>
+        <script type="text/javascript" src="{{ static_url("js/playmusic.js")}}"></script>
     </head>
     <body>
         <div id="player">
@@ -49,7 +18,7 @@
                 <div class="tag">
                     <strong>Title</strong>
                     <span class="artist">Artist</span>
-                    <span class="album">Album</span>
+                    <!-- <span class="album">Album</span> -->
                 </div>
 
                 <div class="control">
