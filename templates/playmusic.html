@@ -6,6 +6,29 @@
         <link rel="shortcut icon" href="http://imgsize.ph.126.net/?imgurl=http://img2.ph.126.net/5QmK9DIz-daSHW88i4cTvw==/3170534137768919861.jpg_16x16x0x90.jpg">
         <link rel="stylesheet" href="{{ static_url("css/music.css") }}"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="{{ static_url("js/jquery-ui-1.8.17.custom.min.js") }}"></script>
+        <script type="text/javascript">
+        // (function($){
+        $(document).ready(function(){
+            var autoplay = true;
+            alert("1");
+            loadmusic();
+            function loadmusic(){
+                alert("2");
+                var newaudio = $('<audio>').html('<source src="http://dxsn.gongzuo.in/bowen/HTML5player/music/jianshangdie.mp3">').appendTo('#player');
+                audio = newaudio[0];
+                audio.addEventListener('canplay', afterLoad, false);
+            };
+            function afterLoad(){
+                alert("3");
+                if (autoplay == true) play();
+            };
+            function play(){
+                alert("4");
+                audio.play();
+            };
+        });
+        </script>
     </head>
     <body>
         <div id="player">
@@ -48,29 +71,5 @@
                 </div>
             </div>
         </div>
-        <script src="{{ static_url("js/jquery-ui-1.8.17.custom.min.js") }}"></script>
-        <script type="text/javascript">
-            // var continous = true,
-        (function($){
-            var autoplay = true,
-            alert("1");
-            loadMusic();
-            var loadMusic = function(){
-                alert(2);
-                var newaudio = $('<audio>').html('<source src="'+'{{ music_url }}'+'">').appendTo('#player');
-                audio = newaudio[0];
-                audio.addEventListener('canplay', afterLoad, false);
-            }
-            var afterLoad = function(){
-                alert(3);
-                if (autoplay == true) play();
-            }
-            var play = function(){
-                alert(4);
-                audio.play();
-            }
-        });
-
-        </script>
     </body>
 </html>
