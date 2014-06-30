@@ -6,21 +6,8 @@
         <link rel="shortcut icon" href="http://imgsize.ph.126.net/?imgurl=http://img2.ph.126.net/5QmK9DIz-daSHW88i4cTvw==/3170534137768919861.jpg_16x16x0x90.jpg">
         <link rel="stylesheet" href="{{ static_url("css/music.css") }}"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <!-- <script src="{{ static_url("js/music.js") }}"></script> -->
-
     </head>
-
     <body>
-        <!--  测试用的demo  可删除
-        <h1>Welcome back, {{ user }}</h1>
-        <audio src="{{ music_source }}" controls="controls">
-        Browser not supported.
-        </audio>
-        <form action="/logout" method="GET">
-            {% raw xsrf_form_html() %}
-            <input type="submit" value="Logout" />
-        </form> -->
-
         <div id="player">
             <div class="cover"></div>
             <div class="ctrl">
@@ -64,41 +51,20 @@
         <script src="{{ static_url("js/jquery-ui-1.8.17.custom.min.js") }}"></script>
         <script type="text/javascript">
             (function($){
-    // Settings
-    // var repeat = localStorage.repeat || 0,
-        //随机播放
-        // shuffle = localStorage.shuffle || 'false',
     var continous = true,
         autoplay = true,
         playlist = [
             {
-            title: '肩上蝶',
-            artist: '金志文',
-            album: '肩上蝶',
-            cover:'http://attach.hunantv.com/uploads/images/cms_img/201212/02/18/10504925422628832430.jpg',
-            // mp3: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/jianshangdie.mp3',
-            mp3: '{{ music_source }}',
-            ogg: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/jianshangdie.ogg'
+                title: '肩上蝶',
+                artist: '金志文',
+                album: '肩上蝶',
+                cover:'http://attach.hunantv.com/uploads/images/cms_img/201212/02/18/10504925422628832430.jpg',
+                mp3: '{{ music_source }}',
             },
-            {
-            title: '我可以抱你吗',
-            artist: '张惠妹',
-            album: '我可以抱你吗',
-            cover: 'http://img.xiami.com/images/album/img50/2450/132731360220331_4.jpg',
-            mp3: 'http://www.nullblogs.com/bowen/HTML5player/music/wokeyibaonima.mp3',
-            ogg: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/wokeyibaonima.ogg'
-            },
-            {
-            title: '一万个舍不得',
-            artist: '庄心妍',
-            album: '一万个舍不得',
-            cover: 'http://ent.vdolady.com/uploads/allimg/130325/20130325084808733.jpg',
-            mp3: 'http://www.nullblogs.com/bowen/HTML5player/music/yiwangeshebude.mp3',
-            ogg: 'http://dxsn.gongzuo.in/bowen/HTML5player/music/yiwangeshebude.ogg'
-            }];
-//初始化
+        ];
+    //初始化
     var time = new Date(),//返回当日的日期和时间   getTime返回 1970 年 1 月 1 日至今的毫秒数
-        currentTrack = /*shuffle === 'true' ? time.getTime() % playlist.length : */0,//当前播放，如果不是随机播放，则归零
+        currentTrack = 0,//当前播放，如果不是随机播放，则归零
         trigger = false,
         audio, timeout, isPlaying, playCounts;
 
@@ -109,7 +75,7 @@
         isPlaying = true;//表示正在播放
     }
 
-    var pause = function(){//类比播放
+    var pause = function(){//和播放类似
         audio.pause();
         $('.playback').removeClass('playing');
         clearInterval(updateProgress);
