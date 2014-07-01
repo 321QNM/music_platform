@@ -89,7 +89,7 @@ $(document).ready(function(){
         audio.currentTime = 0;
         $('audio').remove();
         ajax_post("end");
-        if (isPlaying == true) play();
+        // if (isPlaying == true) play();
     }
 
     function setVolume(value){
@@ -133,21 +133,24 @@ $(document).ready(function(){
         pause();
         $('audio').remove();
         ajax_post("next");
-        if (isPlaying == true) play();
+        // if (isPlaying == true) play();
     });
     // 喜欢
     $('.likeBt').on('click', function(){
         if ($(this).hasClass('enable')){
-        }else{
-            ajax_post("like");
+            ;
         }
-        if (isPlaying == true) play();
+        else{
+            ajax_post("like");
+            $(this).addClass('enable');
+        }
+        // if (isPlaying == true) play();
     });
     // 讨厌
     $('.hateBt').on('click', function(){
         pause();
         $('audio').remove();
         ajax_post("hate");
-        if (isPlaying == true) play();
+        // if (isPlaying == true) play();
     });
 });
