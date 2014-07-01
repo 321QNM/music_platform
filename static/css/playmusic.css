@@ -76,6 +76,24 @@ a {
   -o-user-select: none;
   user-select: none;
 }
+#filter .bt{
+    background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  -moz-transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 #player .ctrl .icon:hover, #player .ctrl .icon.enable {
   opacity: 1;
 }
@@ -89,17 +107,6 @@ a {
   bottom: 13px;
   right: 10px;
 }
-/*暂停和播放*/
-#player .ctrl .control .playback {
-  background-image: url(../images/play.png);
-}
-#player .ctrl .control .playback.playing {
-  background-image: url(../images/pause.png);
-}
-/*下一曲*/
-#player .ctrl .control .fastforward {
-  background-image: url(../images/fastforward.png);
-}
 /*喇叭图标*/
 #player .ctrl .control .volume .mute {
   background-image: url(../images/volume.png);
@@ -107,6 +114,37 @@ a {
 /*静音喇叭图标*/
 #player .ctrl .control .volume .mute.enable {
   background-image: url(../images/mute.png);
+}
+#filter .likeBt{
+    /*width: 20px;*/
+    background-image: url(../images/like1.png);
+    margin-top: 25px;
+    margin-left: 20%;
+}
+#filter .likeBt.enable {
+    background-image: url(../images/like12.png);
+    margin-top: 25px;
+    margin-left: 20%;
+}
+#filter .hateBt{
+    background-image: url(../images/dislike.png);
+    margin-top: 25px;
+    margin-left: 80%;
+}
+#filter .nextBt{
+    background-image: url(../images/next.png);
+    margin-top: 25px;
+    margin-left: 65%;
+}
+#filter .playBt{
+    background-image: url(../images/pause.png);
+    margin-top: 25px;
+    margin-left: 45%;
+}
+#filter .playBt.enable{
+    background-image: url(../images/play.png);
+    margin-top: 25px;
+    margin-left: 45%;
 }
 /*音量拉条*/
 #player .ctrl .control .volume .slider {
@@ -152,8 +190,8 @@ a {
   margin-left: -2.5px;
   position: absolute;
   opacity: 0;
-  width: 10px;
-  height: 10px;
+  width: 5px;
+  height: 5px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   -o-border-radius: 50%;
@@ -182,6 +220,7 @@ a {
 .slider .pace {
   background: #258fb8;
 }
+
 #filter{
         width:100%;
         height:100px;
