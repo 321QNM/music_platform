@@ -22,6 +22,7 @@ $(document).ready(function(){
     function loadmusic(music_url,music_name,music_artist,music_picture_url){
         var newaudio = $('<audio>').html('<source src="'+music_url+'">').appendTo('#player');
         $('.tag').html('<strong>'+music_name+'</strong><span class="artist">'+music_artist+'</span>');
+        $('body').css('background-image', 'url(music_picture_url)');
         audio = newaudio[0];
         // 音量
         audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
