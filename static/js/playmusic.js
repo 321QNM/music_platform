@@ -45,13 +45,13 @@ $(document).ready(function(){
     };
     function play(){
         audio.play();
-        $('.playback').addClass('playing');//音乐播放，则暂停按钮覆盖播放按钮
+        $('.playBt').addClass('playing');//音乐播放，则暂停按钮覆盖播放按钮
         timeout = setInterval(updateProgress, 500);//500毫秒调用一次updateProgress，跟新进度条
         isPlaying = true;//表示正在播放
     };
     function pause(){
         audio.pause();
-        $('.playback').removeClass('playing');
+        $('.playBt').removeClass('playing');
         clearInterval(updateProgress);
         isPlaying = false;
     }
@@ -89,7 +89,7 @@ $(document).ready(function(){
         audio.currentTime = 0;
         $('audio').remove();
         ajax_post("end");
-        // if (isPlaying == true) play();
+        if (isPlaying == true) play();
     }
 
     function setVolume(value){
@@ -120,7 +120,7 @@ $(document).ready(function(){
         }
     });
     // 点击播放暂停
-    $('.playback').on('click', function(){
+    $('.playBt').on('click', function(){
         //检查播放暂停按钮样式 playing 是暂停按钮，表示正在播放  .hasClass 检测是否具有该类
         if ($(this).hasClass('playing')){
             pause();
@@ -129,22 +129,25 @@ $(document).ready(function(){
         }
     });
     // 下一曲
-    $('.fastforward').on('click', function(){
+    $('.nextBt').on('click', function(){
         pause();
         $('audio').remove();
         ajax_post("next");
-        // if (isPlaying == true) play();
+        if (isPlaying == true) play();
     });
     // 喜欢
     $('.likeBt').on('click', function(){
-        ajax_post("like");
-        // if (isPlaying == true) play();
+        if ($(this).hasClass('enable')){
+        }else{
+            ajax_post("like");
+        }
+        if (isPlaying == true) play();
     });
     // 讨厌
     $('.hateBt').on('click', function(){
         pause();
         $('audio').remove();
         ajax_post("hate");
-        // if (isPlaying == true) play();
+        if (isPlaying == true) play();
     });
 });

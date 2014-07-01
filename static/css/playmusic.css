@@ -136,12 +136,12 @@ a {
     margin-top: 25px;
     margin-left: 65%;
 }
-#filter .playBt{
+#filter .playBt.playing{
     background-image: url(../images/pause.png);
     margin-top: 25px;
     margin-left: 45%;
 }
-#filter .playBt.enable{
+#filter .playBt{
     background-image: url(../images/play.png);
     margin-top: 25px;
     margin-left: 45%;
