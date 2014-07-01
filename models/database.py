@@ -39,12 +39,6 @@ def invite_code_be_used(invite_code):
     collection = db.invitecode
     collection.update( {"code": invite_code}, {"$inc": {"status": -1}} )
 
-def insert_song_to_database(music_name,artist="default"):
-    collection = db.music
-    if not collection.find_one( {"music_name": music_name} ):
-        collection.insert( {"music_name": music_name, "artist": artist})
-    # collection.update( {"music_name": music_name}, {"$set": {"artist": artist}}, upsert=True)
-
 def is_admin_username_existed(admin_username):
     collection = db.music_admin
     result = collection.find_one( {"admin_username": admin_username} )
