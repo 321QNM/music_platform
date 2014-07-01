@@ -66,6 +66,18 @@ $(document).ready(function(){
         var endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
         $('.progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
     }
+
+    // 进度条 .slider 滑动条控件  作用：点击修改进度
+    $('.progress .slider').slider({step: 0.1, slide: function(event, ui){
+        $(this).addClass('enable');
+        setProgress(audio.duration * ui.value / 100);
+        clearInterval(timeout);
+    }, stop: function(event, ui){
+        audio.currentTime = audio.duration * ui.value / 100;
+        $(this).removeClass('enable');
+        timeout = setInterval(updateProgress, 500);
+    }});
+
     function ended(){
         pause();
         audio.currentTime = 0;
