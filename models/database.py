@@ -37,7 +37,7 @@ def is_valid_invite_code(invite_code):
 
 def invite_code_be_used(invite_code):
     collection = db.invitecode
-    collection.update( {"code": invite_code}, {"$set": {"status": 0}}, upsert=False )
+    collection.update( {"code": invite_code}, {"$inc": {"status": -1}} )
 
 def insert_song_to_database(music_name,artist="default"):
     collection = db.music
@@ -55,7 +55,8 @@ def is_admin_username_existed(admin_username):
 
 def insert_music_to_database(music):
     collection = db.music
-    collection.insert(music)
+    if not collection.find_one( {"music_name": music['music_name']} ):
+        collection.insert(music)
 
 def is_admin_login_successful(admin_username, admin_password):
     collection = db.music_admin
