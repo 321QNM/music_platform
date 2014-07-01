@@ -11,7 +11,7 @@
     </head>
     <body>
         <div id="player">
-            <div class="cover"></div>
+            <!-- <div class="cover"></div> -->
             <div class="ctrl">
 
                 <!-- 歌曲名，歌手，专辑 -->
@@ -24,12 +24,12 @@
                 <div class="control">
                     <!-- 上一曲、暂停、下一曲 -->
                     <div class="left">
-                        <div class="rewind icon"></div>
+                        <!-- <div class="rewind icon"></div> -->
                         <div class="playback icon"></div>
                         <div class="fastforward icon"></div>
                     </div>
 
-                    <div class="volume right">
+                    <div class="volume">
                         <!-- 音量图标 -->
                         <div class="mute icon left"></div>
                         <!-- 音量拉条框 -->
@@ -41,14 +41,16 @@
                 </div>
                 <!-- 进度条 -->
                 <div class="progress">
+                    <div class="timer">0:00</div>
                     <div class="slider">
                         <div class="loaded"></div>
                         <div class="pace"></div>
                     </div>
-                    <!-- 剩余时间 -->
-                    <div class="timer left">0:00</div>
                 </div>
             </div>
+        </div>
+        <div id="filter">
+            <a id="loginBt" href="/login">登录</a><a id="signupBt" href="/signup">注册</a>
         </div>
     </body>
 </html>

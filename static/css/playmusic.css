@@ -37,15 +37,24 @@ a {
 }
 #player .ctrl {
 /*  margin-left: 155px;*/
+  text-align: center;
   text-shadow: 0 1px 2px #000;
   line-height: 32px;
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
 }
 #player .ctrl .tag strong, #player .ctrl .tag span {
   display: block;/*显示为块级元素*/
   text-overflow: ellipsis;
 }
+#player .ctrl .tag strong {
+  font-size: 24px;
+  margin-top: 5px;
+  color: #ccc;
+}
 #player .ctrl .tag span {
-  font-size: 12px;
+  font-size: 20px;
   margin-top: 5px;
   color: #ccc;
 }
@@ -73,9 +82,12 @@ a {
 #player .ctrl .icon:active {
   opacity: 0.3;
 }
-#player .ctrl .control {
+#player .ctrl .control .volume{
   margin-top: 10px;
   height: 25px;
+  position: absolute;
+  bottom: 13px;
+  right: 10px;
 }
 /*暂停和播放*/
 #player .ctrl .control .playback {
@@ -109,9 +121,11 @@ a {
 }
 /*歌曲播放时间*/
 #player .ctrl .progress .timer {
+  text-align: left;
   font-size: 18px;
   color: #ccc;
   margin-top: 8px;
+  margin-left: 10px;
 }
 /*音量条和进度条*/
 .slider {
@@ -168,3 +182,15 @@ a {
 .slider .pace {
   background: #258fb8;
 }
+
+#filter{
+        width:100%;
+        height:100px;
+        background:#000;
+        filter: Alpha(opacity=70);
+        opacity:0.7;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+}
+
