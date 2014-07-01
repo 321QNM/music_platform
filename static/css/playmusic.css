@@ -190,8 +190,8 @@ a {
   margin-left: -2.5px;
   position: absolute;
   opacity: 0;
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height:10px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   -o-border-radius: 50%;
