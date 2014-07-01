@@ -138,7 +138,8 @@ $(document).ready(function(){
     // 喜欢
     $('.likeBt').on('click', function(){
         if ($(this).hasClass('enable')){
-            ;
+            $(this).removeClass('enable');
+            ajax_post("cancel_like");
         }
         else{
             ajax_post("like");
