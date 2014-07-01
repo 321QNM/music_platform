@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var my_msg;
+    var music_id;
 
     function ajax_post(action){
        $.ajax({
@@ -8,6 +8,8 @@ $(document).ready(function(){
            data: "action="+ action,
            success:function(msg){
                my_obj = JSON.parse(msg);
+               alert(my_obj.music_id);
+               music_id = my_obj.music_id;
                loadmusic(my_obj.music_url,my_obj.music_name,my_obj.music_artist,my_obj.music_picture_url);
            }
        })
