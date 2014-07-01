@@ -152,8 +152,8 @@ a {
   margin-left: -2.5px;
   position: absolute;
   opacity: 0;
-  width: 5px;
-  height: 5px;
+  width: 12px;
+  height: 12px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   -o-border-radius: 50%;
@@ -182,7 +182,6 @@ a {
 .slider .pace {
   background: #258fb8;
 }
-
 #filter{
         width:100%;
         height:100px;
