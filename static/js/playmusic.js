@@ -12,7 +12,7 @@ $(document).ready(function(){
            }
        })
     }
-    ajax_post(refresh);
+    ajax_post("refresh");
     var time = new Date();
     var trigger = false;
     // var continous = true;
@@ -68,7 +68,7 @@ $(document).ready(function(){
         pause();
         audio.currentTime = 0;
         $('audio').remove();
-        ajax_post(end);
+        ajax_post("end");
         // if (isPlaying == true) play();
     }
 
@@ -112,21 +112,21 @@ $(document).ready(function(){
     $('.fastforward').on('click', function(){
         pause();
         $('audio').remove();
-        ajax_post(next);
+        ajax_post("next");
         // if (isPlaying == true) play();
     });
     // 喜欢
     $('.likeBt').on('click', function(){
         pause();
         $('audio').remove();
-        ajax_post(like);
+        ajax_post("like");
         // if (isPlaying == true) play();
     });
     // 讨厌
     $('.hateBt').on('click', function(){
         pause();
         $('audio').remove();
-        ajax_post(hate);
+        ajax_post("hate");
         // if (isPlaying == true) play();
     });
 });
