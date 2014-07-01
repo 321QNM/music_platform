@@ -131,8 +131,6 @@ $(document).ready(function(){
     });
     // 喜欢
     $('.likeBt').on('click', function(){
-        pause();
-        $('audio').remove();
         ajax_post("like");
         // if (isPlaying == true) play();
     });
