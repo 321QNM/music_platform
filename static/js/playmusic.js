@@ -8,7 +8,7 @@ $(document).ready(function(){
            data: "action="+ action,
            success:function(msg){
                my_obj = JSON.parse(msg);
-               alert(my_obj.is_music_liked);
+               // alert(my_obj.is_music_liked);
                loadmusic(my_obj.music_url,my_obj.music_name,my_obj.music_artist,my_obj.music_picture_url,my_obj.is_music_liked);
            }
        })
