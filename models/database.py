@@ -60,6 +60,20 @@ def is_admin_login_successful(admin_username, admin_password):
     else:
         return False
 
+def get_username_id(username):
+    collection = db.user
+    result = collection.find_one({"username": username})
+    return str(result['_id'])
+
+def insert_music_to(action, username_id, music_id):
+    collection = db[action]
+    if username_id and music_id and not collection.find_one({"username_id": username_id, "music_id": music_id}):
+        collection.insert({"username_id": username_id, "music_id": music_id})
+
+def remove_music_from_like(username_id, music_id):
+    collection = db.like
+    collection.remove({"username_id": username_id, "music_id": music_id})
+
 def personal_recommend():
     collection = db.music
     data = list(collection.find())
@@ -77,7 +91,9 @@ def main():
     # data = list(collection.find())
     # print(data)
     # print data[0]['music_name']
-    pass
+    # pass
+    # print get_user_id('yxjxx')
+    insert_music_to("like", "fdasdfasfd", "43125421514f")
 
 if __name__ == '__main__':
     main()

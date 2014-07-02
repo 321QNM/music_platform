@@ -19,7 +19,7 @@ music_list = [
         music_zone = 'HKTW',
         music_style = 'POP',
         music_mood = 'Happy',
-        music_picture_url = image_path + '2.jpg'
+        music_picture_url = image_path + 'beyond.jpg'
     ),
     dict(
         music_name = '千千阙歌',
@@ -29,7 +29,7 @@ music_list = [
         music_zone = 'HKTW',
         music_style = 'POP',
         music_mood = 'Happy',
-        music_picture_url = image_path + '3.jpg'
+        music_picture_url = image_path + '梅艳芳.jpg'
     ),
     dict(
         music_name = 'Stay Beautiful',
@@ -39,7 +39,7 @@ music_list = [
         music_zone = 'USA',
         music_style = 'folk',
         music_mood = 'Happy',
-        music_picture_url = image_path + '4.jpg',
+        music_picture_url = image_path + 'Taylor Swift.jpg',
     ),
     dict(
         music_name = '浮夸',
@@ -130,6 +130,159 @@ music_list = [
         music_style = 'POP',
         music_mood = 'Sad',
         music_picture_url = image_path + '13.jpg',
+    ),
+    dict(
+        music_name = '发如雪',
+        music_publish_date = '2012/09/10',
+        music_url = path +'发如雪.mp3',
+        music_artist = '周杰伦',
+        music_zone = 'China',
+        music_style = 'POP',
+        music_mood = 'Sad'
+    ),
+    dict(
+        music_name = '一路向北',
+        music_publish_date = '2013/01/16',
+        music_url = path +'一路向北.mp3',
+        music_artist = '周杰伦',
+        music_zone = 'China',
+        music_style = 'POP',
+        music_mood = 'Sad'
+    ),
+    dict(
+        music_name = '回到过去',
+        music_publish_date = '2013/04/10',
+        music_url = path +'回到过去.mp3',
+        music_artist = '周杰伦',
+        music_zone = 'China',
+        music_style = 'POP',
+        music_mood = 'Sad'
+    ),
+    dict(
+        music_name = '东风破',
+        music_publish_date = '2012/09/20',
+        music_url = path +'东风破.mp3',
+        music_artist = '周杰伦',
+        music_zone = 'China',
+        music_style = 'POP',
+        music_mood = 'Sad'
+    ),
+    dict(
+        music_name = '大海',
+        music_publish_date = '1992/12/10',
+        music_url = path +'大海.mp3',
+        music_artist = '张雨生',
+        music_zone = 'China',
+        music_style = 'Classical',
+        music_mood = 'Sad'
+    ),
+    dict(
+        music_name = '我的未来不是梦',
+        music_publish_date = '1990/08/10',
+        music_url = path +'我的未来不是梦.mp3',
+        music_artist = '张雨生',
+        music_zone = 'China',
+        music_style = 'Classical',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = '我期待',
+        music_publish_date = '1991/11/20',
+        music_url = path +'我期待.mp3',
+        music_artist = '张雨生',
+        music_zone = 'China',
+        music_style = 'Classical',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = '口是心非',
+        music_publish_date = '1993/04/10',
+        music_url = path +'口是心非.mp3',
+        music_artist = '张雨生',
+        music_zone = 'China',
+        music_style = 'Classical',
+        music_mood = 'Sad'
+    ),
+    dict(
+        music_name = '我是一颗秋天的树',
+        music_publish_date = '1994/07/21',
+        music_url = path +'我是一颗秋天的树.mp3',
+        music_artist = '张雨生',
+        music_zone = 'China',
+        music_style = 'Classical',
+        music_mood = 'Sad'
+    ),
+    dict(
+        music_name = ' I Knew You Were Trouble',
+        music_publish_date = '2013/11/22',
+        music_url = path +'I Knew You Were Trouble.mp3',
+        music_artist = 'Taylor Swift',
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = 'You Belong With Me',
+        music_publish_date = '2014/01/21',
+        music_url = path +'You Belong With Me.mp3',
+        music_artist = 'Taylor Swift',
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = 'We Are Never Ever Getting Back Together',
+        music_publish_date = '2011/10/11',
+        music_url = path +'We Are Never Ever Getting Back Together.mp3',
+        music_artist = 'Taylor Swift',
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = 'Last Christmas',
+        music_publish_date = '2011/09/16',
+        music_url = path +'Last Christmas.mp3',
+        music_artist = 'Taylor Swift',
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = 'Red',
+        music_publish_date = '2013/06/15',
+        music_url = path +'Red.mp3',
+        music_artist = 'Taylor Swift',
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = 'Love Story',
+        music_publish_date = '2013/04/20',
+        music_url = path +'Love Story.mp3',
+        music_artist = 'Taylor Swift',
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = 'Cold As You',
+        music_publish_date = '2014/05/10',
+        music_url = path +'Cold As You.mp3',
+        music_artist = 'Taylor Swift',
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
+    ),
+    dict(
+        music_name = 'Sparks Fly',
+        music_publish_dat   e = '2012/09/20',
+        music_url = path    +'Sparks Fly.mp3',
+        music_artist = ''   ,
+        music_zone = 'EU',
+        music_style = 'folk',
+        music_mood = 'Happy'
     ),
 ]
 
