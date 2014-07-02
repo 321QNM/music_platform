@@ -1,4 +1,3 @@
-var list_obj;
 $(document).ready(function(){
     function ajax_post(action){
         $.ajax({
@@ -7,14 +6,17 @@ $(document).ready(function(){
             data: "action="+ action,
             success:function(msg){
                 list_obj = JSON.parse(msg);
-                alert(list_obj[0].music_name);
+                load_list(list_obj);
             }
+
         })
     }
     ajax_post("refresh");
 
-    // for (var i=0; i < list_obj.length; i++){
-    var item = list_obj[0];
-    $('#list1').append('<td>01</td><td>'+item.music_name+'</td><td>'+item.music_artist+'</td>');
+    function load_list(list_obj){
+        var item = list_obj[0];
+        for (var i = 0; i < 15; i++) {
+            $('#list' + i).append('<td>01</td><td>'+item.music_name+'</td><td>'+item.music_artist+'</td>');
+        };
     }
 });
