@@ -1,3 +1,4 @@
+var list_obj;
 $(document).ready(function(){
     function ajax_post(action){
         $.ajax({
@@ -5,12 +6,15 @@ $(document).ready(function(){
             url:"/adminindex",
             data: "action="+ action,
             success:function(msg){
-                alert(msg);
                 list_obj = JSON.parse(msg);
-                alert(list_obj)
                 alert(list_obj[0].music_name);
             }
         })
     }
     ajax_post("refresh");
+
+    // for (var i=0; i < list_obj.length; i++){
+    var item = list_obj[0];
+    $('#list1').append('<td>01</td><td>'+item.music_name+'</td><td>'+item.music_artist+'</td>');
+    }
 });
