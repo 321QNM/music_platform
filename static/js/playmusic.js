@@ -138,10 +138,17 @@ $(document).ready(function(){
         }
         else{
             ajax_post("like");
-            $(this).addClass('enable');
+            $('#float').addClass('showlikeBt');
+            $('#float').addClass('animationlikeBt');
+            setTimeout(continueExecution, 3000);
         }
         // if (isPlaying == true) play();
     });
+    function continueExecution(){
+        $('.likeBt').addClass('enable');
+        $('#float').removeClass('animationlikeBt');
+        $('#float').removeClass('showlikeBt');
+    }
     // 讨厌
     $('.hateBt').on('click', function(){
         pause();

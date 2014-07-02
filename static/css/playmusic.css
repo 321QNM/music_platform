@@ -146,6 +146,42 @@ a {
     margin-top: 25px;
     margin-left: 39%;
 }
+
+#filter .showlikeBt{
+    background-image: url(../images/like12.png);
+    left: 50%;
+    top: -500px;
+    position:absolute;
+}
+#filter .animationlikeBt{
+  animation:myfirst 2s;
+    -moz-animation:myfirst 2s; /* Firefox */
+    -webkit-animation:myfirst 2s; /* Safari and Chrome */
+    -o-animation:myfirst 2s; /* Opera */
+}
+#filter .hiddenlikeBt{
+  display: none;
+}
+@keyframes myfirst
+{
+100% {left:19%; top:25px;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+100% {left:19%; top:25px;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+100% {left:19%; top:25px;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+100% {left:19%; top:25px;}
+}
+
 /*音量拉条*/
 #player .ctrl .control .volume .slider {
   margin-top: 8px;
