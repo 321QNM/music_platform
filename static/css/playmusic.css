@@ -135,16 +135,6 @@ a {
   left:20px;
   top: 10px;
 }
-#player .ctrl .logoutBt {
-  background-image: url(../images/like1.png);
-  right: 10px;
-  top: 10px;
-}
-#player .ctrl .myzoneBt {
-  background-image: url(../images/like1.png);
-  left: 10px;
-  top: 10px;
-}
 /*喇叭图标*/
 #player .ctrl .control .volume .mute {
   background-image: url(../images/volume.png);
