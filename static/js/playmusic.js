@@ -1,7 +1,3 @@
-var GLOBAL = {
-    music_id: "",
-};
-
 $(document).ready(function(){
     // var music_id = "";
 
@@ -12,9 +8,8 @@ $(document).ready(function(){
            data: "action="+ action,
            success:function(msg){
                my_obj = JSON.parse(msg);
-               GLOBAL.music_id = my_obj.music_id;
-               music_id = my_obj.music_id;
-               loadmusic(my_obj.music_url,my_obj.music_name,my_obj.music_artist,my_obj.music_picture_url);
+               alert(my_obj.is_music_liked);
+               loadmusic(my_obj.music_url,my_obj.music_name,my_obj.music_artist,my_obj.music_picture_url,my_obj.is_music_liked);
            }
        })
     }
@@ -25,7 +20,7 @@ $(document).ready(function(){
     var autoplay = true;
     var audio, timeout, isPlaying;
 
-    function loadmusic(music_url,music_name,music_artist,music_picture_url){
+    function loadmusic(music_url, music_name, music_artist, music_picture_url, is_music_liked){
         var newaudio = $('<audio>').html('<source src="'+music_url+'">').appendTo('#player');
         $('.tag').html('<strong>'+music_name+'</strong><span class="artist">'+music_artist+'</span>');
         // alert(music_picture_url);

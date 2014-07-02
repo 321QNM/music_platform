@@ -74,6 +74,14 @@ def remove_music_from_like(username_id, music_id):
     collection = db.like
     collection.remove({"username_id": username_id, "music_id": music_id})
 
+def db_is_music_liked(username_id, music_id):
+    collection = db.like
+    result = collection.find_one({"username_id": username_id, "music_id": music_id})
+    if result:
+        return "yes"
+    else:
+        return "no"
+
 def personal_recommend():
     collection = db.music
     data = list(collection.find())

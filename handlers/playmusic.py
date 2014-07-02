@@ -35,14 +35,6 @@ def generate_new_music():
 class PlayMusicHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        # # items = ["Item 1", "Item 2", "Item 3"]
-        # params = {
-        #     "user" : self.current_user,
-        #     "music_url" : music_url,
-        #     # "items": items,
-        # }
-        # self.render(u"playmusic.html", **params)
-        # # self.render('playmusic.html', user=self.current_user, music_url="../static/music/1.mp3")
         self.render('playmusic.html')
 
     @tornado.web.authenticated
@@ -55,6 +47,7 @@ class PlayMusicHandler(BaseHandler):
 
         if action == "refresh":
             send_music_json = generate_new_music()
+            send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
 
         if action == "like":
@@ -67,14 +60,17 @@ class PlayMusicHandler(BaseHandler):
         if action == "hate":
             insert_music_to(action, username_id, music_id)
             send_music_json = generate_new_music()
+            send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
 
 
         if action == "end":
             send_music_json = generate_new_music()
+            send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
 
         if action == "next":
             insert_music_to(action, username_id, music_id)
             send_music_json = generate_new_music()
+            send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
