@@ -119,32 +119,32 @@ a {
     /*width: 20px;*/
     background-image: url(../images/like1.png);
     margin-top: 25px;
-    margin-left: 20%;
+    margin-left: 19%;
 }
 #filter .likeBt.enable {
     background-image: url(../images/like12.png);
     margin-top: 25px;
-    margin-left: 20%;
+    margin-left: 19%;
 }
 #filter .hateBt{
     background-image: url(../images/dislike.png);
     margin-top: 25px;
-    margin-left: 80%;
+    margin-left: 79%;
 }
 #filter .nextBt{
     background-image: url(../images/next.png);
     margin-top: 25px;
-    margin-left: 65%;
+    margin-left: 59%;
 }
 #filter .playBt.playing{
     background-image: url(../images/pause.png);
     margin-top: 25px;
-    margin-left: 45%;
+    margin-left: 39%;
 }
 #filter .playBt{
     background-image: url(../images/play.png);
     margin-top: 25px;
-    margin-left: 45%;
+    margin-left: 39%;
 }
 /*音量拉条*/
 #player .ctrl .control .volume .slider {
