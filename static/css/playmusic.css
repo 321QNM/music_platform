@@ -107,6 +107,16 @@ a {
   bottom: 13px;
   right: 10px;
 }
+#player .ctrl .logoutBt {
+  background-image: url(../images/like1.png);
+  right: 10px;
+  top: 10px;
+}
+#player .ctrl .myzoneBt {
+  background-image: url(../images/like1.png);
+  left: 10px;
+  top: 10px;
+}
 /*喇叭图标*/
 #player .ctrl .control .volume .mute {
   background-image: url(../images/volume.png);
@@ -181,6 +191,7 @@ a {
 {
 100% {left:19%; top:25px;}
 }
+
 
 /*音量拉条*/
 #player .ctrl .control .volume .slider {
