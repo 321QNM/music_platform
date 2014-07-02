@@ -25,6 +25,11 @@ $(document).ready(function(){
         $('.tag').html('<strong>'+music_name+'</strong><span class="artist">'+music_artist+'</span>');
         // alert(music_picture_url);
         $('body').css('background-image', 'url('+ music_picture_url +')');
+        if(is_music_liked = "yes"){
+            $('.likeBt').addClass('enable');
+        }else{
+            $('.likeBt').removeClass('enable');
+        }
         audio = newaudio[0];
         // 音量
         audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
