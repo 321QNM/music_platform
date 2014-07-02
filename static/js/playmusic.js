@@ -140,7 +140,7 @@ $(document).ready(function(){
             ajax_post("like");
             $('#float').addClass('showlikeBt');
             $('#float').addClass('animationlikeBt');
-            setTimeout(continueExecution, 3000);
+            setTimeout(continueExecution, 2000);
         }
         // if (isPlaying == true) play();
     });
