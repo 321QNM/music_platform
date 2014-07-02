@@ -10,22 +10,22 @@
     <link href="{{ static_url("css/adminindex.css") }}" rel="stylesheet">
     <link rel="shortcut icon" href="http://imgsize.ph.126.net/?imgurl=http://img2.ph.126.net/5QmK9DIz-daSHW88i4cTvw==/3170534137768919861.jpg_16x16x0x90.jpg">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!--  <script src="{{ static_url("css/bootstrap.min.js") }}"></script> -->
-    <!--  <script src="../../assets/js/docs.min.js"></script> -->
     <script type="text/javascript">
         $(document).ready(function(){
             function ajax_post(action){
                 $.ajax({
                     type:"POST",
-                    url:"/",
+                    url:"/adminindex",
                     data: "action="+ action,
                     success:function(msg){
+                        alert(msg);
                         list_obj = JSON.parse(msg);
+                        alert(list_obj)
                         alert(list_obj[0].music_name);
                    }
                 })
             }
-            ajax_post(refresh);
+            ajax_post("refresh");
         });
     </script>
   </head>
