@@ -14,9 +14,8 @@ $(document).ready(function(){
     ajax_post("refresh");
 
     function load_list(list_obj){
-        var item = list_obj[0];
         for (var i = 0; i < 15; i++) {
-            $('#list' + i).append('<td>01</td><td>'+item.music_name+'</td><td>'+item.music_artist+'</td>');
+            $('#list' + i).append('<td>i</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td>');
         };
     }
 });
