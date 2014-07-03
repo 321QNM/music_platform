@@ -4,18 +4,18 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url:"/adminindex",
-            data: "action="+ action+ "begin_num"+ begin_num +"end_num"+end_num,
+            data: "action="+ action+ "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 list_obj = JSON.parse(msg);
+                // alert(list_obj);
                 load_list(list_obj);
             }
         })
     }
-    ajax_post("refresh","0","12");
+    ajax_post("refresh", 0, 13);
 
     function load_list(list_obj){
         for (var i = 0; i < 13; i++) {
-            alert(list_obj[i].music_name);
             $('#list' + i).append('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td>');
         };
     }
