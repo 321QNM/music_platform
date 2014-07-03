@@ -1,4 +1,5 @@
 var pagenum = 1;
+var musicnum = 1;
 $(document).ready(function(){
     function ajax_post(action,begin_num,end_num){
         $.ajax({
@@ -35,8 +36,31 @@ $(document).ready(function(){
     $('tr').click(function(){
         $(this).addClass('active_tr')
         $(this).siblings().removeClass('active_tr');
-        alert($(this).text());
+        var a = $(this).children().first().html();
+        musicnum = a;
     });
+
+    $('.addBt')click(function(){
+    })
+    $('.editBt')click(function(){
+    })
+    $('.delBt')click(function(){
+        delete_post("delete", musicnum, (pagenum-1)*13,pagenum*13);
+    })
+    function delete_post(action, musicnum, begin_num, end_num){
+        $.ajax({
+            type:"POST",
+            url:"/adminindex",
+            data: "action="+action + "&musicnum="+musicnum + "&begin_num="+ begin_num +"&end_num="+end_num,
+            success:function(msg){
+                list_obj = JSON.parse(msg);
+                // alert(list_obj);
+                load_list(list_obj);
+            }
+        })
+    }
+
+    // 换页效果
     $('#a1').click(function(){
         pagenum = 1;
         ajax_post("page_change",0,pagenum*13);
