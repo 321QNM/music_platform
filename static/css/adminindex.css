@@ -182,3 +182,6 @@ background-repeat: no-repeat;
   right:30px;
   top: 30px;
 }
+tr:hover{
+  background-color:#418BCA;
+};
