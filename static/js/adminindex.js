@@ -128,7 +128,7 @@ $(document).ready(function(){
     });
     $('#jump').click(function(){
         pagenum = $('#pageNum').val();
-        alert(pagenum);
-        // updatepageNum(pagenum);
+        // alert(pagenum);
+        updatepageNum(pagenum);
     });
 });

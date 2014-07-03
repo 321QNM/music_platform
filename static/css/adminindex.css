@@ -149,3 +149,36 @@ body {
 .table tbody tr.active_tr {
   background:#418BCA;
 }
+.main .bt{
+background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  -moz-transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.main .addBt{
+  background-image: url(../images/add.png);
+  right:130px;
+  top: 30px;
+}
+.main .editBt{
+  background-image: url(../images/edit.png);
+  right:80px;
+  top: 30px;
+}
+.main .delBt{
+  background-image: url(../images/del.png);
+  right:30px;
+  top: 30px;
+}
