@@ -103,3 +103,49 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+/*分页栏*/
+.page {
+    margin-top: 50px;
+    margin-left: 50px;
+    zoom:1
+}
+.page:after {
+    content:"";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+.page span {
+    position:relative;
+    margin:2px 8px;
+    border:solid 1px#ccc;
+}
+.page span a {
+    padding:5px 12px;
+    cursor:pointer;
+}
+.page span i {
+    display:block;
+    height:10px;
+    width:10px;
+    background:#ccc;
+    border-radius:50%;
+    position:absolute;
+    left:50%; top:-20px;
+    margin-left:-5px;
+}
+.page span i.active_i {
+    background:#418BCA;
+}
+.currentpageNum{
+    margin-left: 50px;
+}
+.pageNum{
+    margin-left: 30px;
+    width: 25px;
+    height: 18px;
+}
+.table tbody tr.active_tr {
+  background:#418BCA;
+}

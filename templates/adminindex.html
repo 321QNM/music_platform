@@ -90,7 +90,7 @@
 
             <h2 class="sub-header">Section title</h2>
             <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table">
               <thead>
                 <tr>
                   <th>序号</th>
@@ -138,6 +138,23 @@
                 </tr>
               </tbody>
             </table>
+            <div class="page">
+                <span id="previous"><a>上一页</a></span>
+                <span><a id="a1">1</a><i class="active_i"></i></span>
+                <span><a id="a2">2</a><i></i></span>
+                <span><a id="a3">3</a><i></i></span>
+                <span><a id="a4">4</a><i></i></span>
+                <span><a id="a5">5</a><i></i></span>
+                <span><a id="a6">6</a><i></i></span>
+                <span><a id="a7">7</a><i></i></span>
+                <span><a id="a8">8</a><i></i></span>
+                <span><a id="a9">9</a><i></i></span>
+                <span><a id="a10">...</a><i></i></span>
+                <span id="next"><a>下一页</a></span>
+                <span class="currentpageNum"></span>
+                <input type="text" id="pageNum" class="pageNum" value=""></input>
+                <span><a id="jump">跳转</a></span>
+            </div>
           </div>
         </div>
       </div>
@@ -145,5 +162,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
     <script type="text/javascript" src='{{ static_url("js/adminindex.js") }}'></script>
+
   </body>
 </html>
