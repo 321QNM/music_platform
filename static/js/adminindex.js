@@ -35,55 +35,55 @@ $(document).ready(function(){
     });
     $('#a1').click(function(){
         pagenum = 1;
-        ajax_post("page_change","0","(pagenum*13-1)");
+        ajax_post("page_change",0,pagenum*13);
         $('#a1').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a2').click(function(){
         pagenum = 2;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a2').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a3').click(function(){
         pagenum = 3;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a3').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a4').click(function(){
         pagenum = 4;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a4').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a5').click(function(){
         pagenum = 5;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a5').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a6').click(function(){
         pagenum = 6;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a6').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a7').click(function(){
         pagenum = 7;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a7').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a8').click(function(){
         pagenum = 8;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a8').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
     $('#a9').click(function(){
         pagenum = 9;
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         $('#a9').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
@@ -94,14 +94,14 @@ $(document).ready(function(){
     $('#previous').click(function(){
         if (pagenum>1 && pagenum<11) {
             pagenum = pagenum-1;
-            ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+            ajax_post("page_change",(pagenum-1)*13,pagenum*13);
             $('#a'+pagenum).siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
             // post
             updatepageNum(pagenum);
         }else{
             if (pagenum>10) {
                 pagenum = pagenum-1;
-                ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+                ajax_post("page_change",(pagenum-1)*13,pagenum*13);
                 updatepageNum(pagenum);
             };
         }
@@ -110,20 +110,20 @@ $(document).ready(function(){
         if (pagenum>0 && pagenum<9) {
             pagenum = pagenum+1;
             $('#a'+pagenum).siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
-            ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+            ajax_post("page_change",(pagenum-1)*13,pagenum*13);
             updatepageNum(pagenum);
         }else{
             if (pagenum>8) {
                 pagenum = pagenum+1;
                 $('#a10').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
-                ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+                ajax_post("page_change",(pagenum-1)*13,pagenum*13);
                 updatepageNum(pagenum);
             };
         }
     });
     $('#jump').click(function(){
         pagenum = $('#pageNum').val();
-        ajax_post("page_change","(pagenum-1)*13","(pagenum*13-1)");
+        ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         updatepageNum(pagenum);
     });
 });
