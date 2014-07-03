@@ -20,7 +20,7 @@ $(document).ready(function(){
             $('#list' + i).html('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td>');
         };
         for (var i = list_obj.length; i < 13; i++) {
-            $('#list' + i).html('<td></td><td></td><td></td>');
+            $('#list' + i).html('');
         }
     };
 
