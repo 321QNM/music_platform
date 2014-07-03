@@ -15,10 +15,14 @@ $(document).ready(function(){
     ajax_post("refresh", 0, 13);
 
     function load_list(list_obj){
-        for (var i = 0; i < 13; i++) {
-            $('#list' + i).append('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td>');
+        // if (list_obj.length<13) {};
+        for (var i = 0; i < list_obj.length; i++) {
+            $('#list' + i).html('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td>');
         };
-    }
+        for (var i = list_obj.length; i < 13; i++) {
+            $('#list' + i).html('<td></td><td></td><td></td>');
+        }
+    };
 
     // 设置足迹
     $('.page i:even').css("top","-40px");
