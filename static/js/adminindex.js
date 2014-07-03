@@ -16,7 +16,8 @@ $(document).ready(function(){
 
     function load_list(list_obj){
         for (var i = 0; i < 15; i++) {
-            $('#list' + i).append('<td>i</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td>');
+            alert(list_obj[i].music_name);
+            $('#list' + i).append('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td>');
         };
     }
 
