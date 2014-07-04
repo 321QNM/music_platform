@@ -245,9 +245,9 @@ music_list = [
     ),
     dict(
         music_name = 'Sparks Fly',
-        music_publish_dat   e = '2012/09/20',
-        music_url = path    +'Sparks Fly.mp3',
-        music_artist = ''   ,
+        music_publish_date = '2012/09/20',
+        music_url = path +'Sparks Fly.mp3',
+        music_artist = 'yxjxx'   ,
         music_zone = 'EU',
         music_style = 'folk',
         music_mood = 'Happy'

@@ -84,7 +84,7 @@ def db_is_music_liked(username_id, music_id):
 
 def personal_recommend():
     collection = db.music
-    data = list(collection.find().limit(17))
+    data = list(collection.find().limit(100))
     return data
 
 def admin_get_musics_from_db(begein_num, end_num):
