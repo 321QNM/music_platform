@@ -179,7 +179,26 @@ $(document).ready(function(){
     $('#submit').click(function(){
         add_post("add_music");
     })
-
+    $("#music_name").blur(function(){
+        confirm_post("confirm");
+    });
+    function confirm_post(action){
+        $.ajax({
+            type:"POST",
+            url:"/adminindex",
+            data: "action=" + action + "&music_name="+$("#music_name").val(),
+            success:function(msg){
+            if (msg=="existed") {
+                    $("#msg").text("歌曲名已存在存在！");
+                    $("#submit").attr("disabled","true");//密码不一致则不能提交
+                }
+                else{
+                    $("#msg").text("");
+                    $("#submit").removeAttr('disabled');//密码一致，可以提交
+                }
+            }
+        })
+    }
 
     //  获取元素对象
     function g(id){ return document.getElementById(id); }
