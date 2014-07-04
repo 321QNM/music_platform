@@ -11,10 +11,10 @@ def generate_musics_table(begin_num, end_num):
     to_send_music_info_list = []
     for music in music_list:
         current_music_id = str(music["_id"])
-        current_music_url = music["music_url"]
+        current_music_url = music["music_url"].split('/')[-1]
         current_music_name = music["music_name"]
         current_music_artist = music["music_artist"]
-        current_music_picture_url = music["music_picture_url"]
+        current_music_picture_url = music["music_picture_url"].split('/')[-1]
         current_music_mood = music['music_mood']
         current_music_zone = music.get('music_zone')
         current_music_publish_date = music['music_publish_date']
