@@ -181,7 +181,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url:"/adminindex",
-            data: "action=" + action + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val(),
+            data: "action=" + action + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
             success:function(msg){
                 // hideDialog();
                 alert("OK");
@@ -219,7 +219,7 @@ $(document).ready(function(){
         else{
             showDialog();
             var temp = musicnum-1;
-            alert(temp);
+            // alert(temp);
             document.getElementById('music_name').value = list_obj[temp].music_name;
             document.getElementById('music_artist').value = list_obj[temp].music_artist;
             document.getElementById('music_style').value = list_obj[temp].music_style;
