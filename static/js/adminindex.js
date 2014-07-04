@@ -40,11 +40,11 @@ $(document).ready(function(){
         musicnum = a;
     });
 
-    $('.addBt')click(function(){
+    $('.addBt').click(function(){
     })
-    $('.editBt')click(function(){
+    $('.editBt').click(function(){
     })
-    $('.delBt')click(function(){
+    $('.delBt').click(function(){
         delete_post("delete", musicnum, (pagenum-1)*13,pagenum*13);
     })
     function delete_post(action, musicnum, begin_num, end_num){
