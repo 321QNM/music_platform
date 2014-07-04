@@ -131,6 +131,10 @@ body {
   }
 }
 
+.list_music_id{
+  display: none;
+}
+
 /*分页栏*/
 .page {
     margin-top: 70px;
