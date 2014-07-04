@@ -1,5 +1,6 @@
 var pagenum = 1;
 var musicnum = -1;
+var list_obj;
 $(document).ready(function(){
 
     function ajax_post(action,begin_num,end_num){
@@ -199,6 +200,13 @@ $(document).ready(function(){
             }
         })
     }
+
+    $('#editBt').click(function(){
+        showDialog();
+        var temp = musicnum-1;
+        alert("temp");
+        document.getElementById('music_name').value = list_obj[temp];
+    })
 
     //  获取元素对象
     function g(id){ return document.getElementById(id); }
