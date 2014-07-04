@@ -29,7 +29,7 @@ body {
 .ui-dialog-title-closebutton{
     width: 32px;height: 32px;display: block;
     position: absolute;top: 12px;right: 20px;
-    background: url(del.png);
+    background: url(../images/close.png);
 }
 /*    .ui-dialog-title-closebutton:hover{
     background: url(del.png);
