@@ -190,7 +190,7 @@ $(document).ready(function(){
             data: "action=" + action + "&music_name="+$("#music_name").val(),
             success:function(msg){
             if (msg=="yes") {
-                    $("#msg").text("歌曲名已存在存在！");
+                    $("#msg").text("歌曲名已存在！");
                     $("#submit").attr("disabled","true");//密码不一致则不能提交
                 }
                 else{
