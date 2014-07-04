@@ -185,6 +185,7 @@ $(document).ready(function(){
             success:function(msg){
                 // hideDialog();
                 alert("OK");
+                // alert(msg);
             }
         })
     }
@@ -192,9 +193,9 @@ $(document).ready(function(){
         add_post("add_music");
     })
     $("#music_name").blur(function(){
-        confirm_post("check_music_name");
+        check_music_name_post("check_music_name");
     });
-    function confirm_post(action){
+    function check_music_name_post(action){
         $.ajax({
             type:"POST",
             url:"/adminindex",
