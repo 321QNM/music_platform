@@ -85,11 +85,9 @@ $(document).ready(function(){
     }});
 
     function ended(){
+        // alert("OK");
         pause();
-        audio.currentTime = 0;
-        $('audio').remove();
         ajax_post("end");
-        // if (isPlaying == true) play();
     }
 
     function setVolume(value){
