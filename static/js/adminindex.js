@@ -1,5 +1,5 @@
 var pagenum = 1;
-var musicnum = 1;
+var musicnum = -1;
 $(document).ready(function(){
     function ajax_post(action,begin_num,end_num){
         $.ajax({
@@ -45,7 +45,12 @@ $(document).ready(function(){
     $('.editBt').click(function(){
     })
     $('.delBt').click(function(){
-        delete_post("delete", musicnum, (pagenum-1)*13,pagenum*13);
+        if(musicnum == -1){
+            alert("请先选中要操作的歌曲");
+        }
+        else{
+            delete_post("delete", musicnum, (pagenum-1)*13,pagenum*13);
+        }
     })
     function delete_post(action, musicnum, begin_num, end_num){
         $.ajax({

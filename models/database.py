@@ -92,6 +92,10 @@ def admin_get_musics_from_db(begein_num, end_num):
     data = list(collection.find().limit(end_num-begein_num).skip(begein_num))
     return data
 
+def delete_music_from_db(music_id):
+    collection = db.music
+    collection.remove({"_id": music_id})
+
 def main():
     #如果单独执行此文件,会复原邀请码collection
     # collection = db.invitecode
