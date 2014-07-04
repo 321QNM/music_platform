@@ -1,5 +1,6 @@
 var pagenum = 1;
 var musicid = -1;
+var musicnum = -1;
 var list_obj;
 $(document).ready(function(){
 
@@ -38,9 +39,9 @@ $(document).ready(function(){
     $('tr').click(function(){
         $(this).addClass('active_tr')
         $(this).siblings().removeClass('active_tr');
-        var a = $(this).children().last().html();
-        // alert(a);
-        musicid = a;
+
+        musicid = $(this).children().last().html();
+        musicnum = $(this).children().first().html();
     });
 
     // 换页效果
@@ -141,18 +142,18 @@ $(document).ready(function(){
 
 
     $('.delBt').click(function(){
-        if(musicnum == -1){
+        if(musicid == -1){
             alert("请先选中要操作的歌曲");
         }
         else{
-            delete_post("delete", musicnum, (pagenum-1)*13,pagenum*13);
+            delete_post("delete", musicnid, (pagenum-1)*13,pagenum*13);
         }
     })
-    function delete_post(action, musicnum, begin_num, end_num){
+    function delete_post(action, musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
             url:"/adminindex",
-            data: "action="+action + "&musicnum="+musicnum + "&begin_num="+ begin_num +"&end_num="+end_num,
+            data: "action="+action + "&musicid="+musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 list_obj = JSON.parse(msg);
                 // alert(list_obj);
