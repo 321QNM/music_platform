@@ -6,8 +6,8 @@ from models.database import *
 from tornado.escape import json_encode
 
 
-def generate_musics_table():
-    music_list = personal_recommend()
+def generate_musics_table(begin_num, end_num):
+    music_list = admin_get_musics_from_db(begin_num, end_num)
     to_send_music_info_list = []
     for music in music_list:
         current_music_url = music["music_url"]
@@ -37,9 +37,14 @@ class AdminIndexHandler(AdminBaseHandler):
     @tornado.web.authenticated
     def post(self):
         action = self.get_argument("action", "default")
+        begin_num = int(self.get_argument("begin_num", "default"))
+        end_num = int(self.get_argument("end_num", "default"))
 
         if action == "refresh":
-            to_send_music_info_list = generate_musics_table()
-            print to_send_music_info_list
+            to_send_music_info_list = generate_musics_table(begin_num, end_num)
+            # print to_send_music_info_list
             self.write( json_encode(to_send_music_info_list) )
 
+        if action == "page_change":
+            to_send_music_info_list = generate_musics_table(begin_num, end_num)
+            self.write( json_encode(to_send_music_info_list) )
