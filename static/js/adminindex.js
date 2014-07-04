@@ -181,7 +181,7 @@ $(document).ready(function(){
         add_post("add_music");
     })
     $("#music_name").blur(function(){
-        confirm_post("confirm");
+        confirm_post("check_music_name");
     });
     function confirm_post(action){
         $.ajax({
@@ -189,7 +189,7 @@ $(document).ready(function(){
             url:"/adminindex",
             data: "action=" + action + "&music_name="+$("#music_name").val(),
             success:function(msg){
-            if (msg=="existed") {
+            if (msg=="yes") {
                     $("#msg").text("歌曲名已存在存在！");
                     $("#submit").attr("disabled","true");//密码不一致则不能提交
                 }
@@ -201,11 +201,11 @@ $(document).ready(function(){
         })
     }
 
-    $('#editBt').click(function(){
+    $('.editBt').click(function(){
         showDialog();
         var temp = musicnum-1;
-        alert("temp");
-        document.getElementById('music_name').value = list_obj[temp];
+        alert(temp);
+        document.getElementById('music_name').value = list_obj[temp].music_name;
     })
 
     //  获取元素对象
