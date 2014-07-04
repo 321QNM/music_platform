@@ -1,6 +1,7 @@
 var pagenum = 1;
 var musicnum = -1;
 $(document).ready(function(){
+
     function ajax_post(action,begin_num,end_num){
         $.ajax({
             type:"POST",
@@ -164,19 +165,21 @@ $(document).ready(function(){
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
     })
-    $('#submit').click(function(){
-        add_post();
-    })
-    function add_post(){
+    function add_post(action){
         $.ajax({
             type:"POST",
             url:"/adminindex",
-            data: "music_name="+$("#music_name").val() + "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val(),
+            data: "action=" + action + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val(),
             success:function(msg){
                 // hideDialog();
+                alert("OK");
             }
         })
     }
+    $('#submit').click(function(){
+        add_post("add_music");
+    })
+
 
     //  获取元素对象
     function g(id){ return document.getElementById(id); }
