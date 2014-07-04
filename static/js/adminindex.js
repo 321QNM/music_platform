@@ -146,7 +146,7 @@ $(document).ready(function(){
             alert("请先选中要操作的歌曲");
         }
         else{
-            delete_post("delete", musicnid, (pagenum-1)*13,pagenum*13);
+            delete_post("delete", musicid, (pagenum-1)*13,pagenum*13);
         }
     })
     function delete_post(action, musicid, begin_num, end_num){
