@@ -319,4 +319,22 @@ $(document).ready(function(){
         autoCenter(g('dialog'));
         fillToBody( g('mask') );
     }
+
+
+
+    $('#searchBt').click(function(){
+        search_post("search");
+    })
+    function search_post(action){
+        $.ajax({
+            type:"POST",
+            url:"/adminindex",
+            data: "action=" + action + "&keyword="+$("#keyword").val(),
+            success:function(msg){
+                list_obj = JSON.parse(msg);
+                // alert(list_obj);
+                load_list(list_obj);
+            }
+        })
+    }
 });
