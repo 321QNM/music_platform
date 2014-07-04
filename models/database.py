@@ -84,7 +84,7 @@ def db_is_music_liked(username_id, music_id):
 
 def personal_recommend():
     collection = db.music
-    data = list(collection.find().limit(100))
+    data = list(collection.find())
     return data
 
 def admin_get_musics_from_db(begein_num, end_num):
@@ -95,6 +95,14 @@ def admin_get_musics_from_db(begein_num, end_num):
 def delete_music_from_db(music_id):
     collection = db.music
     collection.remove({"_id": music_id})
+
+def is_music_name_existed(music_name):
+    collection = db.music
+    result = collection.find_one({"music_name": music_name})
+    if result:
+        return "yes"
+    else:
+        return "no"
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
