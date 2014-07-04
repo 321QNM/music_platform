@@ -287,6 +287,8 @@ music_list = [
 ]
 
 for music in music_list:
+    if not music.get('music_picture_url'):
+        music['music_picture_url'] = image_path + 'default.jpg'
     insert_music_to_database(music)
     # print(music)
 print("OK")
