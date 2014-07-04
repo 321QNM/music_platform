@@ -172,6 +172,7 @@ $(document).ready(function(){
         document.getElementById('music_url').value = "";
         document.getElementById('music_picture_url').value = "";
         document.getElementById('music_publish_date').value = "";
+        $("#msg").text("");
     })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
