@@ -20,7 +20,7 @@ $(document).ready(function(){
     function load_list(list_obj){
         // if (list_obj.length<13) {};
         for (var i = 0; i < list_obj.length; i++) {
-            $('#list' + i).html('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td><td>'+list_obj[i].music_style+'</td><td>'+list_obj[i].music_zone+'</td><td>'+list_obj[i].music_mood+'</td><td>'+list_obj[i].music_url+'</td><td>'+list_obj[i].music_picture_url+'</td><td>'+list_obj[i].music_publish_date+'</td><td class="list_music_id">'+list_obj[i].music_id+'<td>');
+            $('#list' + i).html('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td><td>'+list_obj[i].music_style+'</td><td>'+list_obj[i].music_zone+'</td><td>'+list_obj[i].music_mood+'</td><td>'+list_obj[i].music_url+'</td><td>'+list_obj[i].music_picture_url+'</td><td>'+list_obj[i].music_publish_date+'</td><td class="list_music_id">'+list_obj[i].music_id+'</td>');
         };
         for (var i = list_obj.length; i < 13; i++) {
             $('#list' + i).html('');
@@ -39,7 +39,7 @@ $(document).ready(function(){
         $(this).addClass('active_tr')
         $(this).siblings().removeClass('active_tr');
         var a = $(this).children().last().html();
-        alert(a);
+        // alert(a);
         musicid = a;
     });
 
