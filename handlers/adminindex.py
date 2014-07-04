@@ -6,12 +6,9 @@ from models.database import *
 from tornado.escape import json_encode
 from bson.objectid import ObjectId
 
-newest_to_send_music_info_list = []
-
 def generate_musics_table(begin_num, end_num):
     music_list = admin_get_musics_from_db(begin_num, end_num)
     to_send_music_info_list = []
-    global newest_to_send_music_info_list
     for music in music_list:
         current_music_id = str(music["_id"])
         current_music_url = music["music_url"]
@@ -34,7 +31,6 @@ def generate_musics_table(begin_num, end_num):
             'music_publish_date': current_music_publish_date,
         }
         to_send_music_info_list.append(one_music)
-    newest_to_send_music_info_list = to_send_music_info_list
     return to_send_music_info_list
 
 
@@ -64,10 +60,9 @@ class AdminIndexHandler(AdminBaseHandler):
             self.write( json_encode(to_send_music_info_list) )
 
         if action == "delete":
-            musicnum = int(self.get_argument("musicnum","-1"))
-            if musicnum != -1:
-                to_delete_music = newest_to_send_music_info_list[musicnum - 1]
-                delete_music_from_db( ObjectId(to_delete_music['music_id']) )
+            musicid = self.get_argument("musicid","-1")
+            if musicid != -1:
+                delete_music_from_db( ObjectId(musicid) )
             to_send_music_info_list = generate_musics_table(begin_num, end_num)
             self.write( json_encode(to_send_music_info_list) )
 
