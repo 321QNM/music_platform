@@ -142,7 +142,7 @@ $(document).ready(function(){
 
 
     $('.delBt').click(function(){
-        if(musicid == -1){
+        if(musicid < 0){
             alert("请先选中要操作的歌曲");
         }
         else{
@@ -213,17 +213,22 @@ $(document).ready(function(){
     }
 
     $('.editBt').click(function(){
-        showDialog();
-        var temp = musicnum-1;
-        alert(temp);
-        document.getElementById('music_name').value = list_obj[temp].music_name;
-        document.getElementById('music_artist').value = list_obj[temp].music_artist;
-        document.getElementById('music_style').value = list_obj[temp].music_style;
-        document.getElementById('music_zone').value = list_obj[temp].music_zone;
-        document.getElementById('music_mood').value = list_obj[temp].music_mood;
-        document.getElementById('music_url').value = list_obj[temp].music_url;
-        document.getElementById('music_picture_url').value = list_obj[temp].music_picture_url;
-        document.getElementById('music_publish_date').value = list_obj[temp].music_publish_date;
+        if (musicnum < 0) {
+            alert("请先选中要操作的歌曲");
+        }
+        else{
+            showDialog();
+            var temp = musicnum-1;
+            alert(temp);
+            document.getElementById('music_name').value = list_obj[temp].music_name;
+            document.getElementById('music_artist').value = list_obj[temp].music_artist;
+            document.getElementById('music_style').value = list_obj[temp].music_style;
+            document.getElementById('music_zone').value = list_obj[temp].music_zone;
+            document.getElementById('music_mood').value = list_obj[temp].music_mood;
+            document.getElementById('music_url').value = list_obj[temp].music_url;
+            document.getElementById('music_picture_url').value = list_obj[temp].music_picture_url;
+            document.getElementById('music_publish_date').value = list_obj[temp].music_publish_date;
+        }
     })
 
     //  获取元素对象
