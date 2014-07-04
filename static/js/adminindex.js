@@ -162,6 +162,14 @@ $(document).ready(function(){
 
     $('.addBt').click(function(){
         showDialog();
+        document.getElementById('music_name').value = "";
+        document.getElementById('music_artist').value = "";
+        document.getElementById('music_style').value = "";
+        document.getElementById('music_zone').value = "";
+        document.getElementById('music_mood').value = "";
+        document.getElementById('music_url').value = "";
+        document.getElementById('music_picture_url').value = "";
+        document.getElementById('music_publish_date').value = "";
     })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
