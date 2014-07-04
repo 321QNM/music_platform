@@ -72,6 +72,10 @@ body {
     display: none;
 }
 
+.msg{
+  color: red;
+}
+
 
 .sub-header {
   padding-bottom: 10px;
