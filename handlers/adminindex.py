@@ -14,14 +14,14 @@ def generate_musics_table(begin_num, end_num):
     to_send_music_info_list = []
     for music in music_list:
         current_music_id = str(music["_id"])
-        current_music_url = music["music_url"].split('/')[-1]
-        current_music_name = music["music_name"]
-        current_music_artist = music["music_artist"]
-        current_music_picture_url = music["music_picture_url"].split('/')[-1]
-        current_music_mood = music['music_mood']
+        current_music_url = music.get("music_url").split('/')[-1]
+        current_music_name = music.get("music_name")
+        current_music_artist = music.get("music_artist")
+        current_music_picture_url = music.get("music_picture_url").split('/')[-1]
+        current_music_mood = music.get('music_mood')
         current_music_zone = music.get('music_zone')
-        current_music_publish_date = music['music_publish_date']
-        current_music_style = music['music_style']
+        current_music_publish_date = music.get('music_publish_date')
+        current_music_style = music.get('music_style')
         one_music =  {
             'music_id': current_music_id,
             'music_url': current_music_url,
@@ -35,6 +35,24 @@ def generate_musics_table(begin_num, end_num):
         }
         to_send_music_info_list.append(one_music)
     return to_send_music_info_list
+
+def admin_search_music(keyword):
+    search_result_list = admin_search_music_form_db(keyword)
+    to_send_search_result = []
+    for music in search_result_list:
+        one_music = {
+            'music_id': str(music['_id']),
+            'music_url': music.get("music_url").split('/')[-1],
+            'music_name': music.get("music_name"),
+            'music_artist': music.get("music_artist"),
+            'music_picture_url': music.get("music_picture_url").split('/')[-1],
+            'music_mood': music.get('music_mood'),
+            'music_zone': music.get('music_zone'),
+            'music_publish_date': music.get('music_publish_date'),
+            'music_style': music.get('music_style'),
+        }
+        to_send_search_result.append(one_music)
+    return to_send_search_result
 
 
 
@@ -92,9 +110,13 @@ class AdminIndexHandler(AdminBaseHandler):
 
         if action == "check_music_name":
             music_name = self.get_argument("music_name", "default")
-            # print(music_name)
             result = is_music_name_existed(music_name)
-            # print(result)
             self.write(result)
+
+        if action == "search":
+            keyword = self.get_argument("keyword", "default_keyword")
+            to_send_search_result = admin_search_music(keyword)
+            self.write( json_encode(to_send_search_result) )
+            # pass
 
 
