@@ -63,7 +63,7 @@ def is_admin_login_successful(admin_username, admin_password):
 def get_username_id(username):
     collection = db.user
     result = collection.find_one({"username": username})
-    return str(result['_id'])
+    return str(result.get('_id'))
 
 def insert_music_to(action, username_id, music_id):
     collection = db[action]
@@ -103,6 +103,12 @@ def is_music_name_existed(music_name):
         return "yes"
     else:
         return "no"
+
+def admin_search_music_form_db(keyword):
+    collection = db.music
+    keyword_reg = '/.*?' + keyword + '.*?/i'
+    search_result = collection.find({"$or": [{"music_name": keyword_reg},{"music_artist": keyword_reg}]})
+    return search_result
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
