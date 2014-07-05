@@ -187,7 +187,12 @@ $(document).ready(function(){
             success:function(msg){
                 // hideDialog();
                 alert("OK");
-                // alert(msg);
+                alert(msg);
+            },
+            error:function(msg){
+                // list_obj = JSON.parse(msg);
+                // alert(list_obj);
+                alert(msg);
             }
         })
     }
@@ -206,11 +211,9 @@ $(document).ready(function(){
     $('#submit').click(function(){
         if (is_edit == 0) {
             add_post("add_music");
-        };
-        else{
-            if (is_edit == 1) {
-                edit_post("edit_music");
-            };
+        }
+        else if(is_edit == 1) {
+            edit_post("edit_music");
         }
     })
     $("#music_name").blur(function(){
