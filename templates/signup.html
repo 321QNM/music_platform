@@ -133,13 +133,13 @@
                 <input class="form-control" name="email" id="email" type="email" autofocus="" required="" placeholder="Email address" ></input>
 
                 <h5>输入账号：<span id="msg1" class="msg"></span></h5>
-                <input class="form-control" id="username" name="username" type="text" autofocus="" required="" placeholder="Username"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <input class="form-control" id="username" name="username" type="text" autofocus="" required="" placeholder="Username" maxlength="12" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <h5>输入密码：</h5>
-                <input class="form-control"  name="password1" id="password1" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <input class="form-control"  name="password1" id="password1" type="password" required="" placeholder="Password" maxlength="12" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <h5>再次输入密码：<span id="msg2" class="msg"></span></h5>
-                <input class="form-control" id="password2" name="password2" id="password2" type="password" required="" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
+                <input class="form-control" id="password2" name="password2" id="password2" type="password" required="" maxlength="12" placeholder="Password"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
 
                 <h5>输入邀请码：<span id="msg3" class="msg"></span></h5>
                 <input class="form-control" id="invitecode" name="invitecode" type="text" autofocus="" required="" placeholder="Invitation code"  onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></input>
