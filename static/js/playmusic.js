@@ -164,18 +164,18 @@ $(document).ready(function(){
 
         // M键  静音/取消静音
         if (event.which == 77) {
-            if ($(this).hasClass('enable')){
-                setVolume($(this).data('volume'));
-                $(this).removeClass('enable');
+            if ($('.mute').hasClass('enable')){
+                setVolume($('.mute').data('volume'));
+                $('.mute').removeClass('enable');
             } else {
-                $(this).data('volume', audio.volume).addClass('enable');
+                $('.mute').data('volume', audio.volume).addClass('enable');
                 setVolume(0);
             }
         };
         if (event.which == 70) {
             // F键  喜欢/取消喜欢
-            if ($(this).hasClass('enable')){
-                $(this).removeClass('enable');
+            if ($('.likeBt').hasClass('enable')){
+                $('.likeBt').removeClass('enable');
                 ajax_post("cancel_like");
             }
             else{
@@ -187,7 +187,7 @@ $(document).ready(function(){
         };
         if (event.which == 32) {
             // 空格  暂停/播放
-            if ($(this).hasClass('playing')){
+            if ($('.playBt').hasClass('playing')){
                     pause();
                 } else {
                     play();
