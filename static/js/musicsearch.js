@@ -1,7 +1,7 @@
 var pagenum = 1;
 var musicid = -1;
 var musicnum = -1;
-var is_edit = -1;
+// var is_edit = -1;
 var list_obj;
 $(document).ready(function(){
 
@@ -202,19 +202,18 @@ $(document).ready(function(){
             url:"/musicsearch",
             data: "action=" + action + "&music_id=" + musicid + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
             success:function(msg){
-                // hideDialog();
                 alert("OK");
-                // alert(msg);
             }
         })
     };
     $('#submit').click(function(){
-        if (is_edit == 0) {
-            add_post("add_music");
-        }
-        else if(is_edit == 1) {
+        // if (is_edit == 0) {
+        //     add_post("add_music");
+        // }
+        // else if(is_edit == 1) {
             edit_post("edit_music");
-        }
+            return false;
+        // }
     })
     // $("#music_name").blur(function(){
     //     if (is_edit == 0) {
