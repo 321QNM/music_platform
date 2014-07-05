@@ -173,7 +173,7 @@ $(document).ready(function(){
         })
     };
     $('#submit').click(function(){
-            edit_post("edit_music");
+            edit_post("edit_music",(pagenum-1)*13,pagenum*13);
             return false;
             hideDialog();
     })
