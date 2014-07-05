@@ -1,7 +1,6 @@
 var pagenum = 1;
 var musicid = -1;
 var musicnum = -1;
-// var is_edit = -1;
 var list_obj;
 $(document).ready(function(){
 
@@ -12,7 +11,6 @@ $(document).ready(function(){
             data: "action="+ action+ "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 list_obj = JSON.parse(msg);
-                // alert(list_obj);
                 load_list(list_obj);
             }
         })
@@ -20,7 +18,7 @@ $(document).ready(function(){
     ajax_post("refresh", 0, 13);
 
     function load_list(list_obj){
-        // if (list_obj.length<13) {};
+
         for (var i = 0; i < list_obj.length; i++) {
             $('#list' + i).html('<td>' + (i+1) + '</td><td>'+list_obj[i].music_name+'</td><td>'+list_obj[i].music_artist+'</td><td>'+list_obj[i].music_style+'</td><td>'+list_obj[i].music_zone+'</td><td>'+list_obj[i].music_mood+'</td><td>'+list_obj[i].music_url+'</td><td>'+list_obj[i].music_picture_url+'</td><td>'+list_obj[i].music_publish_date+'</td><td class="list_music_id">'+list_obj[i].music_id+'</td>');
         };
@@ -100,9 +98,6 @@ $(document).ready(function(){
         $('#a9').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         updatepageNum(pagenum);
     });
-    // $('#a10').click(function(){
-    //         $('#a10').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
-    // });
 
     $('#previous').click(function(){
         if (pagenum>1 && pagenum<11) {
@@ -157,86 +152,31 @@ $(document).ready(function(){
             data: "action="+action + "&musicid="+musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 list_obj = JSON.parse(msg);
-                // alert(list_obj);
                 load_list(list_obj);
             }
         })
     }
 
-    // $('.addBt').click(function(){
-    //     is_edit = 0;
-    //     showDialog();
-    //     document.getElementById('music_name').value = "";
-    //     document.getElementById('music_artist').value = "";
-    //     document.getElementById('music_style').value = "";
-    //     document.getElementById('music_zone').value = "";
-    //     document.getElementById('music_mood').value = "";
-    //     document.getElementById('music_url').value = "";
-    //     document.getElementById('music_picture_url').value = "";
-    //     document.getElementById('music_publish_date').value = "";
-    //     $("#msg").text("");
-    // })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
     })
-    // function add_post(action){
-    //     $.ajax({
-    //         type:"POST",
-    //         url:"/musicsearch",
-    //         data: "action=" + action + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
-    //         success:function(msg){
-    //             // hideDialog();
-    //             alert("OK");
-    //             alert(msg);
-    //         },
-    //         error:function(msg){
-    //             // list_obj = JSON.parse(msg);
-    //             // alert(list_obj);
-    //             alert(msg);
-    //         }
-    //     })
-    // }
-    function edit_post(action){
+
+    function edit_post(action,begin_num,end_num){
         $.ajax({
             type:"POST",
             url:"/musicsearch",
-            data: "action=" + action + "&music_id=" + musicid + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
+            data: "action=" + action + "&begin_num="+ begin_num +"&end_num="+end_num+ "&music_id=" + musicid + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
             success:function(msg){
-                alert("OK");
+                list_obj = JSON.parse(msg);
+                load_list(list_obj);
             }
         })
     };
     $('#submit').click(function(){
-        // if (is_edit == 0) {
-        //     add_post("add_music");
-        // }
-        // else if(is_edit == 1) {
             edit_post("edit_music");
             return false;
-        // }
+            hideDialog();
     })
-    // $("#music_name").blur(function(){
-    //     if (is_edit == 0) {
-    //         check_music_name_post("check_music_name");
-    //     };
-    // });
-    // function check_music_name_post(action){
-    //     $.ajax({
-    //         type:"POST",
-    //         url:"/musicsearch",
-    //         data: "action=" + action + "&music_name="+$("#music_name").val(),
-    //         success:function(msg){
-    //         if (msg=="yes") {
-    //                 $("#msg").text("歌曲名已存在！");
-    //                 $("#submit").attr("disabled","true");//密码不一致则不能提交
-    //             }
-    //             else{
-    //                 $("#msg").text("");
-    //                 $("#submit").removeAttr('disabled');//密码一致，可以提交
-    //             }
-    //         }
-    //     })
-    // }
 
     $('.editBt').click(function(){
         if (musicnum < 0) {
@@ -246,7 +186,6 @@ $(document).ready(function(){
             is_edit = 1;
             showDialog();
             var temp = musicnum-1;
-            // alert(temp);
             document.getElementById('music_name').value = list_obj[temp].music_name;
             document.getElementById('music_artist').value = list_obj[temp].music_artist;
             document.getElementById('music_style').value = list_obj[temp].music_style;
