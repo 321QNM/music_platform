@@ -293,19 +293,19 @@ $(document).ready(function(){
 
 
 
-    $('#searchBt').click(function(){
-        search_post("search",0,13);
-    })
-    function search_post(action,begin_num,end_num){
-        $.ajax({
-            type:"POST",
-            url:"/musicsearch",
-            data: "action=" + action + "&keyword="+$("#keyword").val() +"&begin_num="+ begin_num +"&end_num="+end_num,
-            success:function(msg){
-                list_obj = JSON.parse(msg);
-                // alert(list_obj);
-                load_list(list_obj);
-            }
-        })
-    }
+    // $('#searchBt').click(function(){
+    //     search_post("search",0,13);
+    // })
+    // function search_post(action,begin_num,end_num){
+    //     $.ajax({
+    //         type:"POST",
+    //         url:"/musicsearch",
+    //         data: "action=" + action + "&keyword="+$("#keyword").val() +"&begin_num="+ begin_num +"&end_num="+end_num,
+    //         success:function(msg){
+    //             list_obj = JSON.parse(msg);
+    //             // alert(list_obj);
+    //             load_list(list_obj);
+    //         }
+    //     })
+    // }
 });
