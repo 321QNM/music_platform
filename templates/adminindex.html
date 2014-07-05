@@ -100,8 +100,9 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
+            {% block header %}
             <h2 class="sub-header">歌曲管理</h2>
+            {% end %}
             <!-- 三个功能按钮 -->
             <div class="addBt bt"></div>
             <div class="editBt bt"></div>
@@ -180,7 +181,9 @@
     </div>
     <script type="text/javascript" src="{{ static_url('js/jquery.min.js') }}"></script>
     <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-    <script type="text/javascript" src='{{ static_url("js/adminindex.js") }}'></script>
+    {% block js_reference %}
+      <script type="text/javascript" src='{{ static_url("js/adminindex.js") }}'></script>
+    {% end %}
 
   </body>
 </html>
