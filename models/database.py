@@ -52,6 +52,24 @@ def insert_music_to_database(music):
     if not collection.find_one( {"music_name": music['music_name']} ):
         collection.insert(music)
 
+def update_music_in_database(admin_edit_music):
+    collection = db.music
+    collection.update(
+        {"_id": admin_edit_music.get('music_id')},
+        {"$set":
+            {"music_name": admin_edit_music.get('music_name'),
+            "music_artist": admin_edit_music.get('music_artist'),
+            "music_zone": admin_edit_music.get('music_zone'),
+            "music_style": admin_edit_music.get('music_style'),
+            "music_mood": admin_edit_music.get('music_mood'),
+            "music_url": admin_edit_music.get('music_url'),
+            "music_picture_url": admin_edit_music.get('music_picture_url'),
+            "music_publish_date": admin_edit_music.get('music_publish_date')},
+        }
+        # true
+        # true
+    )
+
 def is_admin_login_successful(admin_username, admin_password):
     collection = db.music_admin
     result = collection.find_one( {"admin_username": admin_username, "admin_password": admin_password} )
