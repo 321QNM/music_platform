@@ -179,41 +179,39 @@ $(document).ready(function(){
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
     })
-    function add_post(action){
+    function add_post(action,begin_num, end_num){
         $.ajax({
             type:"POST",
             url:"/adminindex",
-            data: "action=" + action + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
+            data: "action=" + action + "&begin_num="+ begin_num +"&end_num="+end_num+ "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
             success:function(msg){
-                // hideDialog();
-                alert("OK");
-                alert(msg);
+                list_obj = JSON.parse(msg);
+                load_list(list_obj);
             },
             error:function(msg){
-                // list_obj = JSON.parse(msg);
-                // alert(list_obj);
-                alert(msg);
+                alert("error");
             }
         })
     }
-    function edit_post(action){
+    function edit_post(action,begin_num, end_num){
         $.ajax({
             type:"POST",
             url:"/adminindex",
-            data: "action=" + action + "&music_id=" + musicid + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
+            data: "action=" + action + "&begin_num="+ begin_num +"&end_num="+end_num+ "&music_id=" + musicid + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
             success:function(msg){
-                // hideDialog();
-                alert("OK");
-                // alert(msg);
+                list_obj = JSON.parse(msg);
+                load_list(list_obj);
             }
         })
     };
     $('#submit').click(function(){
         if (is_edit == 0) {
-            add_post("add_music");
+            add_post("add_music",(pagenum-1)*13,pagenum*13);
+            hideDialog();
         }
         else if(is_edit == 1) {
-            edit_post("edit_music");
+            edit_post("edit_music",(pagenum-1)*13,pagenum*13);
+            hideDialog();
         }
         return false;
     })
