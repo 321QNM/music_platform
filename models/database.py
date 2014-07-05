@@ -1,5 +1,5 @@
 #coding=utf-8
-
+import re
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
@@ -124,8 +124,17 @@ def is_music_name_existed(music_name):
 
 def admin_search_music_form_db(keyword):
     collection = db.music
-    keyword_reg = '/.*?' + keyword + '.*?/i'
-    search_result = collection.find({"$or": [{"music_name": keyword_reg},{"music_artist": keyword_reg}]})
+    keyword_reg = re.compile(keyword, re.IGNORECASE)
+    search_result = collection.find(
+        {"$or": [
+            {"music_name": keyword_reg},
+            {"music_artist": keyword_reg},
+            {"music_mood": keyword_reg},
+            {"music_zone": keyword_reg},
+            {"music_style": keyword_reg},
+            ]
+        }
+    )
     return search_result
 
 def main():
