@@ -122,10 +122,10 @@ def is_music_name_existed(music_name):
     else:
         return "no"
 
-def admin_search_music_form_db(keyword):
+def admin_search_music_form_db(keyword, begein_num, end_num):
     collection = db.music
     keyword_reg = re.compile(keyword, re.IGNORECASE)
-    search_result = collection.find(
+    search_result = list(collection.find(
         {"$or": [
             {"music_name": keyword_reg},
             {"music_artist": keyword_reg},
@@ -134,7 +134,7 @@ def admin_search_music_form_db(keyword):
             {"music_style": keyword_reg},
             ]
         }
-    )
+    ).limit(end_num-begein_num).skip(begein_num))
     return search_result
 
 def main():
