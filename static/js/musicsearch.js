@@ -291,21 +291,9 @@ $(document).ready(function(){
         fillToBody( g('mask') );
     }
 
-
-
-    // $('#searchBt').click(function(){
-    //     search_post("search",0,13);
-    // })
-    // function search_post(action,begin_num,end_num){
-    //     $.ajax({
-    //         type:"POST",
-    //         url:"/musicsearch",
-    //         data: "action=" + action + "&keyword="+$("#keyword").val() +"&begin_num="+ begin_num +"&end_num="+end_num,
-    //         success:function(msg){
-    //             list_obj = JSON.parse(msg);
-    //             // alert(list_obj);
-    //             load_list(list_obj);
-    //         }
-    //     })
-    // }
+    $(document).keydown(function(event){
+        if (event.which == 13) {
+            $("form").submit();
+        };
+    }
 });
