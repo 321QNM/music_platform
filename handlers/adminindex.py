@@ -36,24 +36,6 @@ def generate_musics_table(begin_num, end_num):
         to_send_music_info_list.append(one_music)
     return to_send_music_info_list
 
-def admin_search_music(keyword):
-    search_result_list = admin_search_music_form_db(keyword)
-    to_send_search_result = []
-    for music in search_result_list:
-        one_music = {
-            'music_id': str(music['_id']),
-            'music_url': music.get("music_url").split('/')[-1],
-            'music_name': music.get("music_name"),
-            'music_artist': music.get("music_artist"),
-            'music_picture_url': music.get("music_picture_url").split('/')[-1],
-            'music_mood': music.get('music_mood'),
-            'music_zone': music.get('music_zone'),
-            'music_publish_date': music.get('music_publish_date'),
-            'music_style': music.get('music_style'),
-        }
-        to_send_search_result.append(one_music)
-    return to_send_search_result
-
 
 
 class AdminIndexHandler(AdminBaseHandler):
@@ -140,11 +122,4 @@ class AdminIndexHandler(AdminBaseHandler):
             music_name = self.get_argument("music_name", "default")
             result = is_music_name_existed(music_name)
             self.write(result)
-
-        if action == "search":
-            keyword = self.get_argument("keyword", "default_keyword")
-            to_send_search_result = admin_search_music(keyword)
-            self.write( json_encode(to_send_search_result) )
-            # pass
-
 
