@@ -353,6 +353,7 @@ $(document).ready(function(){
     }
 
     $("#searchBt").click(function(){
+        alert("ok");
         $("form").submit();
     });
 
