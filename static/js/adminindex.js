@@ -1,6 +1,7 @@
 var pagenum = 1;
 var musicid = -1;
 var musicnum = -1;
+var is_edit = 1;
 var list_obj;
 $(document).ready(function(){
 
@@ -163,6 +164,7 @@ $(document).ready(function(){
     }
 
     $('.addBt').click(function(){
+        is_edit = 0;
         showDialog();
         document.getElementById('music_name').value = "";
         document.getElementById('music_artist').value = "";
@@ -193,7 +195,9 @@ $(document).ready(function(){
         add_post("add_music");
     })
     $("#music_name").blur(function(){
-        check_music_name_post("check_music_name");
+        if (is_edit = 0) {
+            check_music_name_post("check_music_name");
+        };
     });
     function check_music_name_post(action){
         $.ajax({
@@ -218,6 +222,7 @@ $(document).ready(function(){
             alert("请先选中要操作的歌曲");
         }
         else{
+            is_edit = 1;
             showDialog();
             var temp = musicnum-1;
             // alert(temp);
