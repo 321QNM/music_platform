@@ -354,6 +354,7 @@ $(document).ready(function(){
 
     $("#searchBt").click(function(){
         alert("ok");
+        console.log("ok");
         $("form").submit();
     });
 
