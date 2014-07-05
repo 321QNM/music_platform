@@ -352,7 +352,9 @@ $(document).ready(function(){
         fillToBody( g('mask') );
     }
 
-
+    $("#searchBt").click(function(){
+        $("form").submit();
+    });
 
     // $('#searchBt').click(function(){
     //     search_post("search");
