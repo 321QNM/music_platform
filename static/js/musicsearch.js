@@ -163,39 +163,39 @@ $(document).ready(function(){
         })
     }
 
-    $('.addBt').click(function(){
-        is_edit = 0;
-        showDialog();
-        document.getElementById('music_name').value = "";
-        document.getElementById('music_artist').value = "";
-        document.getElementById('music_style').value = "";
-        document.getElementById('music_zone').value = "";
-        document.getElementById('music_mood').value = "";
-        document.getElementById('music_url').value = "";
-        document.getElementById('music_picture_url').value = "";
-        document.getElementById('music_publish_date').value = "";
-        $("#msg").text("");
-    })
+    // $('.addBt').click(function(){
+    //     is_edit = 0;
+    //     showDialog();
+    //     document.getElementById('music_name').value = "";
+    //     document.getElementById('music_artist').value = "";
+    //     document.getElementById('music_style').value = "";
+    //     document.getElementById('music_zone').value = "";
+    //     document.getElementById('music_mood').value = "";
+    //     document.getElementById('music_url').value = "";
+    //     document.getElementById('music_picture_url').value = "";
+    //     document.getElementById('music_publish_date').value = "";
+    //     $("#msg").text("");
+    // })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
     })
-    function add_post(action){
-        $.ajax({
-            type:"POST",
-            url:"/musicsearch",
-            data: "action=" + action + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
-            success:function(msg){
-                // hideDialog();
-                alert("OK");
-                alert(msg);
-            },
-            error:function(msg){
-                // list_obj = JSON.parse(msg);
-                // alert(list_obj);
-                alert(msg);
-            }
-        })
-    }
+    // function add_post(action){
+    //     $.ajax({
+    //         type:"POST",
+    //         url:"/musicsearch",
+    //         data: "action=" + action + "&music_name="+$("#music_name").val() +  "&music_artist="+$("#music_artist").val() + "&music_style="+$("#music_style").val() + "&music_zone="+$("#music_zone").val() + "&music_mood="+$("#music_mood").val() + "&music_url="+$("#music_url").val() + "&music_picture_url="+$("#music_picture_url").val() + "&music_publish_date=" + $("#music_publish_date").val(),
+    //         success:function(msg){
+    //             // hideDialog();
+    //             alert("OK");
+    //             alert(msg);
+    //         },
+    //         error:function(msg){
+    //             // list_obj = JSON.parse(msg);
+    //             // alert(list_obj);
+    //             alert(msg);
+    //         }
+    //     })
+    // }
     function edit_post(action){
         $.ajax({
             type:"POST",
@@ -216,28 +216,28 @@ $(document).ready(function(){
             edit_post("edit_music");
         }
     })
-    $("#music_name").blur(function(){
-        if (is_edit == 0) {
-            check_music_name_post("check_music_name");
-        };
-    });
-    function check_music_name_post(action){
-        $.ajax({
-            type:"POST",
-            url:"/musicsearch",
-            data: "action=" + action + "&music_name="+$("#music_name").val(),
-            success:function(msg){
-            if (msg=="yes") {
-                    $("#msg").text("歌曲名已存在！");
-                    $("#submit").attr("disabled","true");//密码不一致则不能提交
-                }
-                else{
-                    $("#msg").text("");
-                    $("#submit").removeAttr('disabled');//密码一致，可以提交
-                }
-            }
-        })
-    }
+    // $("#music_name").blur(function(){
+    //     if (is_edit == 0) {
+    //         check_music_name_post("check_music_name");
+    //     };
+    // });
+    // function check_music_name_post(action){
+    //     $.ajax({
+    //         type:"POST",
+    //         url:"/musicsearch",
+    //         data: "action=" + action + "&music_name="+$("#music_name").val(),
+    //         success:function(msg){
+    //         if (msg=="yes") {
+    //                 $("#msg").text("歌曲名已存在！");
+    //                 $("#submit").attr("disabled","true");//密码不一致则不能提交
+    //             }
+    //             else{
+    //                 $("#msg").text("");
+    //                 $("#submit").removeAttr('disabled');//密码一致，可以提交
+    //             }
+    //         }
+    //     })
+    // }
 
     $('.editBt').click(function(){
         if (musicnum < 0) {
@@ -356,13 +356,13 @@ $(document).ready(function(){
 
 
     $('#searchBt').click(function(){
-        search_post("search");
+        search_post("search",0,13);
     })
-    function search_post(action){
+    function search_post(action,begin_num,end_num){
         $.ajax({
             type:"POST",
             url:"/musicsearch",
-            data: "action=" + action + "&keyword="+$("#keyword").val(),
+            data: "action=" + action + "&keyword="+$("#keyword").val() +"&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 list_obj = JSON.parse(msg);
                 // alert(list_obj);
