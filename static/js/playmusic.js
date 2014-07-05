@@ -161,46 +161,49 @@ $(document).ready(function(){
     });
     // 键盘监听
     $(document).keydown(function(event){
-        switch(event.which)
-        {
-            // M键  静音/取消静音
-            case 77:    if ($(this).hasClass('enable')){
-                            setVolume($(this).data('volume'));
-                            $(this).removeClass('enable');
-                        } else {
-                            $(this).data('volume', audio.volume).addClass('enable');
-                            setVolume(0);
-                        }
-                        break;
+
+        // M键  静音/取消静音
+        if (event.which == 77) {
+            if ($(this).hasClass('enable')){
+                setVolume($(this).data('volume'));
+                $(this).removeClass('enable');
+            } else {
+                $(this).data('volume', audio.volume).addClass('enable');
+                setVolume(0);
+            }
+        };
+        if (event.which == 70) {
             // F键  喜欢/取消喜欢
-            case 70:    if ($(this).hasClass('enable')){
-                            $(this).removeClass('enable');
-                            ajax_post("cancel_like");
-                        }
-                        else{
-                            ajax_post("like");
-                            $('#float').addClass('showlikeBt');
-                            $('#float').addClass('animationlikeBt');
-                            setTimeout(continueExecution, 2000);
-                        }
-                        break;
+            if ($(this).hasClass('enable')){
+                $(this).removeClass('enable');
+                ajax_post("cancel_like");
+            }
+            else{
+                ajax_post("like");
+                $('#float').addClass('showlikeBt');
+                $('#float').addClass('animationlikeBt');
+                setTimeout(continueExecution, 2000);
+            }
+        };
+        if (event.which == 32) {
             // 空格  暂停/播放
-            case 32:    if ($(this).hasClass('playing')){
-                            pause();
-                        } else {
-                            play();
-                        }
-                        break;
+            if ($(this).hasClass('playing')){
+                    pause();
+                } else {
+                    play();
+                }
+            };
+        if (event.which == 78) {
             // N键  下一曲
-            case 78:    pause();
-                        $('audio').remove();
-                        ajax_post("next");
-                        break;
+            pause();
+            $('audio').remove();
+            ajax_post("next");
+        };
+        if (event.which == 68) {
             // D键  删除
-            case 68:    pause();
-                        $('audio').remove();
-                        ajax_post("hate");
-                        break;
-        }
+            pause();
+            $('audio').remove();
+            ajax_post("hate");
+        };
     });
 });
