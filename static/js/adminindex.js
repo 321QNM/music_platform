@@ -215,6 +215,7 @@ $(document).ready(function(){
         else if(is_edit == 1) {
             edit_post("edit_music");
         }
+        return false;
     })
     $("#music_name").blur(function(){
         if (is_edit == 0) {
