@@ -107,6 +107,34 @@ class AdminIndexHandler(AdminBaseHandler):
                 'music_publish_date': music_publish_date,
             }
             insert_music_to_database(admin_add_music)
+            # self.write("hello")
+
+        if action == "edit_music":
+            music_id = self.get_argument("music_id","default")
+            music_name = self.get_argument("music_name", "default")
+            print music_id
+            print music_name
+            music_artist = self.get_argument("music_artist", "default")
+            music_style = self.get_argument("music_style", "default")
+            music_zone = self.get_argument("music_zone", "default")
+            music_mood = self.get_argument("music_mood", "default")
+            music_url = self.get_argument("music_url", "default")
+            music_picture_url = self.get_argument("music_picture_url", "default")
+            music_publish_date = self.get_argument("music_publish_date", "default")
+            admin_edit_music =  {
+                'music_id': ObjectId(music_id),
+                'music_url': path + music_url,
+                'music_name': music_name,
+                'music_artist': music_artist,
+                'music_picture_url': image_path + music_picture_url,
+                'music_mood': music_mood,
+                'music_zone': music_zone,
+                'music_style': music_style,
+                'music_publish_date': music_publish_date,
+            }
+            update_music_in_database(admin_edit_music)
+
+
 
         if action == "check_music_name":
             music_name = self.get_argument("music_name", "default")
