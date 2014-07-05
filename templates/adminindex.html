@@ -69,6 +69,7 @@
           <a class="navbar-brand" href="#">管理页面</a>
         </div>
         <div class="navbar-collapse collapse">
+          {% block search %}
           <!-- <ul class="nav navbar-nav navbar-right">
             <li id="searchBt"><a href="#">搜索</a></li>
           </ul> -->
@@ -76,6 +77,7 @@
             <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search...">
             <input type="submit" id="searchBt" value="搜索">
           </form>
+          {% end %}
         </div>
       </div>
     </div>
