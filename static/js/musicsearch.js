@@ -142,9 +142,21 @@ $(document).ready(function(){
             alert("请先选中要操作的歌曲");
         }
         else{
-            delete_post("delete", musicid, (pagenum-1)*13,pagenum*13);
+            firm();
         }
     })
+    function firm()
+    {//利用对话框返回的值 （true 或者 false）
+        if(confirm("确认删除？"))
+        {//如果是true
+            delete_post("delete", musicid, (pagenum-1)*13,pagenum*13);
+        }
+        else
+        {
+            alert("已取消删除！");
+        }
+    }
+
     function delete_post(action, musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
