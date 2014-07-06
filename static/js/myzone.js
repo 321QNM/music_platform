@@ -20,7 +20,7 @@ $(document).ready(function(){
 
     function load_like_list(like_list_obj){
         for (var i = 0; i < like_list_obj.length; i++) {
-            $('#like_list' + i).html('<td>' + (i+1) + '</td><td>'+like_list_obj[i].music_name+'</td><td>'+like_list_obj[i].music_artist+'</td><td class="list_music_id">'+list_obj[i].music_id+'</td>');
+            $('#like_list' + i).html('<td>' + (i+1) + '</td><td>'+like_list_obj[i].music_name+'</td><td>'+like_list_obj[i].music_artist+'</td><td class="list_music_id">'+like_list_obj[i].music_id+'</td>');
         };
         for (var i = like_list_obj.length; i < 10; i++) {
             $('#like_list' + i).html('');
@@ -44,7 +44,7 @@ $(document).ready(function(){
 
     function load_hate_list(hate_list_obj){
         for (var i = 0; i < hate_list_obj.length; i++) {
-            $('#hate_list' + i).html('<td>' + (i+1) + '</td><td>'+hate_list_obj[i].music_name+'</td><td>'+hate_list_obj[i].music_artist+'</td><td class="list_music_id">'+list_obj[i].music_id+'</td>');
+            $('#hate_list' + i).html('<td>' + (i+1) + '</td><td>'+hate_list_obj[i].music_name+'</td><td>'+hate_list_obj[i].music_artist+'</td><td class="list_music_id">'+hate_list_obj[i].music_id+'</td>');
         };
         for (var i = hate_list_obj.length; i < 10; i++) {
             $('#hate_list' + i).html('');
@@ -238,7 +238,7 @@ $(document).ready(function(){
             like_delete_post("delete", "like", like_musicid, (pagenum-1)*13,pagenum*13);
         }
     })
-    function delete_post(action, kind, like_musicid, begin_num, end_num){
+    function like_delete_post(action, kind, like_musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
             url:"/myzone",
@@ -258,7 +258,7 @@ $(document).ready(function(){
             hate_delete_post("delete", "hate", hate_musicid, (pagenum-1)*13,pagenum*13);
         }
     })
-    function delete_post(action, kind, hate_musicid, begin_num, end_num){
+    function delete_delete_post(action, kind, hate_musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
             url:"/myzone",
