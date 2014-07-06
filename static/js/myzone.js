@@ -52,7 +52,7 @@ $(document).ready(function(){
     };
 
     info_post("refresh","info")
-    function info_post(){
+    function info_post(action, kind){
         $.ajax({
             type:"POST",
             url:"/myzone",
@@ -77,6 +77,11 @@ $(document).ready(function(){
     function update_like_pageNum(like_pagenum){
         $('.current_like_pageNum').html('<strong>当前页码：'+like_pagenum+'</strong>');
     }
+
+    function update_hate_pageNum(hate_pagenum){
+        $('.current_hate_pageNum').html('<strong>当前页码：'+hate_pagenum+'</strong>');
+    }
+
     // 点击选中 获取ID
     $('.like').click(function(){
         $(this).addClass('active_tr')
@@ -268,11 +273,10 @@ $(document).ready(function(){
 
 
     $('.editBt').click(function(){
-            showDialog();
-            document.getElementById('nickname').value = list_obj[temp].music_name;
-            document.getElementById('individuality_signature').value = list_obj[temp].music_artist;
-            document.getElementById('myzone_picture_url').value = list_obj[temp].music_style;
-        }
+        showDialog();
+        document.getElementById('nickname').value = list_obj[temp].music_name;
+        document.getElementById('individuality_signature').value = list_obj[temp].music_artist;
+        document.getElementById('myzone_picture_url').value = list_obj[temp].music_style;
     })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
