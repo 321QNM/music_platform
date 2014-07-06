@@ -45,4 +45,6 @@ $(document).ready(function(){
             $('#hate_list' + i).html('');
         }
     };
+
+    $('.page i:even').css("top","-40px");
 })
