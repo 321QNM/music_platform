@@ -88,19 +88,19 @@ h3{
 }
 
 .like_delBt{
-  background-image: url(del.png);
+  background-image: url(../images/myzonedel.png);
   margin: -20px;
 }
 .hate_delBt{
-  background-image: url(del.png);
+  background-image: url(../images/myzonedel.png);
   margin: -20px;
 }
 .musicBt{
-  background-image: url(music.png);
+  background-image: url(../images/music.png);
   float: left;
 }
 .logoutBt{
-  background-image: url(logout.png);
+  background-image: url(../images/logout.png);
   float: right;
 }
 tr:hover{
