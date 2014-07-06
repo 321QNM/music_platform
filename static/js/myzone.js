@@ -1,5 +1,5 @@
-var like_pagenum = -1;
-var hate_pagenum = -1;
+var like_pagenum = 1;
+var hate_pagenum = 1;
 var like_musicid = -1;
 var hate_musicid = -1;
 var info_obj;
