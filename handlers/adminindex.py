@@ -55,7 +55,6 @@ class AdminIndexHandler(AdminBaseHandler):
 
         if action == "refresh":
             to_send_music_info_list = generate_musics_table(begin_num, end_num)
-            # print to_send_music_info_list
             self.write( json_encode(to_send_music_info_list) )
 
         if action == "page_change":
@@ -89,13 +88,13 @@ class AdminIndexHandler(AdminBaseHandler):
                 'music_publish_date': music_publish_date,
             }
             insert_music_to_database(admin_add_music)
-            # self.write("hello")
+            to_send_music_info_list = generate_musics_table(begin_num, end_num)
+            self.write( json_encode(to_send_music_info_list) )
+
 
         if action == "edit_music":
             music_id = self.get_argument("music_id","default")
             music_name = self.get_argument("music_name", "default")
-            print music_id
-            print music_name
             music_artist = self.get_argument("music_artist", "default")
             music_style = self.get_argument("music_style", "default")
             music_zone = self.get_argument("music_zone", "default")
@@ -115,7 +114,8 @@ class AdminIndexHandler(AdminBaseHandler):
                 'music_publish_date': music_publish_date,
             }
             update_music_in_database(admin_edit_music)
-
+            to_send_music_info_list = generate_musics_table(begin_num, end_num)
+            self.write( json_encode(to_send_music_info_list) )
 
 
         if action == "check_music_name":
