@@ -6,6 +6,9 @@ from models.database import *
 from tornado.escape import json_encode
 from bson.objectid import ObjectId
 # g_keyword = ""
+path = '../static/music/'
+image_path = '../static/images/music_pictures/'
+
 
 def admin_search_music(keyword, begin_num, end_num):
     search_result_list = admin_search_music_form_db(keyword, begin_num, end_num)
@@ -50,10 +53,10 @@ class AdminSearchMusicHandler(AdminBaseHandler):
             to_send_search_result = admin_search_music(g_keyword, begin_num, end_num)
             self.write( json_encode(to_send_search_result) )
 
-        if action == "search":
-            g_keyword = self.get_argument("keyword", "default_keyword")
-            to_send_search_result = admin_search_music(g_keyword, begin_num, end_num)
-            self.write( json_encode(to_send_search_result) )
+        # if action == "search":
+        #     g_keyword = self.get_argument("keyword", "default_keyword")
+        #     to_send_search_result = admin_search_music(g_keyword, begin_num, end_num)
+        #     self.write( json_encode(to_send_search_result) )
 
         if action == "page_change":
             to_send_search_result = admin_search_music(g_keyword, begin_num, end_num)
@@ -65,6 +68,32 @@ class AdminSearchMusicHandler(AdminBaseHandler):
                 delete_music_from_db( ObjectId(musicid) )
             to_send_search_result = admin_search_music(g_keyword, begin_num, end_num)
             self.write( json_encode(to_send_search_result) )
+
+        if action == "edit_music":
+            music_id = self.get_argument("music_id","default")
+            music_name = self.get_argument("music_name", "default")
+            music_artist = self.get_argument("music_artist", "default")
+            music_style = self.get_argument("music_style", "default")
+            music_zone = self.get_argument("music_zone", "default")
+            music_mood = self.get_argument("music_mood", "default")
+            music_url = self.get_argument("music_url", "default")
+            music_picture_url = self.get_argument("music_picture_url", "default")
+            music_publish_date = self.get_argument("music_publish_date", "default")
+            admin_edit_music =  {
+                'music_id': ObjectId(music_id),
+                'music_url': path + music_url,
+                'music_name': music_name,
+                'music_artist': music_artist,
+                'music_picture_url': image_path + music_picture_url,
+                'music_mood': music_mood,
+                'music_zone': music_zone,
+                'music_style': music_style,
+                'music_publish_date': music_publish_date,
+            }
+            update_music_in_database(admin_edit_music)
+            to_send_search_result = admin_search_music(g_keyword, begin_num, end_num)
+            self.write( json_encode(to_send_search_result) )
+
 
 
 
