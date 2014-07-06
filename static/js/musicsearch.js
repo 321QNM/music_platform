@@ -151,10 +151,6 @@ $(document).ready(function(){
         {//如果是true
             delete_post("delete", musicid, (pagenum-1)*13,pagenum*13);
         }
-        else
-        {
-            alert("已取消删除！");
-        }
     }
 
     function delete_post(action, musicid, begin_num, end_num){
