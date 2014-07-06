@@ -1,4 +1,4 @@
-var progress = 0;
+var progress = 1;
 $(document).ready(function(){
     // var music_id = "";
 
@@ -205,13 +205,6 @@ $(document).ready(function(){
             pause();
             $('audio').remove();
             ajax_post("hate");
-        };
-        if (event.which == 80) {
-            if (progress == 0) {
-                progress == 1;
-            }else{
-                progress == 0;
-            };
         };
     });
 });
