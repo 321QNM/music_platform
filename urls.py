@@ -12,6 +12,7 @@ from handlers.adminlogin import AdminLoginHandler
 from handlers.adminindex import AdminIndexHandler
 from handlers.adminlogout import AdminLogoutHandler
 from handlers.musicsearch import AdminSearchMusicHandler
+from handlers.myzone import MyZoneHandler
 
 urls = [
     (r'/index', WelcomeHandler),
@@ -25,5 +26,6 @@ urls = [
     (r'/adminindex', AdminIndexHandler),
     (r'/adminlogout', AdminLogoutHandler),
     (r'/musicsearch', AdminSearchMusicHandler),
+    (r'/myzone', MyZoneHandler),
     (r'.*',PageNotFoundHandler),
 ]
