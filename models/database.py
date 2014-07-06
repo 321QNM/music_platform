@@ -122,7 +122,7 @@ def is_music_name_existed(music_name):
     else:
         return "no"
 
-def admin_search_music_form_db(keyword, begein_num, end_num):
+def admin_search_music_form_db(keyword, begin_num, end_num):
     collection = db.music
     keyword_reg = re.compile(keyword, re.IGNORECASE)
     search_result = list(collection.find(
@@ -134,8 +134,18 @@ def admin_search_music_form_db(keyword, begein_num, end_num):
             {"music_style": keyword_reg},
             ]
         }
-    ).limit(end_num-begein_num).skip(begein_num))
+    ).limit(end_num-begin_num).skip(begin_num))
     return search_result
+
+def search_liked_music_list(username_id, kind, begin_num, end_num):
+    collection = db[kind]
+    liked_music_list = list(collection.find({"username_id": username_id}).limit(end_num-begin_num).skip(begin_num))
+    return liked_music_list
+
+def search_music_detail(music_id):
+    collection = db.music
+    return collection.find_one({"_id":music_id}, {"music_name": 1, "music_artist": 1})
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
@@ -150,7 +160,8 @@ def main():
     # print data[0]['music_name']
     # pass
     # print get_user_id('yxjxx')
-    insert_music_to("like", "fdasdfasfd", "43125421514f")
+    # insert_music_to("like", "fdasdfasfd", "43125421514f")
+    search_liked_music_list("53aaf3e35cd71d25b89d7b27", "like", 0,10)
 
 if __name__ == '__main__':
     main()

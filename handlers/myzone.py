@@ -1,6 +1,22 @@
 #coding=utf-8
 
 from handlers.base import BaseHandler
+from models.database import *
+from tornado.escape import json_encode
+from bson.objectid import ObjectId
+
+def generate_liked_music_list(username_id, kind, begin_num, end_num):
+    liked_music_list = search_liked_music_list(username_id, kind, begin_num, end_num)
+    to_send_liked_music_list =[]
+    for music in liked_music_list:
+        music_with_detail = search_music_detail( ObjectId(music['music_id']) )
+        one_music = {
+            "music_id": str(music_with_detail["_id"]),
+            "music_name": music_with_detail.get('music_name'),
+            "music_artist": music_with_detail.get('music_artist')
+        }
+        to_send_liked_music_list.append(one_music)
+    return to_send_liked_music_list
 
 class MyZoneHandler(BaseHandler):
     def get(self):
@@ -10,4 +26,16 @@ class MyZoneHandler(BaseHandler):
         self.render('myzone.html')
 
     def post(self):
-        pass
+        username = self.get_current_user()
+        username_id = get_username_id(username)
+        action = self.get_argument("action", "default")
+        kind = self.get_argument("kind", "default")
+        begin_num = int(self.get_argument("begin_num", "-1"))
+        end_num = int(self.get_argument("end_num", "-1"))
+
+
+        if action == "refresh" and kind == "like":
+            to_send_liked_music_list = generate_liked_music_list(username_id, kind, begin_num, end_num)
+            self.write( json_encode(to_send_liked_music_list) )
+
+
