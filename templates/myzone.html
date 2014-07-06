@@ -6,21 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le styles -->
     <link href="{{ static_url("css/bootstrap.css") }}" rel="stylesheet">
+    <link href="{{ static_url("css/bootstrap.min.css") }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ static_url("css/myzone.css") }}">
+    <link href="{{ static_url('images/flower_fm.ico') }}" rel="shortcut icon"></link>
   </head>
 
   <body>
 
+    <div class="ui-dialog" id="dialog">
+        <div class="ui-dialog-title" id="dialogTitle">
+            个人资料设置
+            <div class="ui-dialog-title-closebutton"></div>
+        </div>
+        <div class="ui-dialog-content">
+            <CENTER>
+            <form class="navbar-form"  name="form" role="form">
+                <h5>个人资料：<span id="msg1" class="msg"></span></h5>
+                <input class="form-control myzone_form" id="nickname" name="nickname" type="text" autofocus="" placeholder="Nickname"></input>
+
+                <!-- <h5>歌手：</h5> -->
+                <input class="form-control myzone_form" id="individuality_signature" name="individuality_signature" type="text" autofocus="" placeholder="Individuality signature"></input>
+
+                <!-- <h5>流派：</h5> -->
+                <input class="form-control music_form" id="myzone_picture_url" name="myzone_picture_url" type="text" autofocus="" placeholder="Picture url"></input>
+
+                <button class="ui-dialog-submit btn btn-lg btn-primary btn-block" id="submit">
+                    提交
+                </button>
+            </form>
+            </CENTER>
+        </div>
+    </div>
+
     <div class="container">
       <div class="hero-unit">
-        <div class="musicBt bt"></div>
-        <div class="logoutBt bt"></div>
+        <div class="musicBt bt"  onclick="location.href='/playmusic'"></div>
+        <div class="logoutBt bt"  onclick="location.href='/logout'"></div>
         <div >
-            <a id="user_info"><img class="user_image" src="1.jpg"></a>
+            <a id="user_image"></a>
         </div>
         <div>
-            <h3>yxjxx</h3>
-            <p>Being an interesting person!</p>
+            <h3 id="name"></h3>
+            <p id="signature"></p>
         </div>
       </div>
 

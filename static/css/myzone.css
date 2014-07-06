@@ -1,3 +1,71 @@
+
+
+.ui-dialog{
+    width: 380px;
+    height: auto;
+    display: none;
+    position: absolute;
+    z-index: 9000;
+    /*top: 100px;
+    left: 100px;*/
+    border: 1px solid #d5d5d5;
+    background: #fff;
+}
+.ui-dialog a{ text-decoration: none;}
+.ui-dialog-title{
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    color: #535353;
+    font-size: 16px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #efefef;
+    cursor: move;
+}
+.ui-dialog-title-closebutton{
+    width: 32px;height: 32px;display: block;
+    position: absolute;top: 12px;right: 20px;
+    background: url(../images/close.png);
+}
+.ui-dialog-content{
+    padding: 15px 20px;
+}
+
+.music_form{
+    margin-top: 15px;
+}
+.ui-dialog-pt15{
+    padding-top: 15px;
+}
+.ui-dialog-l40{
+    height: 40px;line-height: 40px;
+    text-align: center;
+}
+
+.ui-dialog-submit{
+    margin-top: 30px;
+    width: 180px;
+    height: 35px;
+    line-height: 15px;
+}
+.ui-dialog-submit:hover{
+    background: #3f81b0;
+}
+
+.ui-mask{
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.4;
+    filter: Alpha(opacity=40);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 8000;
+    display: none;
+}
+
+
 .container{
     padding-top: 10px;
     width:1200px;

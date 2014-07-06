@@ -31,9 +31,6 @@ body {
     position: absolute;top: 12px;right: 20px;
     background: url(../images/close.png);
 }
-/*    .ui-dialog-title-closebutton:hover{
-    background: url(del.png);
-}*/
 .ui-dialog-content{
     padding: 15px 20px;
 }
