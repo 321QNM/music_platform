@@ -249,7 +249,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url:"/myzone",
-            data: "action="+action + "&like_musicid="+like_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
+            data: "action="+action + "&kind" + kind + "&like_musicid="+like_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 like_list_obj = JSON.parse(msg);
                 // alert(list_obj);
@@ -276,7 +276,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url:"/myzone",
-            data: "action="+action + "&hate_musicid="+hate_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
+            data: "action="+action + "&kind" + kind + "&hate_musicid="+hate_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 hate_list_obj = JSON.parse(msg);
                 // alert(list_obj);
