@@ -137,10 +137,11 @@ def admin_search_music_form_db(keyword, begin_num, end_num):
     ).limit(end_num-begin_num).skip(begin_num))
     return search_result
 
-def search_liked_music_list(username_id, kind, begin_num, end_num):
+def search_habit_music_list(username_id, kind, begin_num, end_num):
+    print kind
     collection = db[kind]
-    liked_music_list = list(collection.find({"username_id": username_id}).limit(end_num-begin_num).skip(begin_num))
-    return liked_music_list
+    habit_music_list = list(collection.find({"username_id": username_id}).limit(end_num-begin_num).skip(begin_num))
+    return habit_music_list
 
 def search_music_detail(music_id):
     collection = db.music

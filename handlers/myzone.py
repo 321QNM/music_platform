@@ -5,15 +5,15 @@ from models.database import *
 from tornado.escape import json_encode
 from bson.objectid import ObjectId
 
-def generate_liked_music_list(username_id, kind, begin_num, end_num):
-    liked_music_list = search_liked_music_list(username_id, kind, begin_num, end_num)
+def generate_habit_music_list(username_id, kind, begin_num, end_num):
+    habit_music_list = search_habit_music_list(username_id, kind, begin_num, end_num)
     to_send_liked_music_list =[]
-    for music in liked_music_list:
+    for music in habit_music_list:
         music_with_detail = search_music_detail( ObjectId(music['music_id']) )
         one_music = {
-            "music_id": str(music_with_detail["_id"]),
+            "music_id": str(music_with_detail.get('_id')),
             "music_name": music_with_detail.get('music_name'),
-            "music_artist": music_with_detail.get('music_artist')
+            "music_artist": music_with_detail.get('music_artist'),
         }
         to_send_liked_music_list.append(one_music)
     return to_send_liked_music_list
@@ -35,7 +35,11 @@ class MyZoneHandler(BaseHandler):
 
 
         if action == "refresh" and kind == "like":
-            to_send_liked_music_list = generate_liked_music_list(username_id, kind, begin_num, end_num)
-            self.write( json_encode(to_send_liked_music_list) )
+            to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
+            self.write( json_encode(to_send_habit_music_list) )
+
+        if action == "refresh" and kind == "hate":
+            to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
+            self.write( json_encode(to_send_habit_music_list) )
 
 
