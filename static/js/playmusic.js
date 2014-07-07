@@ -14,6 +14,17 @@ $(document).ready(function(){
            }
        })
     }
+
+    function no_return_ajax_post(action){
+       $.ajax({
+           type:"POST",
+           url:"/",
+           data: "action="+ action,
+           success:function(msg){
+               ;
+           }
+       })
+    }
     ajax_post("refresh");
     var time = new Date();
     var trigger = false;
@@ -138,10 +149,10 @@ $(document).ready(function(){
     $('.likeBt').on('click', function(){
         if ($(this).hasClass('enable')){
             $(this).removeClass('enable');
-            ajax_post("cancel_like");
+            no_return_ajax_post("cancel_like");
         }
         else{
-            ajax_post("like");
+            no_return_ajax_post("like");
             $('#float').addClass('showlikeBt');
             $('#float').addClass('animationlikeBt');
             setTimeout(continueExecution, 1000);
