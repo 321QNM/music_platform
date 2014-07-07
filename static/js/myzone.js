@@ -292,11 +292,11 @@ $(document).ready(function(){
     }
 
 
-    $('.myzone_gravatar').click(function(){
+    $('#myzone_gravatar').click(function(){
         showDialog();
-        document.getElementById('username').value = list_obj.username;
-        document.getElementById('bio').value = list_obj.bio;
-        document.getElementById('gravatar').value = list_obj.gravatar;
+        document.getElementById('username').value = info_obj.username;
+        document.getElementById('bio').value = info_obj.bio;
+        document.getElementById('gravatar').value = info_obj.gravatar;
     })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
