@@ -51,7 +51,7 @@ $(document).ready(function(){
         }
     };
 
-    info_post("refresh","info")
+    // info_post("refresh","info")
     function info_post(action, kind){
         $.ajax({
             type:"POST",
@@ -242,14 +242,14 @@ $(document).ready(function(){
     {//利用对话框返回的值 （true 或者 false）
         if(confirm("确认删除？"))
         {//如果是true
-            like_delete_post("delete", "like", like_musicid, (pagenum-1)*10,pagenum*10);
+            like_delete_post("delete", "like", like_musicid, (like_pagenum-1)*10,like_pagenum*10);
         }
     }
     function like_delete_post(action, kind, like_musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
             url:"/myzone",
-            data: "action="+action + "&kind" + kind + "&like_musicid="+like_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
+            data: "action="+action + "&kind=" + kind + "&like_musicid="+like_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 like_list_obj = JSON.parse(msg);
                 // alert(list_obj);
@@ -269,14 +269,14 @@ $(document).ready(function(){
     {//利用对话框返回的值 （true 或者 false）
         if(confirm("确认删除？"))
         {//如果是true
-            hate_delete_post("delete", "hate", hate_musicid, (pagenum-1)*10,pagenum*10);
+            hate_delete_post("delete", "hate", hate_musicid, (hate_pagenum-1)*10,hate_pagenum*10);
         }
     }
     function delete_delete_post(action, kind, hate_musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
             url:"/myzone",
-            data: "action="+action + "&kind" + kind + "&hate_musicid="+hate_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
+            data: "action="+action + "&kind=" + kind + "&hate_musicid="+hate_musicid + "&begin_num="+ begin_num +"&end_num="+end_num,
             success:function(msg){
                 hate_list_obj = JSON.parse(msg);
                 // alert(list_obj);
