@@ -42,4 +42,31 @@ class MyZoneHandler(BaseHandler):
             to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
             self.write( json_encode(to_send_habit_music_list) )
 
+        if action == "page_change" and kind == "like":
+            to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
+            self.write( json_encode(to_send_habit_music_list) )
+
+        if action == "page_change" and kind == "hate":
+            to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
+            self.write( json_encode(to_send_habit_music_list) )
+
+        if action == "refresh" and kind == "info":
+            pass
+
+        if action == "delete" and kind == "like":
+            like_music_id = self.get_argument("like_musicid", "default")
+            delete_music_form_habit_coll(kind, username_id, like_music_id)
+            to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
+            self.write( json_encode(to_send_habit_music_list) )
+
+        if action == "delete" and kind == "hate":
+            hate_music_id = self.get_argument("hate_musicid", "default")
+            delete_music_form_habit_coll(kind, username_id,hate_music_id)
+            to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
+            self.write( json_encode(to_send_habit_music_list) )
+
+
+
+
+
 
