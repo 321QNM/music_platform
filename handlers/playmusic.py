@@ -52,7 +52,6 @@ class PlayMusicHandler(BaseHandler):
 
         if action == "like":
             insert_music_to(action, username_id, music_id)
-            # pass
 
         if action == "cancel_like":
             remove_music_from_like(username_id, music_id)
