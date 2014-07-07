@@ -182,10 +182,10 @@ a {
     position:absolute;
 }
 #filter .animationlikeBt{
-  animation:myfirst 2s;
-    -moz-animation:myfirst 2s; /* Firefox */
-    -webkit-animation:myfirst 2s; /* Safari and Chrome */
-    -o-animation:myfirst 2s; /* Opera */
+  animation:myfirst 1s;
+    -moz-animation:myfirst 1s; /* Firefox */
+    -webkit-animation:myfirst 1s; /* Safari and Chrome */
+    -o-animation:myfirst 1s; /* Opera */
 }
 #filter .hiddenlikeBt{
   display: none;

@@ -144,7 +144,7 @@ $(document).ready(function(){
             ajax_post("like");
             $('#float').addClass('showlikeBt');
             $('#float').addClass('animationlikeBt');
-            setTimeout(continueExecution, 2000);
+            setTimeout(continueExecution, 1000);
         }
         // if (isPlaying == true) play();
     });
@@ -183,7 +183,7 @@ $(document).ready(function(){
                 ajax_post("like");
                 $('#float').addClass('showlikeBt');
                 $('#float').addClass('animationlikeBt');
-                setTimeout(continueExecution, 2000);
+                setTimeout(continueExecution, 1000);
             }
         };
         if (event.which == 32) {
