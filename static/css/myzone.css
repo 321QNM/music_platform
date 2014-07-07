@@ -1,5 +1,3 @@
-
-
 .ui-dialog{
     width: 380px;
     height: auto;
@@ -72,6 +70,12 @@
     height: 160px;
     border-radius: 200px;
     border: 5px solid #FFF;
+}
+#myzone_username{
+    font-size: 40px;
+    font-family: Times;
+    font-style: italic;
+    font-weight: bold;
 }
 h3{
     text-align: center;
