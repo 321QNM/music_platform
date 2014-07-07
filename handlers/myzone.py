@@ -66,6 +66,15 @@ class MyZoneHandler(BaseHandler):
             to_send_habit_music_list = generate_habit_music_list(username_id, kind, begin_num, end_num)
             self.write( json_encode(to_send_habit_music_list) )
 
+        if action == "edit_bio":
+            new_bio = self.get_argument("bio", "default")
+            update_bio(username, new_bio)
+            to_send_user_info = get_user_detail(ObjectId(username_id))
+            self.write( json_encode(to_send_user_info) )
+
+
+
+
 
 
 
