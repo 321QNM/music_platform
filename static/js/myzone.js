@@ -295,27 +295,42 @@ $(document).ready(function(){
     $('#myzone_gravatar').click(function(){
         showDialog();
         document.getElementById('bio').value = info_obj.bio;
-        document.getElementById('gravatar').value = info_obj.gravatar;
     })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
     })
-    $('#submit').click(function(){
-        edit_post("edit_info");
+    $('#bio_submit').click(function(){
+        edit_bio_post("edit_bio");
         hideDialog();
         return false;
     })
-    function edit_post(action){
+    // $('#gravatar_submit').click(function(){
+    //     edit_gravatar_post("edit_gravatar");
+    //     hideDialog();
+    //     return false;
+    // })
+    function edit_bio_post(action){
         $.ajax({
             type:"POST",
             url:"/myzone",
-            data: "action=" + action + "&username="+$("#username").val() +  "&bio="+$("#bio").val() + "&gravatar="+$("#gravatar").val(),
+            data: "action=" + action + "&bio="+$("#bio").val(),
             success:function(msg){
                 info_obj = JSON.parse(msg);
                 load_info(info_obj);
             }
         })
     };
+    // function edit_gravatar_post(action){
+    //     $.ajax({
+    //         type:"POST",
+    //         url:"/",
+    //         data: "action=" + action + "&bio="+$("#gravatar_input").val(),
+    //         success:function(msg){
+    //             info_obj = JSON.parse(msg);
+    //             load_info(info_obj);
+    //         }
+    //     })
+    // };
 
 
     //  获取元素对象
