@@ -22,9 +22,9 @@ def is_login_successful(username, password):
     else:
         return False
 
-def insert_new_user(username, password):
+def insert_new_user(username, password, email):
     collection = db.user
-    result = collection.insert( {"username": username, "password": password} )
+    result = collection.insert( {"username": username, "password": password, "email": email, "gravatar": "../static/images/gravatar/default.jpg","bio":"To lazy to write anything."} )
     return result
 
 def is_valid_invite_code(invite_code):
