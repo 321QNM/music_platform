@@ -292,7 +292,7 @@ $(document).ready(function(){
     }
 
 
-    $('.editBt').click(function(){
+    $('.myzone_gravatar').click(function(){
         showDialog();
         document.getElementById('username').value = list_obj.username;
         document.getElementById('bio').value = list_obj.bio;
