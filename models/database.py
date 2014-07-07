@@ -150,6 +150,10 @@ def delete_music_form_habit_coll(kind, username_id, like_music_id):
     collection = db[kind]
     collection.remove({"username_id":username_id,"music_id": like_music_id})
 
+def get_user_detail(username_id):
+    collection = db.user
+    return collection.find_one({"_id":username_id}, {"username": 1, "bio":1, "gravatar":1,"_id": 0})
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
