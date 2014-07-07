@@ -20,17 +20,22 @@
         </div>
         <div class="ui-dialog-content">
             <CENTER>
-            <form class="navbar-form"  name="form" role="form">
-                <h5>个性签名：</h5>
-                <input class="form-control myzone_form" id="bio" name="bio" type="text" autofocus="" placeholder="Bio"></input>
-                <button class="ui-dialog-submit btn btn-lg btn-primary btn-block" id="bio_submit">
-                    提交
-                </button>
-            </form>
-            <form action="/upload" enctype="multipart/form-data" method="post">
-                <input name="myfile" type="file">
-                <input type="submit" value="Submit">
-            </form>
+            <div class="edit">
+                <form class="navbar-form"  name="form" role="form">
+                    <h5>个性签名：</h5>
+                    <input class="myzone_form" id="bio" name="bio" type="text" autofocus="" placeholder="Bio"></input>
+                    <button class="ui-dialog-submit btn btn-lg btn-primary btn-block" id="bio_submit">
+                        提交
+                    </button>
+                </form>
+            </div>
+            <div class="edit">
+                <form class="myzone_form"  id="gravatar_form" action="/upload" enctype="multipart/form-data" method="post">
+                    <h5>上传头像:</h5>
+                    <input id="gravatar_input" name="myfile" type="file">
+                    <input class="ui-dialog-submit btn btn-lg btn-primary btn-block" id="gravatar_Bt" type="submit" value="Submit">
+                </form>
+            </div>
 
             </CENTER>
         </div>

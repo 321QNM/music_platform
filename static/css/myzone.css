@@ -82,6 +82,28 @@ h3{
     width: 470px;
     display: inline-block;
 }
+.edit{
+    border: 1px solid;
+    margin: 5px;
+    text-align: left;
+}
+.myzone_form{
+    width: 300px;
+    height: 30px;
+}
+#gravatar_form{
+    width: 350px;
+    margin-top: 40px;
+    height: 100px;
+    margin-left: 15px;
+}
+#gravatar_input{
+    width: 350px;
+    height: 20px;
+}
+#gravatar_Bt{
+    width: 200px;
+}
 .span7{
     margin-left: 50px;
 }
