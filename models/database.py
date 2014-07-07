@@ -1,6 +1,7 @@
 #coding=utf-8
 import re
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 client = MongoClient('localhost', 27017)
 db = client.musicPlatform
@@ -101,7 +102,7 @@ def db_is_music_liked(username_id, music_id):
     else:
         return "no"
 
-def personal_recommend():
+def get_all_music_list():
     collection = db.music
     data = list(collection.find())
     return data
@@ -163,6 +164,15 @@ def update_bio(username, new_bio):
     collection = db.user
     collection.update({"username": username}, {"$set": {"bio": new_bio}}, upsert=True)
 
+def get_hate_music_list(username_id):
+    collection = db.hate
+    hate_music_list = []
+    for item in list(collection.find({"username_id": username_id})):
+        music_id = ObjectId(item.get('music_id'))
+        one_hate_music = db.music.find_one({"_id": music_id})
+        hate_music_list.append(one_hate_music)
+    return hate_music_list
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
@@ -178,7 +188,8 @@ def main():
     # pass
     # print get_user_id('yxjxx')
     # insert_music_to("like", "fdasdfasfd", "43125421514f")
-    search_liked_music_list("53aaf3e35cd71d25b89d7b27", "like", 0,10)
+    # search_liked_music_list("53aaf3e35cd71d25b89d7b27", "like", 0,10)
+    print get_hate_music_list('53ba83545cd71d0b1aef233d')
 
 if __name__ == '__main__':
     main()

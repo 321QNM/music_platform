@@ -6,11 +6,12 @@ from tornado.escape import json_encode
 # from bson.json_util import dumps
 import random
 from models.database import *
+from models.recommand_alg import personal_recommend
 
 music_id = ''
 
-def generate_new_music():
-    music_list = personal_recommend()
+def generate_new_music(username_id):
+    music_list = personal_recommend(username_id)
     current_music = music_list[ random.randint(0, len(music_list)-1 )]
 
     current_music_id = current_music["_id"]
@@ -46,7 +47,7 @@ class PlayMusicHandler(BaseHandler):
         action = self.get_argument("action", "default")
 
         if action == "refresh":
-            send_music_json = generate_new_music()
+            send_music_json = generate_new_music(username_id)
             send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
 
@@ -59,18 +60,18 @@ class PlayMusicHandler(BaseHandler):
         if action == "hate":
             remove_music_from_like(username_id, music_id)
             insert_music_to(action, username_id, music_id)
-            send_music_json = generate_new_music()
+            send_music_json = generate_new_music(username_id)
             send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
 
 
         if action == "end":
-            send_music_json = generate_new_music()
+            send_music_json = generate_new_music(username_id)
             send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
 
         if action == "next":
             insert_music_to(action, username_id, music_id)
-            send_music_json = generate_new_music()
+            send_music_json = generate_new_music(username_id)
             send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
             self.write(json_encode(send_music_json))
