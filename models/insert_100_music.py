@@ -339,7 +339,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'POP',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion1.jpg',
+        music_picture_url = image_path + '席琳迪翁1.jpg',
     ),
     dict(
         music_name = 'When I Fall In Love',
@@ -349,7 +349,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'POP',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion2.jpg',
+        music_picture_url = image_path + '席琳迪翁2.jpg',
     ),
     dict(
         music_name = 'Show Some Emotion',
@@ -359,7 +359,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'rock',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion3.jpg',
+        music_picture_url = image_path + '席琳迪翁3.jpg',
     ),
     dict(
         music_name = 'The Power Of The Dream',
@@ -369,7 +369,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'POP',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion4.jpg',
+        music_picture_url = image_path + '席琳迪翁4.jpg',
     ),
     dict(
         music_name = 'Beauty And The Beast',
@@ -379,7 +379,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'POP',
         music_mood = 'Airy',
-        music_picture_url = image_path + 'Celine Dion5.jpg',
+        music_picture_url = image_path + '席琳迪翁5.jpg',
     ),
     dict(
         music_name = 'If You Asked Me To',
@@ -389,7 +389,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'POP',
         music_mood = 'Airy',
-        music_picture_url = image_path + 'Celine Dion6.jpg',
+        music_picture_url = image_path + '席琳迪翁6.jpg',
     ),
     dict(
         music_name = 'I Love You Goodbye',
@@ -399,7 +399,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'rock',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion7.jpg',
+        music_picture_url = image_path + '席琳迪翁7.jpg',
     ),
     dict(
         music_name = 'Water From The Moon',
@@ -409,7 +409,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'rock',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion8.jpg',
+        music_picture_url = image_path + '席琳迪翁8.jpg',
     ),
     dict(
         music_name = 'Because You Loved Me ',
@@ -419,7 +419,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'rock',
         music_mood = 'Airy',
-        music_picture_url = image_path + 'Celine Dion9.jpg',
+        music_picture_url = image_path + '席琳迪翁9.jpg',
     ),
     dict(
         music_name = 'If I Were You',
@@ -429,7 +429,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'rock',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion10.jpg',
+        music_picture_url = image_path + '席琳迪翁10.jpg',
     ),
     dict(
         music_name = 'Nothing Broken But My Heart',
@@ -439,7 +439,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'POP',
         music_mood = 'Aggressive',
-        music_picture_url = image_path + 'Celine Dion11.jpg',
+        music_picture_url = image_path + '席琳迪翁11.jpg',
     ),
     dict(
         music_name = 'Love Can Move Mountains',
@@ -449,7 +449,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'rock',
         music_mood = 'Aggressive',
-        music_picture_url = image_path + 'Celine Dion12.jpg',
+        music_picture_url = image_path + '席琳迪翁12.jpg',
     ),
     dict(
         music_name = 'With This Tear',
@@ -459,7 +459,7 @@ music_list = [
         music_zone = 'EU',
         music_style = 'rock',
         music_mood = 'Happy',
-        music_picture_url = image_path + 'Celine Dion13.jpg',
+        music_picture_url = image_path + '席琳迪翁13.jpg',
     ),
     dict(
         music_name = 'Mr.Mr.',
