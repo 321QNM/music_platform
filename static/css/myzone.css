@@ -108,11 +108,11 @@ h3{
 }
 .page span {
     position:relative;
-    margin:2px 3px;
+    margin:2px 4px;
     border:solid 1px#ccc;
 }
 .page span a {
-    padding:5px 3px;
+    padding:5px 5px;
     cursor:pointer;
 }
 .page span i {
