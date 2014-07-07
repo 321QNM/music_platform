@@ -99,61 +99,61 @@ $(document).ready(function(){
     // 换页效果
     $('#like_a1').click(function(){
         like_pagenum = 1;
-        like_list_post("like_page_change",0,like_pagenum*10);
+        like_list_post("page_change","like",0,like_pagenum*10);
         $('#like_a1').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_like_pageNum(like_pagenum);
     });
     $('#like_a2').click(function(){
         like_pagenum = 2;
-        like_list_post("like_page_change",(like_pagenum-1)*10,like_pagenum*10);
+        like_list_post("page_change","like",(like_pagenum-1)*10,like_pagenum*10);
         $('#like_a2').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_like_pageNum(like_pagenum);
     });
     $('#like_a3').click(function(){
         like_pagenum = 3;
-        like_list_post("like_page_change",(like_pagenum-1)*10,like_pagenum*10);
+        like_list_post("page_change","like",(like_pagenum-1)*10,like_pagenum*10);
         $('#like_a3').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_like_pageNum(like_pagenum);
     });
     $('#like_a4').click(function(){
         like_pagenum = 4;
-        like_list_post("like_page_change",(like_pagenum-1)*10,like_pagenum*10);
+        like_list_post("page_change","like",(like_pagenum-1)*10,like_pagenum*10);
         $('#like_a2').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_like_pageNum(like_pagenum);
     });
     $('#like_a5').click(function(){
         like_pagenum = 5;
-        like_list_post("like_page_change",(like_pagenum-1)*10,like_pagenum*10);
+        like_list_post("page_change","like",(like_pagenum-1)*10,like_pagenum*10);
         $('#like_a2').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_like_pageNum(like_pagenum);
     });
     $('#hate_a1').click(function(){
         hate_pagenum = 1;
-        hate_list_post("hate_page_change",0,hate_pagenum*10);
+        hate_list_post("page_change","hate",0,hate_pagenum*10);
         $('#hate_a1').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_hate_pageNum(hate_pagenum);
     });
     $('#hate_a2').click(function(){
         hate_pagenum = 2;
-        hate_list_post("hate_page_change",(hate_pagenum-1)*10,hate_pagenum*10);
+        hate_list_post("page_change","hate",(hate_pagenum-1)*10,hate_pagenum*10);
         $('#hate_a2').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_hate_pageNum(hate_pagenum);
     });
     $('#hate_a3').click(function(){
         hate_pagenum = 3;
-        hate_list_post("hate_page_change",(hate_pagenum-1)*10,hate_pagenum*10);
+        hate_list_post("page_change","hate",(hate_pagenum-1)*10,hate_pagenum*10);
         $('#hate_a3').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_hate_pageNum(hate_pagenum);
     });
     $('#hate_a4').click(function(){
         hate_pagenum = 4;
-        hate_list_post("hate_page_change",(hate_pagenum-1)*10,hate_pagenum*10);
+        hate_list_post("page_change","hate",(hate_pagenum-1)*10,hate_pagenum*10);
         $('#hate_a2').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_hate_pageNum(hate_pagenum);
     });
     $('#hate_a5').click(function(){
         hate_pagenum = 5;
-        hate_list_post("hate_page_change",(hate_pagenum-1)*10,hate_pagenum*10);
+        hate_list_post("page_change","hate",(hate_pagenum-1)*10,hate_pagenum*10);
         $('#hate_a2').siblings('i').addClass('active_i').parent().siblings().find('i').removeClass('active_i');
         update_hate_pageNum(hate_pagenum);
     });
