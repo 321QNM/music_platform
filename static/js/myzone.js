@@ -235,9 +235,16 @@ $(document).ready(function(){
             alert("请先选中要操作的歌曲");
         }
         else{
-            like_delete_post("delete", "like", like_musicid, (pagenum-1)*10,pagenum*10);
+            like_delete_firm();
         }
     })
+    function like_delete_firm()
+    {//利用对话框返回的值 （true 或者 false）
+        if(confirm("确认删除？"))
+        {//如果是true
+            like_delete_post("delete", "like", like_musicid, (pagenum-1)*10,pagenum*10);
+        }
+    }
     function like_delete_post(action, kind, like_musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
@@ -255,9 +262,16 @@ $(document).ready(function(){
             alert("请先选中要操作的歌曲");
         }
         else{
-            hate_delete_post("delete", "hate", hate_musicid, (pagenum-1)*10,pagenum*10);
+            hate_delete_firm();
         }
     })
+    function hate_delete_firm()
+    {//利用对话框返回的值 （true 或者 false）
+        if(confirm("确认删除？"))
+        {//如果是true
+            hate_delete_post("delete", "hate", hate_musicid, (pagenum-1)*10,pagenum*10);
+        }
+    }
     function delete_delete_post(action, kind, hate_musicid, begin_num, end_num){
         $.ajax({
             type:"POST",
