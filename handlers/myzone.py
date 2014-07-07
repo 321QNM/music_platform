@@ -51,7 +51,8 @@ class MyZoneHandler(BaseHandler):
             self.write( json_encode(to_send_habit_music_list) )
 
         if action == "refresh" and kind == "info":
-            pass
+            to_send_user_info = get_user_detail(ObjectId(username_id))
+            self.write( json_encode(to_send_user_info) )
 
         if action == "delete" and kind == "like":
             like_music_id = self.get_argument("like_musicid", "default")
