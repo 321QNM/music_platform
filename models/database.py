@@ -159,6 +159,10 @@ def update_gravatar(username, gravatar):
     collection = db.user
     collection.update({"username":username}, {"$set": {"gravatar": gravatar}}, upsert=True)
 
+def update_bio(username, new_bio):
+    collection = db.user
+    collection.update({"username": username}, {"$set": {"bio": new_bio}}, upsert=True)
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
