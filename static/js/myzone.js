@@ -51,7 +51,7 @@ $(document).ready(function(){
         }
     };
 
-    // info_post("refresh","info")
+    info_post("refresh","info")
     function info_post(action, kind){
         $.ajax({
             type:"POST",
@@ -64,9 +64,9 @@ $(document).ready(function(){
         })
     }
     function load_info(info_obj){
-        $('#name').html(info_obj[0].username);
-        $('#ignature').html(info_obj[0].bio);
-        $('#user_image').html('<img class="user_image" src="'+ info_obj[0].gravatar +'">');
+        $('#name').html(info_obj.username);
+        $('#ignature').html(info_obj.bio);
+        $('#user_image').html('<img class="user_image" src="'+ info_obj.gravatar +'">');
     }
 
     // 设置足迹
