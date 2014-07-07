@@ -294,7 +294,6 @@ $(document).ready(function(){
 
     $('#myzone_gravatar').click(function(){
         showDialog();
-        document.getElementById('username').value = info_obj.username;
         document.getElementById('bio').value = info_obj.bio;
         document.getElementById('gravatar').value = info_obj.gravatar;
     })
