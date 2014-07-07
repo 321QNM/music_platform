@@ -235,7 +235,7 @@ $(document).ready(function(){
             alert("请先选中要操作的歌曲");
         }
         else{
-            like_delete_post("delete", "like", like_musicid, (pagenum-1)*10,pagenum*10);
+            like_delete_post("delete", "like", like_musicid, (like_pagenum-1)*10,like_pagenum*10);
         }
     })
     function like_delete_post(action, kind, like_musicid, begin_num, end_num){
@@ -255,7 +255,7 @@ $(document).ready(function(){
             alert("请先选中要操作的歌曲");
         }
         else{
-            hate_delete_post("delete", "hate", hate_musicid, (pagenum-1)*10,pagenum*10);
+            hate_delete_post("delete", "hate", hate_musicid, (hate_pagenum-1)*10,hate_pagenum*10);
         }
     })
     function delete_delete_post(action, kind, hate_musicid, begin_num, end_num){
