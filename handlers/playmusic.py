@@ -58,6 +58,7 @@ class PlayMusicHandler(BaseHandler):
             remove_music_from_like(username_id, music_id)
 
         if action == "hate":
+            remove_music_from_like(username_id, music_id)
             insert_music_to(action, username_id, music_id)
             send_music_json = generate_new_music()
             send_music_json['is_music_liked'] = db_is_music_liked(username_id, music_id)
