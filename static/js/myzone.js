@@ -64,9 +64,9 @@ $(document).ready(function(){
         })
     }
     function load_info(info_obj){
-        $('#name').html(info_obj.username);
-        $('#ignature').html(info_obj.bio);
-        $('#user_image').html('<img class="user_image" src="'+ info_obj.gravatar +'">');
+        $('#myzone_username').html(info_obj.username);
+        $('#myzone_bio').html(info_obj.bio);
+        $('#myzone_gravatar').html('<img class="user_image" src="'+ info_obj.gravatar +'">');
     }
 
     // 设置足迹
@@ -294,9 +294,9 @@ $(document).ready(function(){
 
     $('.editBt').click(function(){
         showDialog();
-        document.getElementById('nickname').value = list_obj[temp].music_name;
-        document.getElementById('individuality_signature').value = list_obj[temp].music_artist;
-        document.getElementById('myzone_picture_url').value = list_obj[temp].music_style;
+        document.getElementById('username').value = list_obj.username;
+        document.getElementById('bio').value = list_obj.bio;
+        document.getElementById('gravatar').value = list_obj.gravatar;
     })
     $('.ui-dialog-title-closebutton').click(function(){
         hideDialog();
@@ -310,7 +310,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url:"/myzone",
-            data: "action=" + action + "&nickname="+$("#nickname").val() +  "&individuality_signature="+$("#individuality_signature").val() + "&myzone_picture_url="+$("#myzone_picture_url").val(),
+            data: "action=" + action + "&username="+$("#username").val() +  "&bio="+$("#bio").val() + "&gravatar="+$("#gravatar").val(),
             success:function(msg){
                 info_obj = JSON.parse(msg);
                 load_info(info_obj);
