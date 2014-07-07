@@ -138,7 +138,6 @@ def admin_search_music_form_db(keyword, begin_num, end_num):
     return search_result
 
 def search_habit_music_list(username_id, kind, begin_num, end_num):
-    print kind
     collection = db[kind]
     habit_music_list = list(collection.find({"username_id": username_id}).limit(end_num-begin_num).skip(begin_num))
     return habit_music_list
@@ -146,6 +145,10 @@ def search_habit_music_list(username_id, kind, begin_num, end_num):
 def search_music_detail(music_id):
     collection = db.music
     return collection.find_one({"_id":music_id}, {"music_name": 1, "music_artist": 1})
+
+def delete_music_form_habit_coll(kind, username_id, like_music_id):
+    collection = db[kind]
+    collection.remove({"username_id":username_id,"music_id": like_music_id})
 
 
 def main():
