@@ -26,7 +26,32 @@ def is_login_successful(username, password):
 def insert_new_user(username, password, email):
     collection = db.user
     result = collection.insert( {"username": username, "password": password, "email": email, "gravatar": "../static/images/gravatar/default.jpg","bio":"To lazy to write anything."} )
+    init_personal_user_coll(username)
     return result
+
+def init_personal_user_coll(username):
+    collection = db.mathmodel
+    collection.insert(
+        {
+            "username": username,
+            "music_artist" :{
+                "周杰伦": 100,
+                "陈奕迅": 100,
+            },
+            "music_zone":{
+                "TW": 100,
+                "HK": 100,
+            },
+            "music_style":{
+                "POP": 100,
+                "rock": 100,
+            },
+            "music_mood":{
+                "Happy":100,
+                "Sad": 100,
+            }
+        }
+    )
 
 def is_valid_invite_code(invite_code):
     collection = db.invitecode
@@ -189,7 +214,8 @@ def main():
     # print get_user_id('yxjxx')
     # insert_music_to("like", "fdasdfasfd", "43125421514f")
     # search_liked_music_list("53aaf3e35cd71d25b89d7b27", "like", 0,10)
-    print get_hate_music_list('53ba83545cd71d0b1aef233d')
+    # print get_hate_music_list('53ba83545cd71d0b1aef233d')
+    init_personal_user_coll('yxj')
 
 if __name__ == '__main__':
     main()
