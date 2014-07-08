@@ -12,18 +12,22 @@ class SignupHandler(BaseHandler):
         self.render('signup.html')
 
     def post(self):
+        action = self.get_argument("action", "default")
         email = self.get_argument("email", "default")
         username = self.get_argument("username", "default")
         password = self.get_argument("password", "default")
         invite_code = self.get_argument("invitecode", "default")
 
-        if username != "default" and email == "default" and password == "default" and invite_code == "default":
+        if action == "is_username_existed":
             if is_username_existed(username):
                 self.write("existed")
-        if invite_code != "default" and email == "default" and password == "default" and username == "default":
+
+        if action == "is_invitecode_existed":
             if not is_valid_invite_code(invite_code):
                 self.write("is_not_valid_invite_code")
-        if username != "default" and email != "default" and password != "default" and invite_code != "default":
+
+        if username != "default":
+            print "ok"
             if not is_username_existed(username) and is_valid_invite_code(invite_code):
                 insert_new_user(username, password, email)
                 if invite_code != "welcome7":
