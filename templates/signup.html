@@ -48,24 +48,15 @@
             $("#invitecode").blur(function(){//邀请码输入完毕
                 i_warning();
             });
-
-            // $("#submit").click(function(){//点击提交按钮
-            //     if (document.form.password1.value==document.form.password2.value) {
-            //         postdata();
-            //     }
-            //     // return false;
-            // });
         });
 
         function u_warning(){
-            $.ajax({// 调用jquery的ajax方法
-                type:"POST",// 设置ajax方法提交数据的形式
-                url:"/signup",// 把数据提交到/signup"
-                data: "username="+$("#username").val(),
-                // alert("already post");#post表单要全是键值対,不能有其它语句
-                success:function(msg1){// 提交成功后的回调
+            $.ajax({
+                type:"POST",
+                url:"/signup",
+                data: "username="+$("#username").val() + "&action=" + "is_username_existed",
+                success:function(msg1){
                     if (msg1=="existed") {
-                        // alert("recieve");
                         $("#msg1").text("（该用户已存在！）");
                         $("#submit").attr("disabled","true");//用户名已存在则不能提交
                     }else{
@@ -82,7 +73,7 @@
             $.ajax({// 调用jquery的ajax方法
                 type:"POST",// 设置ajax方法提交数据的形式
                 url:"/signup",// 把数据提交到/signup"
-                data: "invitecode="+$("#invitecode").val(),
+                data: "invitecode="+$("#invitecode").val() + "&action=" + "is_invitecode_existed",
                 success:function(msg3){// 提交成功后的回调
                     // alert(msg3);
                     if (msg3=="is_not_valid_invite_code") {
@@ -96,17 +87,6 @@
                 }
             });
         }
-        function postdata(){// 提交数据函数
-            $.ajax({// 调用jquery的ajax方法
-            type:"POST",// 设置ajax方法提交数据的形式
-            url:"/signup",// 把数据提交到/signup
-            data: "username="+$("#username").val()+"&password="+$("#password1").val()+"&email="+$("#email").val()+"&invitecode="+$("#invitecode").val(),
-            success:function(msg4){// 提交成功后的回调
-                    // alert(msg4);
-                }
-            });
-        }
-
 
         //刷新切换背景
         bg = new Array(3);
