@@ -6,6 +6,13 @@ from bson.objectid import ObjectId
 client = MongoClient('localhost', 27017)
 db = client.musicPlatform
 
+def simp_personal_recommend(username_id):
+    all_music_list = get_all_music_list()
+    hate_music_list = get_hate_music_list(username_id)
+    personal_music_list = [x for x in all_music_list if x not in hate_music_list]
+    return personal_music_list
+
+
 def personal_recommend(username_id):
     username = get_user_detail(ObjectId(username_id)).get('username')
 
@@ -26,7 +33,7 @@ def personal_recommend(username_id):
 
     for(the_zone, score) in user_habit.get('music_zone').items():
         the_zone = "music_zone." + the_zone
-        db.mathmodel.update({"username":username}, {"$set": {the_zone: 98}})
+        db.mathmodel.update({"username":username}, {"$set": {the_zone: 100}})
 
     #遍历like表,为每一首歌中music_style, music_artist,music_zone,music_mood +2
     for music in get_like_music_list(username_id):
@@ -40,7 +47,6 @@ def personal_recommend(username_id):
         the_zone = "music_zone." + music_zone
 
         user_habit = db.mathmodel.find_one({"username":username})
-        print user_habit
         if user_habit.get('music_artist').get(music_artist):
             db.mathmodel.update({"username":username}, {"$inc": {the_artist: 2}})
         else:

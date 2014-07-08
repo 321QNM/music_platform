@@ -7,10 +7,12 @@ from tornado.escape import json_encode
 import random
 from models.database import *
 from models.recommand_alg import personal_recommend
+from models.recommand_alg import simp_personal_recommend
 
 music_id = ''
 
 def generate_new_music(username_id):
+    # music_list = simp_personal_recommend(username_id)
     music_list = personal_recommend(username_id)
     current_music = music_list[ random.randint(0, len(music_list)-1 )]
 
