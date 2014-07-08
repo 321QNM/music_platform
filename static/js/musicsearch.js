@@ -130,7 +130,7 @@ $(document).ready(function(){
         }
     });
     $('#jump').click(function(){
-        pagenum = $('#pageNum').val();
+        pagenum = parseInt( $('#pageNum').val(), 10);
         ajax_post("page_change",(pagenum-1)*13,pagenum*13);
         updatepageNum(pagenum);
     });

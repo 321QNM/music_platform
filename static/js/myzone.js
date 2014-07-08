@@ -220,12 +220,12 @@ $(document).ready(function(){
         }
     });
     $('#like_jump').click(function(){
-        like_pagenum = $('#like_pageNum').val();
+        like_pagenum = parseInt( $('#like_pageNum').val(), 10);
         like_list_post("page_change","like",(like_pagenum-1)*10,like_pagenum*10);
         update_like_pageNum(like_pagenum);
     });
     $('#hate_jump').click(function(){
-        hate_pagenum = $('#hate_pageNum').val();
+        hate_pagenum = parseInt( $('#hate_pageNum').val(), 10);
         hate_list_post("page_change","hate",(hate_pagenum-1)*10,hate_pagenum*10);
         update_hate_pageNum(hate_pagenum);
     });
