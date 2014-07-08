@@ -66,7 +66,7 @@ $(document).ready(function(){
     function load_info(info_obj){
         $('#myzone_username').html(info_obj.username);
         $('#myzone_bio').html(info_obj.bio);
-        $('#myzone_gravatar').html('<img class="user_image" src="{{ static_url("'+ info_obj.gravatar +'")">');
+        $('#myzone_gravatar').html('<img class="user_image" src="{{ static_url("'+ info_obj.gravatar +'")}}">');
     }
 
     // 设置足迹
