@@ -1,10 +1,92 @@
+<!DOCTYPE HTML>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="refresh" content="2;URL=http://localhost:8000{{ error_msg }}"></pre>
     <link href="{{ static_url('images/flower_fm.ico') }}" rel="shortcut icon"></link>
 
+    <style type="text/css">
+        body{
+            background:url(../images/bg.jpg) ;
+        }
+        .wrap{
+            margin:0 auto;
+            width:1000px;
+        }
+        .title{
+            margin-bottom: 40px;
+        }
+        .title h1{
+            font-size:100px;
+            color:yellow;
+            text-align:center;
+            margin-top:100px;
+            text-shadow:6px 1px 6px #333;
+            font-family: 'Fjalla One', sans-serif;
+        }
+        .title h2{
+            font-size:60px;
+            color:yellow;
+            text-align:center;
+            margin-bottom:1px;
+            text-shadow:6px 1px 6px #333;
+            font-family: 'Fjalla One', sans-serif;
+            margin-top: -20px;
+        }
+        .gray {
+            margin-bottom: 20px;
+            background: rgba(12, 52, 77, 0.34);
+            text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -o-border-radius: 4px;
+            color:yellow;
+            text-decoration:none;
+            padding:30px 30px;
+            font-size: 20px;
+            font-weight:bold;
+            font-family: 'Fjalla One', sans-serif;
+            text-align: center;
+        }
+        .ag-3d_button.orange {
+            box-shadow: rgba(155, 142, 50, 0.98) 0 3px 0px, rgba(0, 0, 0, 0.3) 0 3px 3px;
+        }
+        .ag-3d_button {
+            vertical-align: top;
+            border-radius: 4px;
+            border: none;
+            padding: 10px 25px 12px;
+        }
+        .orange {
+            background: #fdde02;
+            background: -moz-linear-gradient(top,  #fdde02 0%, #dec829 99%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdde02), color-stop(99%,#dec829));
+            background: -webkit-linear-gradient(top,  #fdde02 0%,#dec829 99%);
+            background: -o-linear-gradient(top,  #fdde02 0%,#dec829 99%);
+            background: -ms-linear-gradient(top,  #fdde02 0%,#dec829 99%);
+            background: linear-gradient(to bottom,  #fdde02 0%,#dec829 99%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdde02', endColorstr='#dec829',GradientType=0 );
+            color:#fff;
+            text-shadow:1px 1px 3px rgba(155, 142, 50, 0.98);
+            border: 1px solid rgba(155, 142, 50, 0.98);
+            text-decoration: none;
+        }
+
+    </style>
 </head>
 <body>
-<p>password error!! going back to {{ error_msg }}</p>
+<div class="wrap">
+       <div class="title">
+             <h1>Error!</h1>
+             <h2> That's nothing here!</h2>
+      </div>
+    </div>
+    <div class="wrap">
+        <div class="gray">
+            <a href="{{ error_msg }}" class="ag-3d_button orange">Go Back</a>
+         </div>
+   </div>
+<!-- <p>password error!! going back to {{ error_msg }}</p> -->
 </body>
 </html>
