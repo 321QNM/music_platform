@@ -156,7 +156,7 @@ $(document).ready(function(){
         {//如果是true
             delete_post("delete", musicid, (pagenum-1)*13,pagenum*13);
             musicid = -1;
-            ('tr').removeClass('active_tr');
+            $('tr').removeClass('active_tr');
         }
     }
 
