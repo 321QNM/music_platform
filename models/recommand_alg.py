@@ -154,6 +154,11 @@ def personal_recommend(username_id):
         if score >= 80:
             zone_list.append(the_zone)
 
+    # print artist_list
+    # print style_list
+    # print mood_list
+    # print zone_list
+
     #至此生成了4个list,最终的歌曲满足被上面的4个list包含,同时不在讨厌列表
 
 
@@ -165,6 +170,9 @@ def personal_recommend(username_id):
     for music in music_list_without_hate:
         if music.get('music_artist') in artist_list and music.get('music_style') in style_list and music.get('music_mood') in mood_list and music.get('music_zone') in zone_list:
             personal_music_list.append(music)
+
+    # print personal_music_list
+    print len(personal_music_list)
 
     return personal_music_list
 
