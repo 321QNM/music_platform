@@ -15,7 +15,7 @@ class SignupHandler(BaseHandler):
         action = self.get_argument("action", "default")
         email = self.get_argument("email", "default")
         username = self.get_argument("username", "default")
-        password = self.get_argument("password", "default")
+        password = self.get_argument("password1", "default")
         invite_code = self.get_argument("invitecode", "default")
 
         if action == "is_username_existed":
@@ -27,7 +27,6 @@ class SignupHandler(BaseHandler):
                 self.write("is_not_valid_invite_code")
 
         if username != "default":
-            print "ok"
             if not is_username_existed(username) and is_valid_invite_code(invite_code):
                 insert_new_user(username, password, email)
                 if invite_code != "welcome7":
