@@ -4,6 +4,7 @@ from handlers.base import BaseHandler
 from models.database import *
 from tornado.escape import json_encode
 from bson.objectid import ObjectId
+import random
 
 def generate_habit_music_list(username_id, kind, begin_num, end_num):
     habit_music_list = search_habit_music_list(username_id, kind, begin_num, end_num)
@@ -17,6 +18,15 @@ def generate_habit_music_list(username_id, kind, begin_num, end_num):
         }
         to_send_liked_music_list.append(one_music)
     return to_send_liked_music_list
+
+def get_user_info(username_id):
+    user_detail = get_user_detail(ObjectId(username_id))
+    to_send_user_info = {
+        "username": user_detail.get('username'),
+        "bio": user_detail.get('bio'),
+        "gravatar": user_detail.get('gravatar') + '?v=' + str(random.randint(0, 10000))
+    }
+    return to_send_user_info
 
 class MyZoneHandler(BaseHandler):
     def get(self):
@@ -51,7 +61,7 @@ class MyZoneHandler(BaseHandler):
             self.write( json_encode(to_send_habit_music_list) )
 
         if action == "refresh" and kind == "info":
-            to_send_user_info = get_user_detail(ObjectId(username_id))
+            to_send_user_info = get_user_info(username_id)
             self.write( json_encode(to_send_user_info) )
 
         if action == "delete" and kind == "like":
@@ -69,7 +79,7 @@ class MyZoneHandler(BaseHandler):
         if action == "edit_bio":
             new_bio = self.get_argument("bio", "default")
             update_bio(username, new_bio)
-            to_send_user_info = get_user_detail(ObjectId(username_id))
+            to_send_user_info = get_user_info(username_id)
             self.write( json_encode(to_send_user_info) )
 
 

@@ -10,7 +10,6 @@ class UploadImageHandler(BaseHandler):
         image_name = '/Users/yxj/github_repos/music_platform/static/images/gravatar/'+ username + '.jpg'
         path_list = image_name.split('/')
         gravatar = '../' + path_list[5] +'/' + path_list[6] +'/' + path_list[7] +'/' + path_list[8]
-        print gravatar
         if self.request.files:
             myfile = self.request.files['myfile'][0]
             fin = open(image_name,"wb")
