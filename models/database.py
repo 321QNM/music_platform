@@ -198,6 +198,26 @@ def get_hate_music_list(username_id):
         hate_music_list.append(one_hate_music)
     return hate_music_list
 
+def get_like_music_list(username_id):
+    collection = db.like
+    like_music_list = []
+    for item in list(collection.find({"username_id": username_id})):
+        music_id = ObjectId(item.get('music_id'))
+        one_like_music = db.music.find_one({"_id": music_id})
+        like_music_list.append(one_like_music)
+    return like_music_list
+
+def get_next_music_list(username_id):
+    collection = db.next
+    next_music_list = []
+    for item in list(collection.find({"username_id": username_id})):
+        music_id = ObjectId(item.get('music_id'))
+        one_next_music = db.music.find_one({"_id": music_id})
+        next_music_list.append(one_next_music)
+    return next_music_list
+
+
+
 
 def main():
     #如果单独执行此文件,会复原邀请码collection
