@@ -1,4 +1,4 @@
-f = open('music_origin_info.py','a')
+f = open('music_300_info.py','a')
 
 f.write("#codeing=utf-8\n")
 f.write("music_list = [\n")
@@ -11,6 +11,7 @@ for i in range(1,101):
     f.write("        music_zone = '',\n")
     f.write("        music_style = '',\n")
     f.write("        music_mood = ''\n")
+    f.write("        music_picture_url = ''\n")
     f.write("    ),\n")
 f.write("]")
 
