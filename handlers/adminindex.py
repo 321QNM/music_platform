@@ -39,7 +39,6 @@ def generate_musics_table(begin_num, end_num):
 
 
 class AdminIndexHandler(AdminBaseHandler):
-    @tornado.web.authenticated
     def get(self):
         if not self.get_current_user():
             self.redirect(self.get_argument('next', '/adminlogin'))
