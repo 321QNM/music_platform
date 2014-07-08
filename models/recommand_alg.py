@@ -9,6 +9,25 @@ db = client.musicPlatform
 def personal_recommend(username_id):
     username = get_user_detail(ObjectId(username_id)).get('username')
 
+    #每次遍历三个表之前先把所有的数值设为100
+    user_habit = db.mathmodel.find_one({"username":username})
+
+    for (the_artist, score) in user_habit.get('music_artist').items():
+        the_artist = "music_artist." + the_artist
+        db.mathmodel.update({"username":username}, {"$set": {the_artist: 100}})
+
+    for(the_style, score) in user_habit.get('music_style').items():
+        the_style = "music_style." + the_style
+        db.mathmodel.update({"username":username}, {"$set": {the_style: 100}})
+
+    for(the_mood, score) in user_habit.get('music_mood').items():
+        the_mood = "music_mood." + the_mood
+        db.mathmodel.update({"username":username}, {"$set": {the_mood: 100}})
+
+    for(the_zone, score) in user_habit.get('music_zone').items():
+        the_zone = "music_zone." + the_zone
+        db.mathmodel.update({"username":username}, {"$set": {the_zone: 98}})
+
     #遍历like表,为每一首歌中music_style, music_artist,music_zone,music_mood +2
     for music in get_like_music_list(username_id):
         music_artist = music.get('music_artist')
