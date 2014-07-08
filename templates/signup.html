@@ -49,12 +49,12 @@
                 i_warning();
             });
 
-            $("#submit").click(function(){//点击提交按钮
-                if (document.form.password1.value==document.form.password2.value) {
-                    postdata();
-                }
-                // return false;
-            });
+            // $("#submit").click(function(){//点击提交按钮
+            //     if (document.form.password1.value==document.form.password2.value) {
+            //         postdata();
+            //     }
+            //     // return false;
+            // });
         });
 
         function u_warning(){
@@ -122,7 +122,7 @@
 
     <body>
         <div class="container">
-            <form class="form-signup"  name="form" role="form">
+            <form class="form-signup"  name="form" role="form" action="/signup" method="POST">
             {% raw xsrf_form_html() %}
                 <h2 class="form-signup-heading">
                 Please Sign Up
