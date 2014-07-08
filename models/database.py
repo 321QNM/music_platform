@@ -159,6 +159,7 @@ def admin_search_music_form_db(keyword, begin_num, end_num):
             {"music_mood": keyword_reg},
             {"music_zone": keyword_reg},
             {"music_style": keyword_reg},
+            {"music_publish_date": keyword_reg}
             ]
         }
     ).limit(end_num-begin_num).skip(begin_num))
