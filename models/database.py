@@ -208,7 +208,7 @@ def get_like_music_list(username_id):
     return like_music_list
 
 def get_next_music_list(username_id):
-    collection = db.next
+    collection = db['next']
     next_music_list = []
     for item in list(collection.find({"username_id": username_id})):
         music_id = ObjectId(item.get('music_id'))
