@@ -25,7 +25,7 @@ def personal_recommend(username_id):
     for the_music in all_music_list:
         if type(the_music) == type(dict()):
             if the_music.get('music_artist') not in all_artist_list:
-                all_music_list.append(the_music.get('music_artist'))
+                all_artist_list.append(the_music.get('music_artist'))
             if the_music.get('music_style') not in all_style_list:
                 all_style_list.append(the_music.get('music_style'))
             if the_music.get('music_mood') not in all_mood_list:
