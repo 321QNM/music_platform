@@ -16,3 +16,4 @@ MANIFEST
 secrets.cfg
 static/music/*
 static/images/music_pictures/*
+static/images/gravatar/*
