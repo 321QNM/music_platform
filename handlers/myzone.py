@@ -11,12 +11,14 @@ def generate_habit_music_list(username_id, kind, begin_num, end_num):
     to_send_liked_music_list =[]
     for music in habit_music_list:
         music_with_detail = search_music_detail( ObjectId(music['music_id']) )
-        one_music = {
-            "music_id": str(music_with_detail.get('_id')),
-            "music_name": music_with_detail.get('music_name'),
-            "music_artist": music_with_detail.get('music_artist'),
-        }
-        to_send_liked_music_list.append(one_music)
+        # print music_with_detail
+        if music_with_detail:
+            one_music = {
+                "music_id": str(music_with_detail.get('_id')),
+                "music_name": music_with_detail.get('music_name'),
+                "music_artist": music_with_detail.get('music_artist'),
+            }
+            to_send_liked_music_list.append(one_music)
     return to_send_liked_music_list
 
 def get_user_info(username_id):
