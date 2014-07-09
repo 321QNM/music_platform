@@ -16,24 +16,40 @@ def simp_personal_recommend(username_id):
 def personal_recommend(username_id):
     username = get_user_detail(ObjectId(username_id)).get('username')
 
-    #每次遍历三个表之前先把所有的数值设为100
-    user_habit = db.mathmodel.find_one({"username":username})
+    #遍历all_music_list, 获取all_artist_list等4个list
+    all_artist_list = []
+    all_style_list = []
+    all_mood_list = []
+    all_zone_list = []
+    all_music_list = get_all_music_list()
+    for the_music in all_music_list:
+        if type(the_music) == type(dict()):
+            if the_music.get('music_artist') not in all_artist_list:
+                all_music_list.append(the_music.get('music_artist'))
+            if the_music.get('music_style') not in all_style_list:
+                all_style_list.append(the_music.get('music_style'))
+            if the_music.get('music_mood') not in all_mood_list:
+                all_mood_list.append(the_music.get('music_mood'))
+            if the_music.get('music_zone') not in all_zone_list:
+                all_zone_list.append(the_music.get('music_zone'))
 
-    for (the_artist, score) in user_habit.get('music_artist').items():
+    #每次遍历三个表之前先把所有的数值设为100
+    for the_artist in all_artist_list:
         the_artist = "music_artist." + the_artist
         db.mathmodel.update({"username":username}, {"$set": {the_artist: 100}})
 
-    for(the_style, score) in user_habit.get('music_style').items():
+    for the_style in all_style_list:
         the_style = "music_style." + the_style
         db.mathmodel.update({"username":username}, {"$set": {the_style: 100}})
 
-    for(the_mood, score) in user_habit.get('music_mood').items():
+    for the_mood in all_mood_list:
         the_mood = "music_mood." + the_mood
         db.mathmodel.update({"username":username}, {"$set": {the_mood: 100}})
 
-    for(the_zone, score) in user_habit.get('music_zone').items():
+    for the_zone in all_zone_list:
         the_zone = "music_zone." + the_zone
         db.mathmodel.update({"username":username}, {"$set": {the_zone: 100}})
+
 
     #遍历like表,为每一首歌中music_style, music_artist,music_zone,music_mood +2
     for music in get_like_music_list(username_id):
