@@ -13,8 +13,9 @@ SETTINGS = dict(
 CONSTANT = dict(
     init_score = 100,
     like_increase_score = 2,
-    hate_decrease_score = 2,
-    next_decrease_score = 1,
+    hate_decrease_score = -2,
+    next_decrease_score = -1,
+    new_user_wait_songs_num = 10,
 )
 
 if __name__ == '__main__':

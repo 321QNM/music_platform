@@ -8,11 +8,12 @@ import random
 from models.database import *
 from models.recommand_alg import personal_recommend
 from models.recommand_alg import simp_personal_recommend
+from config import CONSTANT
 
 music_id = ''
 
 def generate_new_music(username_id):
-    if len(get_hate_music_list(username_id)) <= 20 or len(get_like_music_list(username_id)) <= 20 or len(get_next_music_list(username_id)) <= 10:
+    if len(get_hate_music_list(username_id)) <= CONSTANT['new_user_wait_songs_num'] or len(get_like_music_list(username_id)) <= CONSTANT['new_user_wait_songs_num'] or len(get_next_music_list(username_id)) <= CONSTANT['new_user_wait_songs_num']:
         music_list = simp_personal_recommend(username_id)
     else:
         music_list = personal_recommend(username_id)

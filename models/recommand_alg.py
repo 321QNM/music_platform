@@ -2,6 +2,8 @@
 from database import *
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from config import CONSTANT
+
 
 client = MongoClient('localhost', 27017)
 db = client.musicPlatform
@@ -36,19 +38,19 @@ def personal_recommend(username_id):
     #每次遍历三个表之前先把所有的数值设为100
     for the_artist in all_artist_list:
         the_artist = "music_artist." + the_artist
-        db.mathmodel.update({"username":username}, {"$set": {the_artist: 100}})
+        db.mathmodel.update({"username":username}, {"$set": {the_artist: CONSTANT['init_score']}})
 
     for the_style in all_style_list:
         the_style = "music_style." + the_style
-        db.mathmodel.update({"username":username}, {"$set": {the_style: 100}})
+        db.mathmodel.update({"username":username}, {"$set": {the_style: CONSTANT['init_score']}})
 
     for the_mood in all_mood_list:
         the_mood = "music_mood." + the_mood
-        db.mathmodel.update({"username":username}, {"$set": {the_mood: 100}})
+        db.mathmodel.update({"username":username}, {"$set": {the_mood: CONSTANT['init_score']}})
 
     for the_zone in all_zone_list:
         the_zone = "music_zone." + the_zone
-        db.mathmodel.update({"username":username}, {"$set": {the_zone: 100}})
+        db.mathmodel.update({"username":username}, {"$set": {the_zone: CONSTANT['init_score']}})
 
 
     #遍历like表,为每一首歌中music_style, music_artist,music_zone,music_mood +2
@@ -64,16 +66,16 @@ def personal_recommend(username_id):
 
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
-            db.mathmodel.update({"username":username}, {"$inc": {the_artist: 2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_artist: CONSTANT['like_increase_score']}})
 
         if user_habit.get('music_mood').get(music_mood):
-            db.mathmodel.update({"username":username}, {"$inc": {the_mood: 2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_mood: CONSTANT['like_increase_score']}})
 
         if user_habit.get('music_style').get(music_style):
-            db.mathmodel.update({"username":username}, {"$inc": {the_style: 2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_style: CONSTANT['like_increase_score']}})
 
         if user_habit.get('music_zone').get(music_zone):
-            db.mathmodel.update({"username":username}, {"$inc": {the_zone: 2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_zone: CONSTANT['like_increase_score']}})
 
     #遍历next表
     for music in get_next_music_list(username_id):
@@ -89,16 +91,16 @@ def personal_recommend(username_id):
 
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
-            db.mathmodel.update({"username":username}, {"$inc": {the_artist: -1}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_artist: CONSTANT['next_decrease_score']}})
 
         if user_habit.get('music_mood').get(music_mood):
-            db.mathmodel.update({"username":username}, {"$inc": {the_mood: -1}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_mood: CONSTANT['next_decrease_score']}})
 
         if user_habit.get('music_style').get(music_style):
-            db.mathmodel.update({"username":username}, {"$inc": {the_style: -1}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_style: CONSTANT['next_decrease_score']}})
 
         if user_habit.get('music_zone').get(music_zone):
-            db.mathmodel.update({"username":username}, {"$inc": {the_zone: -1}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_zone: CONSTANT['next_decrease_score']}})
 
     #遍历hate表
     for music in get_hate_music_list(username_id):
@@ -113,16 +115,16 @@ def personal_recommend(username_id):
 
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
-            db.mathmodel.update({"username":username}, {"$inc": {the_artist: -2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_artist: CONSTANT['hate_decrease_score']}})
 
         if user_habit.get('music_mood').get(music_mood):
-            db.mathmodel.update({"username":username}, {"$inc": {the_mood: -2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_mood: CONSTANT['hate_decrease_score']}})
 
         if user_habit.get('music_style').get(music_style):
-            db.mathmodel.update({"username":username}, {"$inc": {the_style: -2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_style: CONSTANT['hate_decrease_score']}})
 
         if user_habit.get('music_zone').get(music_zone):
-            db.mathmodel.update({"username":username}, {"$inc": {the_zone: -2}})
+            db.mathmodel.update({"username":username}, {"$inc": {the_zone: CONSTANT['hate_decrease_score']}})
 
     #至此用户操作习惯统计结果的分析全部完成,下面需要根据分析结果生成style_list,mood_list,artist_list,zone_list
     artist_list = []
