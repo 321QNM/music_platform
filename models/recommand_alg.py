@@ -55,14 +55,15 @@ def personal_recommend(username_id):
 
     #遍历like表,为每一首歌中music_style, music_artist,music_zone,music_mood +2
     for music in get_like_music_list(username_id):
-        music_artist = music.get('music_artist')
-        the_artist = "music_artist." + music_artist
-        music_mood = music.get('music_mood')
-        the_mood  = "music_mood." + music_mood
-        music_style = music.get('music_style')
-        the_style = "music_style." + music_style
-        music_zone = music.get('music_zone')
-        the_zone = "music_zone." + music_zone
+        if music:
+            music_artist = music.get('music_artist')
+            the_artist = "music_artist." + music_artist
+            music_mood = music.get('music_mood')
+            the_mood  = "music_mood." + music_mood
+            music_style = music.get('music_style')
+            the_style = "music_style." + music_style
+            music_zone = music.get('music_zone')
+            the_zone = "music_zone." + music_zone
 
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
@@ -104,14 +105,15 @@ def personal_recommend(username_id):
 
     #遍历hate表
     for music in get_hate_music_list(username_id):
-        music_artist = music.get('music_artist')
-        the_artist = "music_artist." + music_artist
-        music_mood = music.get('music_mood')
-        the_mood  = "music_mood." + music_mood
-        music_style = music.get('music_style')
-        the_style = "music_style." + music_style
-        music_zone = music.get('music_zone')
-        the_zone = "music_zone." + music_zone
+        if music:
+            music_artist = music.get('music_artist')
+            the_artist = "music_artist." + music_artist
+            music_mood = music.get('music_mood')
+            the_mood  = "music_mood." + music_mood
+            music_style = music.get('music_style')
+            the_style = "music_style." + music_style
+            music_zone = music.get('music_zone')
+            the_zone = "music_zone." + music_zone
 
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
