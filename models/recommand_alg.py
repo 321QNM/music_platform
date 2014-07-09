@@ -65,23 +65,15 @@ def personal_recommend(username_id):
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
             db.mathmodel.update({"username":username}, {"$inc": {the_artist: 2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_artist: 102}})
 
         if user_habit.get('music_mood').get(music_mood):
             db.mathmodel.update({"username":username}, {"$inc": {the_mood: 2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_mood: 102}})
 
         if user_habit.get('music_style').get(music_style):
             db.mathmodel.update({"username":username}, {"$inc": {the_style: 2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_style: 102}})
 
         if user_habit.get('music_zone').get(music_zone):
             db.mathmodel.update({"username":username}, {"$inc": {the_zone: 2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_zone: 102}})
 
     #遍历next表
     for music in get_next_music_list(username_id):
@@ -97,23 +89,15 @@ def personal_recommend(username_id):
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
             db.mathmodel.update({"username":username}, {"$inc": {the_artist: -1}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_artist: 99}})
 
         if user_habit.get('music_mood').get(music_mood):
             db.mathmodel.update({"username":username}, {"$inc": {the_mood: -1}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_mood: 99}})
 
         if user_habit.get('music_style').get(music_style):
             db.mathmodel.update({"username":username}, {"$inc": {the_style: -1}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_style: 99}})
 
         if user_habit.get('music_zone').get(music_zone):
             db.mathmodel.update({"username":username}, {"$inc": {the_zone: -1}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_zone: 99}})
 
     #遍历hate表
     for music in get_hate_music_list(username_id):
@@ -129,23 +113,15 @@ def personal_recommend(username_id):
         user_habit = db.mathmodel.find_one({"username":username})
         if user_habit.get('music_artist').get(music_artist):
             db.mathmodel.update({"username":username}, {"$inc": {the_artist: -2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_artist: 98}})
 
         if user_habit.get('music_mood').get(music_mood):
             db.mathmodel.update({"username":username}, {"$inc": {the_mood: -2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_mood: 98}})
 
         if user_habit.get('music_style').get(music_style):
             db.mathmodel.update({"username":username}, {"$inc": {the_style: -2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_style: 98}})
 
         if user_habit.get('music_zone').get(music_zone):
             db.mathmodel.update({"username":username}, {"$inc": {the_zone: -2}})
-        else:
-            db.mathmodel.update({"username":username}, {"$set": {the_zone: 98}})
 
     #至此用户操作习惯统计结果的分析全部完成,下面需要根据分析结果生成style_list,mood_list,artist_list,zone_list
     artist_list = []
