@@ -5,7 +5,7 @@ from handlers.adminbase import AdminBaseHandler
 from models.database import *
 from tornado.escape import json_encode
 from bson.objectid import ObjectId
-# g_keyword = ""
+g_keyword = ""
 path = '../static/music/'
 image_path = '../static/images/music_pictures/'
 
