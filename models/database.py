@@ -217,6 +217,12 @@ def get_next_music_list(username_id):
         next_music_list.append(one_next_music)
     return next_music_list
 
+def get_all_user_list():
+    collection = db.user
+    return list(collection.find())
+
+
+
 
 
 

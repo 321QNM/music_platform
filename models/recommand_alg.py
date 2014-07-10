@@ -8,6 +8,14 @@ from config import CONSTANT
 client = MongoClient('localhost', 27017)
 db = client.musicPlatform
 
+def list_remove_multiple(a,b):
+    for item in a:
+        if item in b:
+            b.remove(item)
+    a.extend(b)
+    return a
+
+
 def simp_personal_recommend(username_id):
     all_music_list = get_all_music_list()
     hate_music_list = get_hate_music_list(username_id)
@@ -168,9 +176,37 @@ def personal_recommend(username_id):
         if music.get('music_artist') in artist_list and music.get('music_style') in style_list and music.get('music_mood') in mood_list and music.get('music_zone') in zone_list:
             personal_music_list.append(music)
 
-    # print personal_music_list
     print len(personal_music_list)
+    return personal_music_list
 
+def generate_compare_result_list(username_id):
+    username = get_user_detail(ObjectId(username_id)).get('username')
+
+    current_user_like_list = get_like_music_list(username_id)
+    all_user_list = get_all_user_list()
+
+    temp_compare_result_list = []
+    for user in all_user_list:
+        if username != user['username']:
+            to_compare_user_like_list = get_like_music_list(str(user['_id']))
+            # print to_compare_user_like_list
+            i = 0.0
+            for music in current_user_like_list:
+                if music in to_compare_user_like_list:
+                    i+=1
+            # print i
+            if (i/len(current_user_like_list) >= 0.6):
+                temp_compare_result_list = list_remove_multiple(temp_compare_result_list, to_compare_user_like_list)
+    compare_result_list = temp_compare_result_list
+    print len(compare_result_list)
+    return compare_result_list
+
+def recommend_algorithm(username_id):
+    personal_music_list = personal_recommend(username_id)
+    compare_result_list = generate_compare_result_list(username_id)
+    # personal_music_list.extend(compare_result_list)
+    personal_music_list = list_remove_multiple(personal_music_list, compare_result_list)
+    print len(personal_music_list)
     return personal_music_list
 
 if __name__ == '__main__':
